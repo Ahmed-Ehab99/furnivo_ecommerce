@@ -1,0 +1,136 @@
+{
+  "auth": {
+    "title": "Welcome to Our store",
+    "desc": "Bringing Your Style Home",
+    "firstNameInput": "First name",
+    "lastNameInput": "Last name",
+    "emailInput": "E-mail Address",
+    "passwordInput": "Password",
+    "characters": "characters",
+    "signinTitle": "I am already a customer",
+    "signinBtn": "Sign in",
+    "signupTitle": "I am new to This store",
+    "signupDesc": "Enjoy exclusive discounts & offers",
+    "signupNotification": "Yes, I would like to receive personalized offers, tips and tricks, and other information from Store.",
+    "signupTerms": "The terms and conditions for Furnivo Store apply. Here you can find our privacy information.",
+    "signupGoogle": "Sign up with google",
+    "signupBtn": "Sign Up",
+    "or": "Or"
+  },
+  "cart": {
+    "desc": "Review Your Items",
+    "placeOrder": "Place order",
+    "shoppingCart": "Your Cart"
+  },
+  "home": {
+    "title": "Make your interior more minimalistic & modern",
+    "desc": "Turn your room with furnivo into a lot more minimalist and modern with ease and speed",
+    "categories": {
+      "title": "Our Categories",
+      "one": {
+        "title": "Living Room",
+        "desc": "Sofas, loveseats, armchairs, coffee tables, end tables, entertainment centers, bookshelves."
+      },
+      "two": {
+        "title": "Bedroom",
+        "desc": "Beds, nightstands, dressers, chests of drawers, wardrobes, vanities."
+      },
+      "three": {
+        "title": "Kitchen",
+        "desc": "Kitchen cabinets, kitchen islands, dining tables, chairs."
+      }
+    },
+    "discover": {
+      "title": "Furnish Your Dreams, Choose Wisely",
+      "desc": "Discover quality furniture, curated styles, and exceptional service at Our Store. We make furnishing your home easy and enjoyable."
+    },
+    "features": {
+      "title": "Features we offer to you",
+      "subTitle": "Some of our",
+      "one": {
+        "title": "Extensive Catalog",
+        "desc": "A wide selection of furniture styles, categories, and price points."
+      },
+      "two": {
+        "title": "Detailed Product Descriptions",
+        "desc": "Comprehensive information including dimensions, materials, care instructions, and warranty details."
+      },
+      "three": {
+        "title": "Room Planner/Visualizer",
+        "desc": "Tools to help customers visualize furniture in their own spaces."
+      }
+    }
+  },
+  "placeOrder": {
+    "title": "Your customer data for the order",
+    "deliveryAddress": "Delivery address",
+    "cityInput": "City",
+    "streetNameInput": "Street Name",
+    "buildingNumberInput": "Building Number"
+  },
+  "payment": {
+    "paymentMethod": "Payment method",
+    "methodOne": "Card Payment",
+    "methodTwo": "Paypal"
+  },
+  "report": {
+    "subTitle": "Review order",
+    "message": "please check your information for accuracy."
+  },
+  "search": {
+    "desc": "Discover Elegant Comfort for Every Room",
+    "input": "Search",
+    "title": "Chic Furnishings Online Furniture Store"
+  },
+  "stepper": {
+    "data": "Data",
+    "payment": "Payment",
+    "register": "Register",
+    "review": "Review"
+  },
+  "thanks": {
+    "title": "Thank you for your purchase!",
+    "desc": "We're doing a little happy dance over here.",
+    "thanksBtn": "Go to home"
+  },
+  "general": {
+    "moreInfo": "More Info",
+    "all": "All",
+    "dear": "Dear",
+    "edit": "Edit",
+    "next": "Next",
+    "buyNow": "Buy Now",
+    "search": "Search",
+    "addToCart": "Add to Cart",
+    "total": "total",
+    "items": "Items"
+  },
+  "navbar": {
+    "home": "Home",
+    "shop": "Shop"
+  },
+  "footer": {
+    "desc": "We craft quality furniture that blends comfort, style, and durability—designed to make every space feel like home.",
+    "serviceLinks": {
+      "title": "Services",
+      "serviceOne": "Custom Furniture",
+      "serviceTwo": "Interior Styling",
+      "serviceThree": "White-Glove Delivery"
+    },
+    "categoryLinks": {
+      "title": "Categories",
+      "categoryOne": "living room",
+      "categoryTwo": "bedroom",
+      "categoryThree": "kitchen"
+    },
+    "socialLinks": {
+      "title": "Follow Us",
+      "facebook": "Facebook",
+      "twitter": "Twitter",
+      "instagram": "Instagram"
+    },
+    "copyright": "Copyright",
+    "termsConditions": "Terms & Conditions",
+    "privacyPolicy": "Privacy Policy"
+  }
+}
