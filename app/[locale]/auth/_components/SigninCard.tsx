@@ -9,14 +9,20 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { Spinner } from "@/components/ui/spinner";
+import { authClient } from "@/lib/auth-client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { AtSign, LockKeyholeIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { useRouter } from "next/navigation";
+import { useTransition } from "react";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { signinSchema } from "../schema/authSchema";
+import { toast } from "sonner";
+import { SigninFormData, signinSchema } from "../schema/authSchema";
 
 const SigninCard = () => {
+  const [isPending, startTransition] = useTransition();
+  const router = useRouter();
   const form = useForm({
     resolver: zodResolver(signinSchema),
     defaultValues: {
@@ -25,12 +31,40 @@ const SigninCard = () => {
     },
   });
   const t = useTranslations("auth");
+  const { isDirty } = form.formState;
 
-  function onSubmit(values: z.infer<typeof signinSchema>) {}
+  const onSubmit = (values: SigninFormData) => {
+    startTransition(async () => {
+      const { data: result, error } = await authClient.signIn.email({
+        email: values.email,
+        password: values.password,
+        rememberMe: true,
+      });
+
+      if (error) {
+        if (error.status === 401 || error.statusText === "UNAUTHORIZED") {
+          toast.error(`${t("error.unauthorized")}`);
+          return;
+        }
+        console.error(error);
+        toast.error(`${t("error.unexpected")}`);
+        return;
+      }
+
+      if (result) {
+        toast.success(`${t("success.signin")}`);
+        form.reset();
+        router.push("/");
+        router.refresh();
+      } else {
+        toast.error(`${t("error.signin")}`);
+      }
+    });
+  };
 
   return (
     <div className="bg-secondary flex flex-col rounded-2xl p-6">
-      <h2 className="font-gilroy text-secondary-foreground mx-auto mb-12 text-center text-2xl font-bold uppercase">
+      <h2 className="font-gilroy mx-auto mb-12 text-center text-2xl font-bold uppercase">
         {t("signinTitle")}
       </h2>
 
@@ -84,9 +118,10 @@ const SigninCard = () => {
 
           <Button
             type="submit"
+            disabled={isPending || !isDirty}
             className="font-montserrat mt-auto w-full rounded-xl"
           >
-            {t("signinBtn")}
+            {isPending ? <Spinner /> : t("signinBtn")}
           </Button>
         </form>
       </Form>

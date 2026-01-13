@@ -1,0 +1,446 @@
+[
+  {
+    "slug": "upholstered-king-bed",
+    "price": "1899",
+    "quantity": 5,
+    "categorySlug": "bedroom",
+    "translations": [
+      {
+        "locale": "en",
+        "title": "Upholstered King Bed",
+        "description": "Sophisticated king-size bed with button-tufted headboard and luxurious fabric upholstery. Includes sturdy slat support system. Transform your bedroom into a five-star retreat.",
+        "type": "Bed"
+      },
+      {
+        "locale": "ar",
+        "title": "سرير كينج مبطن",
+        "description": "سرير كينج أنيق بحجم كبير مع لوحة رأس مفروشة بأزرار وتنجيد قماش فاخر. يتضمن نظام دعم ألواح قوي. يحول غرفة نومك إلى ملاذ خمس نجوم.",
+        "type": "سرير"
+      }
+    ],
+    "images": [
+      {
+        "url": "/categories/bed-room/products/bed1.webp",
+        "alt": "King bed - front view",
+        "order": 0
+      },
+      {
+        "url": "/categories/bed-room/products/bed1-1.webp",
+        "alt": "King bed - bottom view",
+        "order": 1
+      },
+      {
+        "url": "/categories/bed-room/products/bed1-2.webp",
+        "alt": "King bed - upper view",
+        "order": 2
+      }
+    ]
+  },
+  {
+    "slug": "platform-king-bed",
+    "price": "1599",
+    "quantity": 7,
+    "categorySlug": "bedroom",
+    "translations": [
+      {
+        "locale": "en",
+        "title": "Platform King Bed",
+        "description": "A sleek platform king bed with minimalist design and integrated storage drawers. Features a sturdy wooden frame and breathable fabric. Ideal for modern bedrooms seeking simplicity and functionality.",
+        "type": "Bed"
+      },
+      {
+        "locale": "ar",
+        "title": "سرير كينج منصة",
+        "description": "سرير كينج منصة أنيق بتصميم بسيط مع أدراج تخزين مدمجة. يتميز بإطار خشبي قوي وقماش قابل للتنفس. مثالي لغرف النوم العصرية التي تبحث عن البساطة والوظيفية.",
+        "type": "سرير"
+      }
+    ],
+    "images": [
+      {
+        "url": "/categories/bed-room/products/bed2.webp",
+        "alt": "Platform king bed - front view",
+        "order": 0
+      },
+      {
+        "url": "/categories/bed-room/products/bed2-1.webp",
+        "alt": "Platform king bed - bottom view",
+        "order": 1
+      },
+      {
+        "url": "/categories/bed-room/products/bed2-2.webp",
+        "alt": "Platform king bed - upper view",
+        "order": 2
+      }
+    ]
+  },
+  {
+    "slug": "canopy-queen-bed",
+    "price": "2199",
+    "quantity": 4,
+    "categorySlug": "bedroom",
+    "translations": [
+      {
+        "locale": "en",
+        "title": "Canopy Queen Bed",
+        "description": "Elegant canopy queen bed with draped fabric and ornate metal frame. Includes a supportive mattress foundation. Creates a romantic ambiance in your bedroom with timeless charm.",
+        "type": "Bed"
+      },
+      {
+        "locale": "ar",
+        "title": "سرير كوين بمظلة",
+        "description": "سرير كوين أنيق بمظلة مع قماش متدلي وإطار معدني مزخرف. يتضمن قاعدة دعم للمرتبة. يخلق أجواء رومانسية في غرفة نومك بسحر خالد.",
+        "type": "سرير"
+      }
+    ],
+    "images": [
+      {
+        "url": "/categories/bed-room/products/bed3.webp",
+        "alt": "Canopy queen bed - front view",
+        "order": 0
+      },
+      {
+        "url": "/categories/bed-room/products/bed3-1.webp",
+        "alt": "Canopy queen bed - bottom view",
+        "order": 1
+      },
+      {
+        "url": "/categories/bed-room/products/bed3-2.webp",
+        "alt": "Canopy queen bed - upper view",
+        "order": 2
+      }
+    ]
+  },
+  {
+    "slug": "rustic-wooden-bed",
+    "price": "1399",
+    "quantity": 8,
+    "categorySlug": "bedroom",
+    "translations": [
+      {
+        "locale": "en",
+        "title": "Rustic Wooden Bed",
+        "description": "Rustic wooden bed crafted from reclaimed timber with a natural finish. Queen size with slat support for durability. Brings a cozy, farmhouse feel to any bedroom setting.",
+        "type": "Bed"
+      },
+      {
+        "locale": "ar",
+        "title": "سرير خشبي ريفي",
+        "description": "سرير خشبي ريفي مصنوع من خشب مستعمل مع تشطيب طبيعي. حجم كوين مع دعم ألواح للمتانة. يضفي شعورًا دافئًا بأسلوب المزرعة على أي ديكور غرفة نوم.",
+        "type": "سرير"
+      }
+    ],
+    "images": [
+      {
+        "url": "/categories/bed-room/products/bed4.webp",
+        "alt": "Rustic wooden bed - front view",
+        "order": 0
+      },
+      {
+        "url": "/categories/bed-room/products/bed4-1.webp",
+        "alt": "Rustic wooden bed - bottom view",
+        "order": 1
+      },
+      {
+        "url": "/categories/bed-room/products/bed4-2.webp",
+        "alt": "Rustic wooden bed - upper view",
+        "order": 2
+      }
+    ]
+  },
+  {
+    "slug": "modern-upholstered-bed",
+    "price": "1999",
+    "quantity": 6,
+    "categorySlug": "bedroom",
+    "translations": [
+      {
+        "locale": "en",
+        "title": "Modern Upholstered Bed",
+        "description": "Contemporary upholstered bed with velvet headboard and king dimensions. Equipped with a reinforced base for stability. Offers luxurious comfort and a stylish focal point for modern bedrooms.",
+        "type": "Bed"
+      },
+      {
+        "locale": "ar",
+        "title": "سرير مبطن عصري",
+        "description": "سرير مبطن عصري مع لوحة رأس من المخمل وحجم كينج. مزود بقاعدة مدعومة للثبات. يوفر راحة فاخرة ونقطة محورية أنيقة لغرف النوم الحديثة.",
+        "type": "سرير"
+      }
+    ],
+    "images": [
+      {
+        "url": "/categories/bed-room/products/bed5.webp",
+        "alt": "Modern upholstered bed - front view",
+        "order": 0
+      },
+      {
+        "url": "/categories/bed-room/products/bed5-1.webp",
+        "alt": "Modern upholstered bed - bottom view",
+        "order": 1
+      },
+      {
+        "url": "/categories/bed-room/products/bed5-2.webp",
+        "alt": "Modern upholstered bed - upper view",
+        "order": 2
+      }
+    ]
+  },
+  {
+    "slug": "storage-king-bed",
+    "price": "1799",
+    "quantity": 5,
+    "categorySlug": "bedroom",
+    "translations": [
+      {
+        "locale": "en",
+        "title": "Storage King Bed",
+        "description": "Functional storage king bed with built-in drawers beneath the frame. Upholstered in durable fabric with a simple headboard. Perfect for maximizing space in compact bedrooms.",
+        "type": "Bed"
+      },
+      {
+        "locale": "ar",
+        "title": "سرير كينج بتخزين",
+        "description": "سرير كينج عملي بأدراج تخزين مدمجة أسفل الإطار. مبطن بقماش متين مع لوحة رأس بسيطة. مثالي لتعظيم المساحة في غرف النوم الصغيرة.",
+        "type": "سرير"
+      }
+    ],
+    "images": [
+      {
+        "url": "/categories/bed-room/products/bed6.webp",
+        "alt": "Storage king bed - front view",
+        "order": 0
+      },
+      {
+        "url": "/categories/bed-room/products/bed6-1.webp",
+        "alt": "Storage king bed - bottom view",
+        "order": 1
+      },
+      {
+        "url": "/categories/bed-room/products/bed6-2.webp",
+        "alt": "Storage king bed - upper view",
+        "order": 2
+      }
+    ]
+  },
+  {
+    "slug": "vintage-iron-bed",
+    "price": "1299",
+    "quantity": 9,
+    "categorySlug": "bedroom",
+    "translations": [
+      {
+        "locale": "en",
+        "title": "Vintage Iron Bed",
+        "description": "Vintage-inspired iron bed with intricate scrollwork and queen size. Includes a solid foundation for mattresses. Adds a touch of nostalgia and strength to traditional bedroom decor.",
+        "type": "Bed"
+      },
+      {
+        "locale": "ar",
+        "title": "سرير حديدي كلاسيكي",
+        "description": "سرير حديدي مستوحى من الطراز القديم مع نقوش معقدة وحجم كوين. يتضمن قاعدة صلبة للمراتب. يضيف لمسة من الحنين والقوة لديكور غرف النوم التقليدية.",
+        "type": "سرير"
+      }
+    ],
+    "images": [
+      {
+        "url": "/categories/bed-room/products/bed7.webp",
+        "alt": "Vintage iron bed - front view",
+        "order": 0
+      },
+      {
+        "url": "/categories/bed-room/products/bed7-1.webp",
+        "alt": "Vintage iron bed - bottom view",
+        "order": 1
+      },
+      {
+        "url": "/categories/bed-room/products/bed7-2.webp",
+        "alt": "Vintage iron bed - upper view",
+        "order": 2
+      }
+    ]
+  },
+  {
+    "slug": "luxury-sleigh-bed",
+    "price": "2499",
+    "quantity": 3,
+    "categorySlug": "bedroom",
+    "translations": [
+      {
+        "locale": "en",
+        "title": "Luxury Sleigh Bed",
+        "description": "Luxurious sleigh bed with curved headboard and footboard in rich wood. King size with upholstered accents. Provides a grand, inviting presence in upscale bedrooms.",
+        "type": "Bed"
+      },
+      {
+        "locale": "ar",
+        "title": "سرير مزلقة فاخر",
+        "description": "سرير مزلقة فاخر مع لوحة رأس وقدم منحنية من الخشب الغني. حجم كينج مع لمسات مبطنة. يوفر حضورًا فخمًا وجذابًا في غرف النوم الراقية.",
+        "type": "سرير"
+      }
+    ],
+    "images": [
+      {
+        "url": "/categories/bed-room/products/bed8.webp",
+        "alt": "Luxury sleigh bed - front view",
+        "order": 0
+      },
+      {
+        "url": "/categories/bed-room/products/bed8-1.webp",
+        "alt": "Luxury sleigh bed - bottom view",
+        "order": 1
+      },
+      {
+        "url": "/categories/bed-room/products/bed8-2.webp",
+        "alt": "Luxury sleigh bed - upper view",
+        "order": 2
+      }
+    ]
+  },
+  {
+    "slug": "minimalist-platform-bed",
+    "price": "1199",
+    "quantity": 10,
+    "categorySlug": "bedroom",
+    "translations": [
+      {
+        "locale": "en",
+        "title": "Minimalist Platform Bed",
+        "description": "Minimalist platform bed with clean lines and full size. Made from sustainable materials with no headboard. Emphasizes simplicity and eco-friendliness in contemporary bedrooms.",
+        "type": "Bed"
+      },
+      {
+        "locale": "ar",
+        "title": "سرير منصة بسيط",
+        "description": "سرير منصة بسيط بخطوط نظيفة وحجم كامل. مصنوع من مواد مستدامة بدون لوحة رأس. يركز على البساطة والصداقة البيئية في غرف النوم المعاصرة.",
+        "type": "سرير"
+      }
+    ],
+    "images": [
+      {
+        "url": "/categories/bed-room/products/bed9.webp",
+        "alt": "Minimalist platform bed - front view",
+        "order": 0
+      },
+      {
+        "url": "/categories/bed-room/products/bed9-1.webp",
+        "alt": "Minimalist platform bed - bottom view",
+        "order": 1
+      },
+      {
+        "url": "/categories/bed-room/products/bed9-2.webp",
+        "alt": "Minimalist platform bed - upper view",
+        "order": 2
+      }
+    ]
+  },
+  {
+    "slug": "tufted-leather-bed",
+    "price": "2299",
+    "quantity": 4,
+    "categorySlug": "bedroom",
+    "translations": [
+      {
+        "locale": "en",
+        "title": "Tufted Leather Bed",
+        "description": "Tufted leather bed with button detailing and king dimensions. Features a robust frame and leather upholstery. Offers a sophisticated, durable option for elegant bedrooms.",
+        "type": "Bed"
+      },
+      {
+        "locale": "ar",
+        "title": "سرير جلدي مفروش بأزرار",
+        "description": "سرير جلدي مفروش بأزرار مع تفاصيل أنيقة وحجم كينج. يتميز بإطار قوي وتنجيد جلدي. يقدم خيارًا متطورًا ومتينًا لغرف النوم الأنيقة.",
+        "type": "سرير"
+      }
+    ],
+    "images": [
+      {
+        "url": "/categories/bed-room/products/bed10.webp",
+        "alt": "Tufted leather bed - front view",
+        "order": 0
+      },
+      {
+        "url": "/categories/bed-room/products/bed10-1.webp",
+        "alt": "Tufted leather bed - bottom view",
+        "order": 1
+      },
+      {
+        "url": "/categories/bed-room/products/bed10-2.webp",
+        "alt": "Tufted leather bed - upper view",
+        "order": 2
+      }
+    ]
+  },
+  {
+    "slug": "scandinavian-bed-frame",
+    "price": "1499",
+    "quantity": 7,
+    "categorySlug": "bedroom",
+    "translations": [
+      {
+        "locale": "en",
+        "title": "Scandinavian Bed Frame",
+        "description": "Scandinavian bed frame with light wood tones and queen size. Includes a simple headboard and slat system. Promotes a serene, functional design for bright and airy bedrooms.",
+        "type": "Bed"
+      },
+      {
+        "locale": "ar",
+        "title": "إطار سرير اسكندنافي",
+        "description": "إطار سرير اسكندنافي بألوان خشب فاتحة وحجم كوين. يتضمن لوحة رأس بسيطة ونظام ألواح. يعزز تصميمًا هادئًا وعمليًا لغرف النوم المشرقة والجيدة التهوية.",
+        "type": "سرير"
+      }
+    ],
+    "images": [
+      {
+        "url": "/categories/bed-room/products/bed11.webp",
+        "alt": "Scandinavian bed frame - front view",
+        "order": 0
+      },
+      {
+        "url": "/categories/bed-room/products/bed11-1.webp",
+        "alt": "Scandinavian bed frame - bottom view",
+        "order": 1
+      },
+      {
+        "url": "/categories/bed-room/products/bed11-2.webp",
+        "alt": "Scandinavian bed frame - upper view",
+        "order": 2
+      }
+    ]
+  },
+  {
+    "slug": "poster-bed-with-canopy",
+    "price": "2099",
+    "quantity": 5,
+    "categorySlug": "bedroom",
+    "translations": [
+      {
+        "locale": "en",
+        "title": "Poster Bed with Canopy",
+        "description": "Classic poster bed with canopy posts and king size. Upholstered in soft fabric with a supportive base. Evokes a sense of grandeur and comfort in traditional bedroom setups.",
+        "type": "Bed"
+      },
+      {
+        "locale": "ar",
+        "title": "سرير أعمدة بمظلة",
+        "description": "سرير أعمدة كلاسيكي مع أعمدة مظلة وحجم كينج. مبطن بقماش ناعم مع قاعدة داعمة. يبعث على إحساس بالفخامة والراحة في ترتيبات غرف النوم التقليدية.",
+        "type": "سرير"
+      }
+    ],
+    "images": [
+      {
+        "url": "/categories/bed-room/products/bed12.webp",
+        "alt": "Poster bed with canopy - front view",
+        "order": 0
+      },
+      {
+        "url": "/categories/bed-room/products/bed12-1.webp",
+        "alt": "Poster bed with canopy - bottom view",
+        "order": 1
+      },
+      {
+        "url": "/categories/bed-room/products/bed12-2.webp",
+        "alt": "Poster bed with canopy - upper view",
+        "order": 2
+      }
+    ]
+  }
+]

@@ -8,9 +8,9 @@ import { useParams, usePathname } from "next/navigation";
 
 const DesktopNav = () => {
   const pathname = usePathname();
-  const params = useParams();
+  const { locale } = useParams();
+  const isHome = pathname === `/${locale}`;
   const t = useTranslations("navbar");
-  const locale = params.locale;
   const pathWithoutLocale = pathname.replace(`/${locale}`, "") || "/";
 
   return (
@@ -24,7 +24,8 @@ const DesktopNav = () => {
             href={item.href}
             className={cn(
               isActive ? "font-extrabold" : "font-light",
-              "font-gilroy capitalize hover:text-primary",
+              isHome && "text-white",
+              "font-gilroy hover:text-primary capitalize",
             )}
           >
             {t(item.title)}

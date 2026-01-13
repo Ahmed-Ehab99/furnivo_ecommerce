@@ -1,9 +1,7 @@
-"use client";
-
 import { Facebook, Instagram, Twitter } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
-import NavbarLogo from "../navbar/NavbarLogo";
+import FooterLogo from "./FooterLogo";
 
 const Footer = () => {
   const t = useTranslations("footer");
@@ -15,15 +13,15 @@ const Footer = () => {
   const categoryLinks = [
     {
       title: t("categoryLinks.categoryOne"),
-      href: "/categoryLinks.categoryOne/slug",
+      href: "/category/living-room",
     },
     {
       title: t("categoryLinks.categoryTwo"),
-      href: "/categoryLinks.categoryTwo/slug",
+      href: "/category/bed-room",
     },
     {
       title: t("categoryLinks.categoryThree"),
-      href: "/categoryLinks.categoryThree/slug",
+      href: "/category/kitchen",
     },
   ];
   const socialLinks = [
@@ -53,13 +51,13 @@ const Footer = () => {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 gap-16 md:grid-cols-2 lg:grid-cols-5">
           <div className="lg:col-span-2 lg:mb-0">
-            <NavbarLogo />
+            <FooterLogo />
             <p className="mt-2 max-w-80 font-medium">{t("desc")}</p>
           </div>
 
           <div className="flex flex-col gap-4">
             <h3 className="font-bold">{t("serviceLinks.title")}</h3>
-            <ul className="text-muted-foreground space-y-3">
+            <ul className="space-y-3 text-[#1E1E1E]/80 dark:text-[#FFFFFF]/80">
               {serviceLinks.map((service) => (
                 <li
                   key={service}
@@ -73,7 +71,7 @@ const Footer = () => {
 
           <div className="flex flex-col gap-4">
             <h3 className="font-bold">{t("categoryLinks.title")}</h3>
-            <ul className="text-muted-foreground space-y-3">
+            <ul className="space-y-3 text-[#1E1E1E]/80 dark:text-[#FFFFFF]/80">
               {categoryLinks.map((category) => (
                 <li
                   key={category.title}
@@ -89,7 +87,7 @@ const Footer = () => {
 
           <div className="flex flex-col gap-4">
             <h3 className="font-bold">{t("socialLinks.title")}</h3>
-            <ul className="text-muted-foreground space-y-3">
+            <ul className="space-y-3 text-[#1E1E1E]/80 dark:text-[#FFFFFF]/80">
               {socialLinks.map(({ title, href, icon: Icon }) => (
                 <li
                   key={title}
@@ -106,12 +104,15 @@ const Footer = () => {
         </div>
 
         <div className="font-gilroy mt-20 flex flex-col justify-between gap-4 text-sm md:flex-row md:items-center">
-          <p className="font-normal text-[#1E2833]/50 dark:text-white/50">
+          <p className="font-normal opacity-40">
             {t("copyright")} &copy; {new Date().getFullYear()}
           </p>
-          <ul className="flex gap-4 font-medium text-[#1E1E1E]/50 dark:text-white/50">
+          <ul className="flex gap-4 font-medium">
             {bottomLinks.map((link) => (
-              <li key={link.title} className="hover:text-primary underline">
+              <li
+                key={link.title}
+                className="hover:text-primary underline opacity-40 hover:opacity-100"
+              >
                 <Link href={link.href}>{link.title}</Link>
               </li>
             ))}

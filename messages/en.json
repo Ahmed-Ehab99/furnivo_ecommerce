@@ -25,21 +25,9 @@
   "home": {
     "title": "Make your interior more minimalistic & modern",
     "desc": "Turn your room with furnivo into a lot more minimalist and modern with ease and speed",
-    "categories": {
-      "title": "Our Categories",
-      "one": {
-        "title": "Living Room",
-        "desc": "Sofas, loveseats, armchairs, coffee tables, end tables, entertainment centers, bookshelves."
-      },
-      "two": {
-        "title": "Bedroom",
-        "desc": "Beds, nightstands, dressers, chests of drawers, wardrobes, vanities."
-      },
-      "three": {
-        "title": "Kitchen",
-        "desc": "Kitchen cabinets, kitchen islands, dining tables, chairs."
-      }
-    },
+    "search": "Search",
+    "categoriesTitle": "Our Categories",
+    "moreInfo": "More Info",
     "discover": {
       "title": "Furnish Your Dreams, Choose Wisely",
       "desc": "Discover quality furniture, curated styles, and exceptional service at Our Store. We make furnishing your home easy and enjoyable."
@@ -94,7 +82,6 @@
     "thanksBtn": "Go to home"
   },
   "general": {
-    "moreInfo": "More Info",
     "all": "All",
     "dear": "Dear",
     "edit": "Edit",
@@ -132,5 +119,19 @@
     "copyright": "Copyright",
     "termsConditions": "Terms & Conditions",
     "privacyPolicy": "Privacy Policy"
+  },
+  "toastes": {
+    "success": {
+      "signin": "Signing in successfully",
+      "signup": "Signin up successfully",
+      "signout": "Signed Out successfully"
+    },
+    "error": {
+      "signin": "Failed to signing in",
+      "unauthorized": "This email doesn't exist. Please signup first",
+      "unexpected": "An unexpected error occurred. Please try again.",
+      "signup": "Failed to signing up",
+      "signout": "Failed to signing out"
+    }
   }
 }

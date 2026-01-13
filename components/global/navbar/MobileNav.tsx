@@ -1,6 +1,7 @@
 "use client";
 
 import { navItems } from "@/lib/constants";
+import { Session } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { Menu } from "lucide-react";
 import { useTranslations } from "next-intl";
@@ -20,21 +21,27 @@ import {
 } from "../../ui/drawer";
 import LocaleSwitcher from "../../ui/local-switcher";
 import { Separator } from "../../ui/separator";
-import ShoppingCart from "./CartBtn";
-import SearchIcon from "./SearchBtn";
+import CartBtn from "./CartBtn";
+import LoginBtn from "./LoginBtn";
+import SearchBtn from "./SearchBtn";
+import SignoutBtn from "./SignoutBtn";
 
-const MobileNav = () => {
+const MobileNav = ({ session }: { session: Session | null }) => {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
-  const params = useParams();
+  const { locale } = useParams();
   const t = useTranslations("navbar");
-  const locale = params.locale;
+  const isHome = pathname === `/${locale}`;
   const pathWithoutLocale = pathname.replace(`/${locale}`, "") || "/";
 
   return (
     <Drawer open={open} onOpenChange={setOpen}>
       <DrawerTrigger asChild>
-        <Button variant="ghost" size="icon">
+        <Button
+          variant="ghost"
+          size="icon"
+          className={cn(isHome && "text-white")}
+        >
           <Menu className="size-5" />
           <span className="sr-only">Toggle menu</span>
         </Button>
@@ -64,11 +71,13 @@ const MobileNav = () => {
           })}
           <Separator />
           <div className="flex items-center justify-between">
-            <SearchIcon />
-            <ShoppingCart />
-            <AnimatedThemeToggler />
-            <LocaleSwitcher />
+            <SearchBtn open={open} />
+            <CartBtn open={open} />
+            <AnimatedThemeToggler open={open} />
+            <LocaleSwitcher open={open} />
+            {session && <SignoutBtn open={open} />}
           </div>
+          {!session && <LoginBtn setOpen={setOpen} />}
         </div>
       </DrawerContent>
     </Drawer>

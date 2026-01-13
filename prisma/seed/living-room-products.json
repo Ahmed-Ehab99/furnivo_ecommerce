@@ -1,0 +1,446 @@
+[
+  {
+    "slug": "modern-accent-chair",
+    "price": "392",
+    "quantity": 15,
+    "categorySlug": "living-room",
+    "translations": [
+      {
+        "locale": "en",
+        "title": "Modern Accent Chair",
+        "description": "A stunning accent chair featuring clean lines and premium upholstery. Perfect for adding a touch of elegance to any living space. Crafted with solid wood frame and high-density foam cushioning for maximum comfort.",
+        "type": "Chair"
+      },
+      {
+        "locale": "ar",
+        "title": "كرسي زينة حديث",
+        "description": "كرسي زينة مذهل يتميز بخطوط نظيفة وتنجيد فاخر. مثالي لإضافة لمسة من الأناقة إلى أي مساحة معيشة. مصنوع بإطار خشبي صلب ووسائد رغوة عالية الكثافة للحصول على أقصى راحة.",
+        "type": "كرسي"
+      }
+    ],
+    "images": [
+      {
+        "url": "/categories/living-room/products/chair1.webp",
+        "alt": "Modern accent chair - front view",
+        "order": 0
+      },
+      {
+        "url": "/categories/living-room/products/chair1-1.webp",
+        "alt": "Modern accent chair - leg view",
+        "order": 1
+      },
+      {
+        "url": "/categories/living-room/products/chair1-2.webp",
+        "alt": "Modern accent chair - detail view",
+        "order": 2
+      }
+    ]
+  },
+  {
+    "slug": "elegant-accent-chair",
+    "price": "450",
+    "quantity": 12,
+    "categorySlug": "living-room",
+    "translations": [
+      {
+        "locale": "en",
+        "title": "Elegant Accent Chair",
+        "description": "An elegant accent chair with sleek design and luxurious fabric. Ideal for enhancing the sophistication of your living area. Built with a sturdy wooden base and plush foam padding for ultimate relaxation.",
+        "type": "Chair"
+      },
+      {
+        "locale": "ar",
+        "title": "كرسي زينة أنيق",
+        "description": "كرسي زينة أنيق بتصميم أنيق وقماش فاخر. مثالي لتعزيز الرقي في منطقة المعيشة الخاصة بك. مبني بقاعدة خشبية قوية وحشو رغوة ناعم للاسترخاء القصوى.",
+        "type": "كرسي"
+      }
+    ],
+    "images": [
+      {
+        "url": "/categories/living-room/products/chair2.webp",
+        "alt": "Elegant accent chair - front view",
+        "order": 0
+      },
+      {
+        "url": "/categories/living-room/products/chair2-1.webp",
+        "alt": "Elegant accent chair - leg view",
+        "order": 1
+      },
+      {
+        "url": "/categories/living-room/products/chair2-2.webp",
+        "alt": "Elegant accent chair - detail view",
+        "order": 2
+      }
+    ]
+  },
+  {
+    "slug": "classic-lounge-chair",
+    "price": "520",
+    "quantity": 18,
+    "categorySlug": "living-room",
+    "translations": [
+      {
+        "locale": "en",
+        "title": "Classic Lounge Chair",
+        "description": "A timeless lounge chair offering comfort and style. Features a classic silhouette with durable leather upholstery. Perfect for cozy evenings in the living room, supported by a robust frame and soft cushions.",
+        "type": "Chair"
+      },
+      {
+        "locale": "ar",
+        "title": "كرسي صالة كلاسيكي",
+        "description": "كرسي صالة خالد يقدم الراحة والأسلوب. يتميز بمظهر كلاسيكي مع تنجيد جلدي متين. مثالي للمساءات المريحة في غرفة المعيشة، مدعوم بإطار قوي ووسائد ناعمة.",
+        "type": "كرسي"
+      }
+    ],
+    "images": [
+      {
+        "url": "/categories/living-room/products/chair3.webp",
+        "alt": "Classic lounge chair - front view",
+        "order": 0
+      },
+      {
+        "url": "/categories/living-room/products/chair3-1.webp",
+        "alt": "Classic lounge chair - leg view",
+        "order": 1
+      },
+      {
+        "url": "/categories/living-room/products/chair3-2.webp",
+        "alt": "Classic lounge chair - detail view",
+        "order": 2
+      }
+    ]
+  },
+  {
+    "slug": "minimalist-armchair",
+    "price": "380",
+    "quantity": 20,
+    "categorySlug": "living-room",
+    "translations": [
+      {
+        "locale": "en",
+        "title": "Minimalist Armchair",
+        "description": "A minimalist armchair with simple yet refined lines. Upholstered in soft velvet for a modern touch. Great for contemporary spaces, featuring a lightweight metal frame and ergonomic seating.",
+        "type": "Chair"
+      },
+      {
+        "locale": "ar",
+        "title": "كرسي ذراعي بسيط",
+        "description": "كرسي ذراعي بسيط بخطوط بسيطة ولكن راقية. مغطى بمخمل ناعم للمسة حديثة. رائع للمساحات المعاصرة، يتميز بإطار معدني خفيف ومقاعد مريحة.",
+        "type": "كرسي"
+      }
+    ],
+    "images": [
+      {
+        "url": "/categories/living-room/products/chair4.webp",
+        "alt": "Minimalist armchair - front view",
+        "order": 0
+      },
+      {
+        "url": "/categories/living-room/products/chair4-1.webp",
+        "alt": "Minimalist armchair - leg view",
+        "order": 1
+      },
+      {
+        "url": "/categories/living-room/products/chair4-2.webp",
+        "alt": "Minimalist armchair - detail view",
+        "order": 2
+      }
+    ]
+  },
+  {
+    "slug": "vintage-wingback-chair",
+    "price": "600",
+    "quantity": 10,
+    "categorySlug": "living-room",
+    "translations": [
+      {
+        "locale": "en",
+        "title": "Vintage Wingback Chair",
+        "description": "A vintage-inspired wingback chair with high backrest and tufted details. Covered in rich brocade fabric. Adds a nostalgic charm to any room, with solid construction and supportive springs.",
+        "type": "Chair"
+      },
+      {
+        "locale": "ar",
+        "title": "كرسي وينغباك قديم",
+        "description": "كرسي وينغباك مستوحى من العصور القديمة بظهر عالي وتفاصيل محفورة. مغطى بقماش بروكاد غني. يضيف سحرًا نوستالجيًا إلى أي غرفة، مع بناء صلب ونوابض داعمة.",
+        "type": "كرسي"
+      }
+    ],
+    "images": [
+      {
+        "url": "/categories/living-room/products/chair5.webp",
+        "alt": "Vintage wingback chair - front view",
+        "order": 0
+      },
+      {
+        "url": "/categories/living-room/products/chair5-1.webp",
+        "alt": "Vintage wingback chair - leg view",
+        "order": 1
+      },
+      {
+        "url": "/categories/living-room/products/chair5-2.webp",
+        "alt": "Vintage wingback chair - detail view",
+        "order": 2
+      }
+    ]
+  },
+  {
+    "slug": "contemporary-recliner-chair",
+    "price": "480",
+    "quantity": 14,
+    "categorySlug": "living-room",
+    "translations": [
+      {
+        "locale": "en",
+        "title": "Contemporary Recliner Chair",
+        "description": "A contemporary recliner chair with adjustable features and sleek design. Upholstered in microfiber for easy maintenance. Ideal for relaxation, equipped with a reclining mechanism and padded arms.",
+        "type": "Chair"
+      },
+      {
+        "locale": "ar",
+        "title": "كرسي إمالة معاصر",
+        "description": "كرسي إمالة معاصر بميزات قابلة للتعديل وتصميم أنيق. مغطى بميكروفايبر للصيانة السهلة. مثالي للاسترخاء، مجهز بآلية إمالة وذراعين مبطنين.",
+        "type": "كرسي"
+      }
+    ],
+    "images": [
+      {
+        "url": "/categories/living-room/products/chair6.webp",
+        "alt": "Contemporary recliner chair - front view",
+        "order": 0
+      },
+      {
+        "url": "/categories/living-room/products/chair6-1.webp",
+        "alt": "Contemporary recliner chair - leg view",
+        "order": 1
+      },
+      {
+        "url": "/categories/living-room/products/chair6-2.webp",
+        "alt": "Contemporary recliner chair - detail view",
+        "order": 2
+      }
+    ]
+  },
+  {
+    "slug": "rustic-wooden-chair",
+    "price": "350",
+    "quantity": 16,
+    "categorySlug": "living-room",
+    "translations": [
+      {
+        "locale": "en",
+        "title": "Rustic Wooden Chair",
+        "description": "A rustic wooden chair with natural grain finish and cozy seating. Perfect for farmhouse-style decor. Crafted from reclaimed wood with woven seat for added comfort and durability.",
+        "type": "Chair"
+      },
+      {
+        "locale": "ar",
+        "title": "كرسي خشبي ريفي",
+        "description": "كرسي خشبي ريفي بتشطيب حبيبي طبيعي ومقاعد مريحة. مثالي لديكور أسلوب المزرعة. مصنوع من خشب معاد تدويره مع مقعد محاكي للراحة والمتانة الإضافية.",
+        "type": "كرسي"
+      }
+    ],
+    "images": [
+      {
+        "url": "/categories/living-room/products/chair7.webp",
+        "alt": "Rustic wooden chair - front view",
+        "order": 0
+      },
+      {
+        "url": "/categories/living-room/products/chair7-1.webp",
+        "alt": "Rustic wooden chair - leg view",
+        "order": 1
+      },
+      {
+        "url": "/categories/living-room/products/chair7-2.webp",
+        "alt": "Rustic wooden chair - detail view",
+        "order": 2
+      }
+    ]
+  },
+  {
+    "slug": "luxury-velvet-chair",
+    "price": "550",
+    "quantity": 11,
+    "categorySlug": "living-room",
+    "translations": [
+      {
+        "locale": "en",
+        "title": "Luxury Velvet Chair",
+        "description": "A luxury velvet chair with plush texture and gold accents. Elevates any space with opulence. Features deep seating and a sturdy base for long-lasting elegance and comfort.",
+        "type": "Chair"
+      },
+      {
+        "locale": "ar",
+        "title": "كرسي مخملي فاخر",
+        "description": "كرسي مخملي فاخر بملمس ناعم ولمسات ذهبية. يرفع أي مساحة بالفخامة. يتميز بمقاعد عميقة وقاعدة قوية للأناقة والراحة طويلة الأمد.",
+        "type": "كرسي"
+      }
+    ],
+    "images": [
+      {
+        "url": "/categories/living-room/products/chair8.webp",
+        "alt": "Luxury velvet chair - front view",
+        "order": 0
+      },
+      {
+        "url": "/categories/living-room/products/chair8-1.webp",
+        "alt": "Luxury velvet chair - leg view",
+        "order": 1
+      },
+      {
+        "url": "/categories/living-room/products/chair8-2.webp",
+        "alt": "Luxury velvet chair - detail view",
+        "order": 2
+      }
+    ]
+  },
+  {
+    "slug": "scandinavian-style-chair",
+    "price": "420",
+    "quantity": 19,
+    "categorySlug": "living-room",
+    "translations": [
+      {
+        "locale": "en",
+        "title": "Scandinavian Style Chair",
+        "description": "A Scandinavian-style chair with clean, simple lines and light wood tones. Upholstered in neutral linen. Brings a sense of calm and functionality to modern homes, with ergonomic design.",
+        "type": "Chair"
+      },
+      {
+        "locale": "ar",
+        "title": "كرسي أسلوب اسكندنافي",
+        "description": "كرسي أسلوب اسكندنافي بخطوط نظيفة وبسيطة وألوان خشب فاتحة. مغطى بكتان محايد. يجلب شعورًا بالهدوء والوظائف إلى المنازل الحديثة، مع تصميم مريح.",
+        "type": "كرسي"
+      }
+    ],
+    "images": [
+      {
+        "url": "/categories/living-room/products/chair9.webp",
+        "alt": "Scandinavian style chair - front view",
+        "order": 0
+      },
+      {
+        "url": "/categories/living-room/products/chair9-1.webp",
+        "alt": "Scandinavian style chair - left view",
+        "order": 1
+      },
+      {
+        "url": "/categories/living-room/products/chair9-2.webp",
+        "alt": "Scandinavian style chair - right view",
+        "order": 2
+      }
+    ]
+  },
+  {
+    "slug": "industrial-metal-chair",
+    "price": "490",
+    "quantity": 13,
+    "categorySlug": "living-room",
+    "translations": [
+      {
+        "locale": "en",
+        "title": "Industrial Metal Chair",
+        "description": "An industrial metal chair with exposed frame and leather cushions. Adds an edgy vibe to urban spaces. Durable construction with adjustable height for versatile use.",
+        "type": "Chair"
+      },
+      {
+        "locale": "ar",
+        "title": "كرسي معدني صناعي",
+        "description": "كرسي معدني صناعي بإطار مكشوف ووسائد جلدية. يضيف جوًا حادًا إلى المساحات الحضرية. بناء متين مع ارتفاع قابل للتعديل للاستخدام المتنوع.",
+        "type": "كرسي"
+      }
+    ],
+    "images": [
+      {
+        "url": "/categories/living-room/products/chair10.webp",
+        "alt": "Industrial metal chair - front view",
+        "order": 0
+      },
+      {
+        "url": "/categories/living-room/products/chair10-1.webp",
+        "alt": "Industrial metal chair - left view",
+        "order": 1
+      },
+      {
+        "url": "/categories/living-room/products/chair10-2.webp",
+        "alt": "Industrial metal chair - right view",
+        "order": 2
+      }
+    ]
+  },
+  {
+    "slug": "bohemian-pouf-chair",
+    "price": "320",
+    "quantity": 17,
+    "categorySlug": "living-room",
+    "translations": [
+      {
+        "locale": "en",
+        "title": "Bohemian Pouf Chair",
+        "description": "A bohemian pouf chair with vibrant patterns and soft filling. Ideal for eclectic decor. Lightweight and portable, with removable cover for easy cleaning and style changes.",
+        "type": "Chair"
+      },
+      {
+        "locale": "ar",
+        "title": "كرسي بوهيمي بوف",
+        "description": "كرسي بوف بوهيمي بأنماط نابضة بالحياة وحشو ناعم. مثالي للديكور الإكليكي. خفيف الوزن وقابل للحمل، مع غطاء قابل للإزالة للتنظيف السهل وتغييرات الأسلوب.",
+        "type": "كرسي"
+      }
+    ],
+    "images": [
+      {
+        "url": "/categories/living-room/products/chair11.webp",
+        "alt": "Bohemian pouf chair - front view",
+        "order": 0
+      },
+      {
+        "url": "/categories/living-room/products/chair11-1.webp",
+        "alt": "Bohemian pouf chair - left view",
+        "order": 1
+      },
+      {
+        "url": "/categories/living-room/products/chair11-2.webp",
+        "alt": "Bohemian pouf chair - right view",
+        "order": 2
+      }
+    ]
+  },
+  {
+    "slug": "art-deco-inspired-chair",
+    "price": "580",
+    "quantity": 9,
+    "categorySlug": "living-room",
+    "translations": [
+      {
+        "locale": "en",
+        "title": "Art Deco Inspired Chair",
+        "description": "An art deco-inspired chair with geometric patterns and metallic finishes. A statement piece for bold interiors. Combines comfort with artistic flair, featuring carved details and sumptuous upholstery.",
+        "type": "Chair"
+      },
+      {
+        "locale": "ar",
+        "title": "كرسي مستوحى من فن الديكو",
+        "description": "كرسي مستوحى من فن الديكو بأنماط هندسية وتشطيبات معدنية. قطعة تعبيرية للديكورات الجريئة. يجمع بين الراحة والأناقة الفنية، مع تفاصيل منحوتة وتنجيد فاخر.",
+        "type": "كرسي"
+      }
+    ],
+    "images": [
+      {
+        "url": "/categories/living-room/products/chair12.webp",
+        "alt": "Art deco inspired chair - front view",
+        "order": 0
+      },
+      {
+        "url": "/categories/living-room/products/chair12-1.webp",
+        "alt": "Art deco inspired chair - left view",
+        "order": 1
+      },
+      {
+        "url": "/categories/living-room/products/chair12-2.webp",
+        "alt": "Art deco inspired chair - right view",
+        "order": 2
+      }
+    ]
+  }
+]

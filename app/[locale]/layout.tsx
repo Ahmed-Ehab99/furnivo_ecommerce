@@ -1,20 +1,14 @@
 import Footer from "@/components/global/footer/Footer";
-import NavbarScrollWrapper from "@/components/global/navbar/NavbarScrollWrapper";
+import Navbar from "@/components/global/navbar/Navbar";
 import BackToTop from "@/components/ui/back-to-top";
 import { routing } from "@/i18n/routing";
 import { ThemeProvider } from "@/providers/theme-provider";
 import { gilroy } from "@/public/fonts";
 import type { Metadata } from "next";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
-import { Montserrat } from "next/font/google";
 import { notFound } from "next/navigation";
+import { Toaster } from "sonner";
 import "../globals.css";
-
-const montserrat = Montserrat({
-  variable: "--font-montserrat",
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-});
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -43,15 +37,18 @@ export default async function RootLayout({
       dir={locale === "ar" ? "rtl" : "ltr"}
       suppressHydrationWarning
     >
-      <body className={`${gilroy.variable} ${montserrat.variable} antialiased`}>
+      <body className={`${gilroy.variable} antialiased`}>
         <ThemeProvider attribute="class">
           <NextIntlClientProvider>
-            <NavbarScrollWrapper />
-            <main className="selection:bg-primary container mx-auto min-h-screen px-4">
+            <div className="absolute top-0 right-0 left-0 z-50 bg-transparent">
+              <Navbar />
+            </div>
+            <main className="selection:bg-primary min-h-screen">
               {children}
             </main>
             <Footer />
             <BackToTop />
+            <Toaster closeButton richColors position="bottom-center" />
           </NextIntlClientProvider>
         </ThemeProvider>
       </body>

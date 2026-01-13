@@ -1,0 +1,446 @@
+[
+  {
+    "slug": "modern-hanging-utensil-rack-with-bowl",
+    "price": "89",
+    "quantity": 25,
+    "categorySlug": "kitchen",
+    "translations": [
+      {
+        "locale": "en",
+        "title": "Modern Hanging Kitchen Utensil Rack with Bowl",
+        "description": "Elegant and space-saving wall-mounted utensil organizer crafted from natural bamboo/wood with a minimalist frame design.",
+        "type": "Kitchen"
+      },
+      {
+        "locale": "ar",
+        "title": "رف أدوات مطبخ معلق حديث مع وعاء",
+        "description": "منظم أدوات مطبخ أنيق وموفر للمساحة مثبت على الحائط، مصنوع من الخيزران/الخشب الطبيعي بتصميم إطار بسيط.",
+        "type": "مطبخ"
+      }
+    ],
+    "images": [
+      {
+        "url": "/categories/kitchen/products/kitchen1.webp",
+        "alt": "Modern wall-mounted kitchen utensil rack in natural wood with white bowl on top and hanging black matte and wooden spoons & ladles",
+        "order": 0
+      },
+      {
+        "url": "/categories/kitchen/products/kitchen1-1.webp",
+        "alt": "Close-up of minimalist bamboo utensil holder displaying mixed black and natural wood cooking spoons and ladles with ceramic bowl",
+        "order": 1
+      },
+      {
+        "url": "/categories/kitchen/products/kitchen1-2.webp",
+        "alt": "Close-up of minimalist bamboo utensil holder displaying mixed black and natural wood cooking spoons and ladles with ceramic bowl",
+        "order": 2
+      }
+    ]
+  },
+  {
+    "slug": "stainless-steel-utensil-rack",
+    "price": "95",
+    "quantity": 20,
+    "categorySlug": "kitchen",
+    "translations": [
+      {
+        "locale": "en",
+        "title": "Stainless Steel Utensil Rack",
+        "description": "Durable stainless steel wall-mounted rack with hooks for organizing kitchen tools. Features a sleek, rust-resistant design perfect for modern kitchens.",
+        "type": "Kitchen"
+      },
+      {
+        "locale": "ar",
+        "title": "رف أدوات مطبخ من الفولاذ المقاوم للصدأ",
+        "description": "رف متين مثبت على الحائط من الفولاذ المقاوم للصدأ مع خطافات لتنظيم أدوات المطبخ. يتميز بتصميم أنيق مقاوم للصدأ مثالي للمطابخ الحديثة.",
+        "type": "مطبخ"
+      }
+    ],
+    "images": [
+      {
+        "url": "/categories/kitchen/products/kitchen2.webp",
+        "alt": "Stainless steel wall-mounted kitchen utensil rack with hooks for spoons and ladles",
+        "order": 0
+      },
+      {
+        "url": "/categories/kitchen/products/kitchen2-1.webp",
+        "alt": "Close-up of stainless steel utensil holder displaying various cooking utensils",
+        "order": 1
+      },
+      {
+        "url": "/categories/kitchen/products/kitchen2-2.webp",
+        "alt": "Detailed view of stainless steel utensil rack with organized tools",
+        "order": 2
+      }
+    ]
+  },
+  {
+    "slug": "wooden-countertop-utensil-holder",
+    "price": "75",
+    "quantity": 30,
+    "categorySlug": "kitchen",
+    "translations": [
+      {
+        "locale": "en",
+        "title": "Wooden Countertop Utensil Holder",
+        "description": "Compact wooden countertop organizer with multiple compartments for spoons, spatulas, and more. Made from sustainable wood for a rustic kitchen aesthetic.",
+        "type": "Kitchen"
+      },
+      {
+        "locale": "ar",
+        "title": "حامل أدوات مطبخ خشبي للمنضدة",
+        "description": "منظم مضغوط للمنضدة من الخشب مع حجرات متعددة للمعالق والملاعق وغيرها. مصنوع من خشب مستدام لمظهر ريفي أنيق في المطبخ.",
+        "type": "مطبخ"
+      }
+    ],
+    "images": [
+      {
+        "url": "/categories/kitchen/products/kitchen3.webp",
+        "alt": "Wooden countertop kitchen utensil holder with compartments for tools",
+        "order": 0
+      },
+      {
+        "url": "/categories/kitchen/products/kitchen3-1.webp",
+        "alt": "Close-up of wooden utensil organizer displaying mixed kitchen utensils",
+        "order": 1
+      },
+      {
+        "url": "/categories/kitchen/products/kitchen3-2.webp",
+        "alt": "Detailed view of wooden utensil holder with organized compartments",
+        "order": 2
+      }
+    ]
+  },
+  {
+    "slug": "magnetic-knife-and-utensil-rack",
+    "price": "110",
+    "quantity": 18,
+    "categorySlug": "kitchen",
+    "translations": [
+      {
+        "locale": "en",
+        "title": "Magnetic Knife and Utensil Rack",
+        "description": "Magnetic wall rack for knives and metal utensils, keeping them secure and accessible. Includes a non-slip base for added stability in busy kitchens.",
+        "type": "Kitchen"
+      },
+      {
+        "locale": "ar",
+        "title": "رف مغناطيسي للسكاكين وأدوات المطبخ",
+        "description": "رف حائط مغناطيسي للسكاكين والأدوات المعدنية، يحافظ عليها آمنة وسهلة الوصول. يتضمن قاعدة مانعة للانزلاق لثبات إضافي في المطابخ المزدحمة.",
+        "type": "مطبخ"
+      }
+    ],
+    "images": [
+      {
+        "url": "/categories/kitchen/products/kitchen4.webp",
+        "alt": "Magnetic wall-mounted kitchen utensil rack for knives and tools",
+        "order": 0
+      },
+      {
+        "url": "/categories/kitchen/products/kitchen4-1.webp",
+        "alt": "Close-up of magnetic utensil holder displaying knives and metal spoons",
+        "order": 1
+      },
+      {
+        "url": "/categories/kitchen/products/kitchen4-2.webp",
+        "alt": "Detailed view of magnetic utensil rack with secured utensils",
+        "order": 2
+      }
+    ]
+  },
+  {
+    "slug": "ceramic-utensil-caddy",
+    "price": "65",
+    "quantity": 35,
+    "categorySlug": "kitchen",
+    "translations": [
+      {
+        "locale": "en",
+        "title": "Ceramic Utensil Caddy",
+        "description": "Elegant ceramic caddy with divided sections for organizing utensils. Features a glazed finish that's easy to clean and adds charm to your countertop.",
+        "type": "Kitchen"
+      },
+      {
+        "locale": "ar",
+        "title": "حامل أدوات سيراميك",
+        "description": "حامل سيراميك أنيق مع أقسام مقسمة لتنظيم الأدوات. يتميز بطبقة زجاجية سهلة التنظيف ويضيف سحرًا لمنضدة المطبخ.",
+        "type": "مطبخ"
+      }
+    ],
+    "images": [
+      {
+        "url": "/categories/kitchen/products/kitchen5.webp",
+        "alt": "Ceramic countertop kitchen utensil caddy with divided sections",
+        "order": 0
+      },
+      {
+        "url": "/categories/kitchen/products/kitchen5-1.webp",
+        "alt": "Close-up of ceramic utensil organizer displaying various tools",
+        "order": 1
+      },
+      {
+        "url": "/categories/kitchen/products/kitchen5-2.webp",
+        "alt": "Detailed view of ceramic utensil caddy with organized compartments",
+        "order": 2
+      }
+    ]
+  },
+  {
+    "slug": "expandable-utensil-rack",
+    "price": "85",
+    "quantity": 22,
+    "categorySlug": "kitchen",
+    "translations": [
+      {
+        "locale": "en",
+        "title": "Expandable Utensil Rack",
+        "description": "Versatile expandable wall rack that adjusts to fit your space. Crafted from metal with hooks for hanging utensils, ideal for small or large kitchens.",
+        "type": "Kitchen"
+      },
+      {
+        "locale": "ar",
+        "title": "رف أدوات قابل للتمدد",
+        "description": "رف حائط متعدد الاستخدامات قابل للتمدد يتكيف مع مساحتك. مصنوع من المعدن مع خطافات لتعليق الأدوات، مثالي للمطابخ الصغيرة والكبيرة.",
+        "type": "مطبخ"
+      }
+    ],
+    "images": [
+      {
+        "url": "/categories/kitchen/products/kitchen6.webp",
+        "alt": "Expandable wall-mounted kitchen utensil rack with adjustable hooks",
+        "order": 0
+      },
+      {
+        "url": "/categories/kitchen/products/kitchen6-1.webp",
+        "alt": "Close-up of expandable utensil holder displaying hanging tools",
+        "order": 1
+      },
+      {
+        "url": "/categories/kitchen/products/kitchen6-2.webp",
+        "alt": "Detailed view of expandable utensil rack in extended position",
+        "order": 2
+      }
+    ]
+  },
+  {
+    "slug": "bamboo-utensil-organizer",
+    "price": "70",
+    "quantity": 28,
+    "categorySlug": "kitchen",
+    "translations": [
+      {
+        "locale": "en",
+        "title": "Bamboo Utensil Organizer",
+        "description": "Eco-friendly bamboo organizer with tiered shelves for utensils. Lightweight and sturdy, perfect for keeping your kitchen essentials neatly arranged.",
+        "type": "Kitchen"
+      },
+      {
+        "locale": "ar",
+        "title": "منظم أدوات خيزران",
+        "description": "منظم صديق للبيئة من الخيزران مع أرفف متدرجة للأدوات. خفيف الوزن وقوي، مثالي للحفاظ على أساسيات المطبخ مرتبة بشكل أنيق.",
+        "type": "مطبخ"
+      }
+    ],
+    "images": [
+      {
+        "url": "/categories/kitchen/products/kitchen7.webp",
+        "alt": "Bamboo countertop kitchen utensil organizer with tiered shelves",
+        "order": 0
+      },
+      {
+        "url": "/categories/kitchen/products/kitchen7-1.webp",
+        "alt": "Close-up of bamboo utensil holder displaying organized tools",
+        "order": 1
+      },
+      {
+        "url": "/categories/kitchen/products/kitchen7-2.webp",
+        "alt": "Detailed view of bamboo utensil organizer with shelves",
+        "order": 2
+      }
+    ]
+  },
+  {
+    "slug": "over-the-cabinet-utensil-rack",
+    "price": "55",
+    "quantity": 40,
+    "categorySlug": "kitchen",
+    "translations": [
+      {
+        "locale": "en",
+        "title": "Over-the-Cabinet Utensil Rack",
+        "description": "Space-efficient over-the-cabinet rack with rails for hanging utensils. Made from durable plastic, easy to install and maintain in any kitchen.",
+        "type": "Kitchen"
+      },
+      {
+        "locale": "ar",
+        "title": "رف أدوات فوق الخزانة",
+        "description": "رف موفر للمساحة يثبت فوق الخزانة مع قضبان لتعليق الأدوات. مصنوع من بلاستيك متين، سهل التركيب والصيانة في أي مطبخ.",
+        "type": "مطبخ"
+      }
+    ],
+    "images": [
+      {
+        "url": "/categories/kitchen/products/kitchen8.webp",
+        "alt": "Over-the-cabinet kitchen utensil rack with hanging rails",
+        "order": 0
+      },
+      {
+        "url": "/categories/kitchen/products/kitchen8-1.webp",
+        "alt": "Close-up of over-the-cabinet utensil holder displaying tools",
+        "order": 1
+      },
+      {
+        "url": "/categories/kitchen/products/kitchen8-2.webp",
+        "alt": "Detailed view of over-the-cabinet utensil rack installed",
+        "order": 2
+      }
+    ]
+  },
+  {
+    "slug": "rotating-utensil-stand",
+    "price": "80",
+    "quantity": 24,
+    "categorySlug": "kitchen",
+    "translations": [
+      {
+        "locale": "en",
+        "title": "Rotating Utensil Stand",
+        "description": "Rotating countertop stand with multiple levels for easy access to utensils. Features a 360-degree turntable for convenience in compact spaces.",
+        "type": "Kitchen"
+      },
+      {
+        "locale": "ar",
+        "title": "حامل أدوات دوّار",
+        "description": "حامل منضدة دوّار بمستويات متعددة لسهولة الوصول إلى الأدوات. يتميز بقرص دوّار 360 درجة للراحة في المساحات المدمجة.",
+        "type": "مطبخ"
+      }
+    ],
+    "images": [
+      {
+        "url": "/categories/kitchen/products/kitchen9.webp",
+        "alt": "Rotating countertop kitchen utensil stand with multiple levels",
+        "order": 0
+      },
+      {
+        "url": "/categories/kitchen/products/kitchen9-1.webp",
+        "alt": "Close-up of rotating utensil holder displaying organized tools",
+        "order": 1
+      },
+      {
+        "url": "/categories/kitchen/products/kitchen9-2.webp",
+        "alt": "Detailed view of rotating utensil stand in motion",
+        "order": 2
+      }
+    ]
+  },
+  {
+    "slug": "wire-mesh-utensil-rack",
+    "price": "60",
+    "quantity": 32,
+    "categorySlug": "kitchen",
+    "translations": [
+      {
+        "locale": "en",
+        "title": "Wire Mesh Utensil Rack",
+        "description": "Industrial-style wire mesh rack for wall mounting utensils. Provides excellent ventilation and a modern look for contemporary kitchens.",
+        "type": "Kitchen"
+      },
+      {
+        "locale": "ar",
+        "title": "رف أدوات شبكي معدني",
+        "description": "رف شبكي معدني بأسلوب صناعي لتثبيت الأدوات على الحائط. يوفر تهوية ممتازة ومظهرًا عصريًا للمطابخ المعاصرة.",
+        "type": "مطبخ"
+      }
+    ],
+    "images": [
+      {
+        "url": "/categories/kitchen/products/kitchen10.webp",
+        "alt": "Wire mesh wall-mounted kitchen utensil rack",
+        "order": 0
+      },
+      {
+        "url": "/categories/kitchen/products/kitchen10-1.webp",
+        "alt": "Close-up of wire mesh utensil holder displaying tools",
+        "order": 1
+      },
+      {
+        "url": "/categories/kitchen/products/kitchen10-2.webp",
+        "alt": "Detailed view of wire mesh utensil rack with hanging utensils",
+        "order": 2
+      }
+    ]
+  },
+  {
+    "slug": "tiered-utensil-rack",
+    "price": "90",
+    "quantity": 19,
+    "categorySlug": "kitchen",
+    "translations": [
+      {
+        "locale": "en",
+        "title": "Tiered Utensil Rack",
+        "description": "Multi-tiered rack for countertop use, with shelves for different utensil sizes. Made from chrome-plated metal for durability and style.",
+        "type": "Kitchen"
+      },
+      {
+        "locale": "ar",
+        "title": "رف أدوات متعدد الطبقات",
+        "description": "رف متعدد الطبقات للاستخدام على المنضدة، مع أرفف لأحجام مختلفة من الأدوات. مصنوع من معدن مطلي بالكروم للمتانة والأناقة.",
+        "type": "مطبخ"
+      }
+    ],
+    "images": [
+      {
+        "url": "/categories/kitchen/products/kitchen11.webp",
+        "alt": "Tiered countertop kitchen utensil rack with multiple shelves",
+        "order": 0
+      },
+      {
+        "url": "/categories/kitchen/products/kitchen11-1.webp",
+        "alt": "Close-up of tiered utensil holder displaying organized tools",
+        "order": 1
+      },
+      {
+        "url": "/categories/kitchen/products/kitchen11-2.webp",
+        "alt": "Detailed view of tiered utensil rack with shelves",
+        "order": 2
+      }
+    ]
+  },
+  {
+    "slug": "compact-drawer-utensil-organizer",
+    "price": "50",
+    "quantity": 45,
+    "categorySlug": "kitchen",
+    "translations": [
+      {
+        "locale": "en",
+        "title": "Compact Drawer Utensil Organizer",
+        "description": "Compact organizer designed for kitchen drawers, with adjustable dividers. Keeps utensils sorted and easily accessible in limited space.",
+        "type": "Kitchen"
+      },
+      {
+        "locale": "ar",
+        "title": "منظم أدوات درج مطبخ مدمج",
+        "description": "منظم مدمج مصمم لأدراج المطبخ مع فواصل قابلة للتعديل. يحافظ على ترتيب الأدوات وسهولة الوصول إليها في مساحة محدودة.",
+        "type": "مطبخ"
+      }
+    ],
+    "images": [
+      {
+        "url": "/categories/kitchen/products/kitchen12.webp",
+        "alt": "Compact drawer kitchen utensil organizer with adjustable dividers",
+        "order": 0
+      },
+      {
+        "url": "/categories/kitchen/products/kitchen12-1.webp",
+        "alt": "Close-up of drawer utensil organizer displaying sorted tools",
+        "order": 1
+      },
+      {
+        "url": "/categories/kitchen/products/kitchen12-2.webp",
+        "alt": "Detailed view of compact utensil organizer in a drawer",
+        "order": 2
+      }
+    ]
+  }
+]

@@ -1,14 +1,14 @@
 import Heading from "@/components/global/Heading";
+import AuthLeft from "@/public/shapes/authLeft.svg";
+import AuthRight from "@/public/shapes/authRight.svg";
 import Image from "next/image";
-import AuthLeft from "../../../public/shapes/authLeft.svg";
-import AuthRight from "../../../public/shapes/authRight.svg";
 import AuthTabs from "./_components/AuthTabs";
 import SigninCard from "./_components/SigninCard";
 import SignupCard from "./_components/SignupCard";
 
 const AuthPage = () => {
   return (
-    <section className="pt-20 pb-32">
+    <section className="container mx-auto px-4 pt-32 pb-32">
       <Heading title="title" description="desc" place="auth" />
       <div className="mx-auto mt-20 block lg:hidden">
         <AuthTabs />

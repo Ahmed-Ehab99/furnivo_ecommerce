@@ -1,0 +1,53 @@
+[
+  {
+    "slug": "living-room",
+    "thumbnail": "/categories/living-room/living-room.webp",
+    "imageAlt": "Modern chair collection",
+    "translations": [
+      {
+        "locale": "en",
+        "title": "Living Room",
+        "description": " Sofas, loveseats, armchairs, coffee tables, end tables, entertainment centers, bookshelves."
+      },
+      {
+        "locale": "ar",
+        "title": "غرفة المعيشة",
+        "description": "أرائك، مقاعد مزدوجة، كراسي بذراعين، طاولات قهوة، طاولات جانبية، وحدات ترفيه، رفوف كتب."
+      }
+    ]
+  },
+  {
+    "slug": "bedroom",
+    "thumbnail": "/categories/bed-room/bed-room.webp",
+    "imageAlt": "Elegant bed collection",
+    "translations": [
+      {
+        "locale": "en",
+        "title": "Bedroom",
+        "description": "Beds, nightstands, dressers, chests of drawers, wardrobes, vanities."
+      },
+      {
+        "locale": "ar",
+        "title": "غرفة النوم",
+        "description": "أسِرّة، طاولات جانبية، خزائن ملابس، وحدات أدراج، خزائن، طاولات تجميل."
+      }
+    ]
+  },
+  {
+    "slug": "kitchen",
+    "thumbnail": "/categories/kitchen/kitchen.webp",
+    "imageAlt": "Stylish kitchen tool collection",
+    "translations": [
+      {
+        "locale": "en",
+        "title": "Kitchen",
+        "description": "Kitchen cabinets, kitchen islands, dining tables, chairs."
+      },
+      {
+        "locale": "ar",
+        "title": "المطبخ",
+        "description": "خزائن المطبخ، جزر المطبخ، طاولات الطعام، الكراسي."
+      }
+    ]
+  }
+]
