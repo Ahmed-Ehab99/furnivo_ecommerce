@@ -1,11 +1,12 @@
-import DarkSearch from "@/public/dark-search.svg";
+import SearchInput from "@/components/global/SearchInput";
+import { HomeParams } from "@/lib/types";
 import HeroImg from "@/public/hero.png";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import Image from "next/image";
-import { Input } from "../ui/input";
 
-const HeroSec = () => {
-  const t = useTranslations("home");
+const HeroSec = async ({ params }: { params: HomeParams }) => {
+  const { locale } = await params;
+  const t = await getTranslations("home");
 
   return (
     <section className="relative h-dvh w-full">
@@ -22,17 +23,11 @@ const HeroSec = () => {
         <p className="font-gilroy max-w-76 text-base font-extrabold text-white/80 md:max-w-89 md:text-2xl lg:max-w-150 lg:text-2xl">
           {t("desc")}
         </p>
-        <div className="relative hidden w-2xs lg:flex">
-          <Input
-            placeholder={`${t("search")}`}
-            className="font-montserrat h-fit rounded-full border-none bg-[#FDFDFD]/30 py-2.5 pr-10 text-sm text-white backdrop-blur-xs placeholder:font-light placeholder:text-white"
-          />
-          <Image
-            src={DarkSearch}
-            alt={`${t("search")}`}
-            className="absolute top-1/2 right-2 size-7 -translate-y-1/2"
-          />
-        </div>
+        <SearchInput
+          locale={locale}
+          className="relative hidden w-2xs lg:flex"
+          inputClassName="text-white backdrop-blur-xs placeholder:text-white border-none"
+        />
       </div>
       <div className="absolute bottom-0 left-0 h-60 w-full bg-linear-to-t from-white/80 via-white/40 to-transparent" />
     </section>

@@ -11,7 +11,7 @@ import Image from "next/image";
 const HomePage = async ({ params }: { params: HomeParams }) => {
   return (
     <div className="relative">
-      <HeroSec />
+      <HeroSec params={params} />
       <CategoriesSec params={params} />
       <FurnishSec params={params} />
       <FeaturesSec />

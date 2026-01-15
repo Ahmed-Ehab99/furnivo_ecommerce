@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const CategoryPage = () => {
   return (
-    <div className="container mx-auto grid grid-cols-1 items-center gap-24 px-4 py-32 lg:grid-cols-4">
+    <div className="container mx-auto grid grid-cols-2 items-center gap-24 px-4 py-32 md:grid-cols-3 lg:grid-cols-4">
       <ProductCard />
       <ProductCard />
       <ProductCard />

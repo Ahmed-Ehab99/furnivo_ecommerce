@@ -76,6 +76,7 @@
   {
     "slug": "classic-lounge-chair",
     "price": "520",
+    "discount": 14,
     "quantity": 18,
     "categorySlug": "living-room",
     "translations": [
@@ -113,6 +114,7 @@
   {
     "slug": "minimalist-armchair",
     "price": "380",
+    "discount": 80,
     "quantity": 20,
     "categorySlug": "living-room",
     "translations": [
@@ -335,6 +337,7 @@
   {
     "slug": "industrial-metal-chair",
     "price": "490",
+    "discount": 40,
     "quantity": 13,
     "categorySlug": "living-room",
     "translations": [

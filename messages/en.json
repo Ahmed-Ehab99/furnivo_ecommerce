@@ -70,6 +70,19 @@
     "input": "Search",
     "title": "Chic Furnishings Online Furniture Store"
   },
+  "shop": {
+    "filterByCategory": "Filter by Category",
+    "sortByPrice": "Sort by Price",
+    "allCategories": "All Categories",
+    "noSort": "No Sort",
+    "lowToHigh": "Low to High",
+    "highToLow": "High to Low",
+    "noProducts": "No products found",
+    "noProductsDesc": "We couldn't find any furniture matching your search.",
+    "browseAll": "Browse all products",
+    "search": "Re-search",
+    "onlyDiscounted": "Discounts"
+  },
   "stepper": {
     "data": "Data",
     "payment": "Payment",

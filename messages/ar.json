@@ -70,6 +70,19 @@
     "input": "بحث",
     "title": "متجر الأثاث الإلكتروني Furnivo"
   },
+  "shop": {
+    "filterByCategory": "تصفية حسب الفئة",
+    "sortByPrice": "ترتيب حسب السعر",
+    "allCategories": "جميع الفئات",
+    "noSort": "بدون ترتيب",
+    "lowToHigh": "من الأقل إلى الأعلى",
+    "highToLow": "من الأعلى إلى الأقل",
+    "noProducts": "لم يتم العثور على منتجات",
+    "noProductsDesc": "لم نتمكن من العثور على أي أثاث يطابق بحثك.",
+    "browseAll": "شاهد جميع المنتجات",
+    "search": "إعاده البحث",
+    "onlyDiscounted": "تخفيضات"
+  },
   "stepper": {
     "data": "البيانات",
     "payment": "الدفع",

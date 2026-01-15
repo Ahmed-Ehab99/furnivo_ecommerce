@@ -2,6 +2,7 @@
   {
     "slug": "modern-hanging-utensil-rack-with-bowl",
     "price": "89",
+    "discount": 11,
     "quantity": 25,
     "categorySlug": "kitchen",
     "translations": [
@@ -113,6 +114,7 @@
   {
     "slug": "magnetic-knife-and-utensil-rack",
     "price": "110",
+    "discount": 27,
     "quantity": 18,
     "categorySlug": "kitchen",
     "translations": [
@@ -298,6 +300,7 @@
   {
     "slug": "rotating-utensil-stand",
     "price": "80",
+    "discount": 5,
     "quantity": 24,
     "categorySlug": "kitchen",
     "translations": [
@@ -409,6 +412,7 @@
   {
     "slug": "compact-drawer-utensil-organizer",
     "price": "50",
+    "discount": 70,
     "quantity": 45,
     "categorySlug": "kitchen",
     "translations": [

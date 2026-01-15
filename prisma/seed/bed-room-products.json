@@ -3,6 +3,7 @@
     "slug": "upholstered-king-bed",
     "price": "1899",
     "quantity": 5,
+    "discount": 10,
     "categorySlug": "bedroom",
     "translations": [
       {
@@ -113,6 +114,7 @@
   {
     "slug": "rustic-wooden-bed",
     "price": "1399",
+    "discount": 6,
     "quantity": 8,
     "categorySlug": "bedroom",
     "translations": [
@@ -299,6 +301,7 @@
     "slug": "minimalist-platform-bed",
     "price": "1199",
     "quantity": 10,
+    "discount": 50,
     "categorySlug": "bedroom",
     "translations": [
       {
@@ -409,7 +412,7 @@
   {
     "slug": "poster-bed-with-canopy",
     "price": "2099",
-    "quantity": 5,
+    "quantity": 20,
     "categorySlug": "bedroom",
     "translations": [
       {
