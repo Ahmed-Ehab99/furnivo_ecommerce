@@ -1,7 +1,7 @@
 import { GetProductsType } from "@/app/data/get-products";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { formatNumber } from "@/lib/utils";
+import { cn, formatNumber } from "@/lib/utils";
 import { Plus } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -26,12 +26,10 @@ const ProductCard = ({ product, locale }: ProductCardProps) => {
 
   const formattedPrice = formatNumber(locale, price);
   const formattedDiscountPrice = formatNumber(locale, finalPrice);
+  const isArabic = locale === "ar";
 
   return (
-    <Link
-      href={`/product/${product.slug}`}
-      className="group hover:border-primary flex h-full flex-col overflow-hidden border border-transparent transition-all duration-300"
-    >
+    <div className="group hover:border-primary flex h-full flex-col overflow-hidden border border-transparent transition-all duration-300">
       <div className="bg-card relative aspect-square w-full overflow-hidden">
         {discount && (
           <Badge className="absolute top-2 left-2 text-sm font-extrabold">
@@ -42,6 +40,7 @@ const ProductCard = ({ product, locale }: ProductCardProps) => {
           src={product.image}
           alt={product.imageAlt}
           fill
+          loading="eager"
           className="object-contain transition-transform duration-300 group-hover:scale-105"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
@@ -51,29 +50,51 @@ const ProductCard = ({ product, locale }: ProductCardProps) => {
         <div className="flex-1 space-y-1.5">
           <p className="text-sm">{product.category.title}</p>
 
-          <h3
-            className="line-clamp-1 text-lg leading-tight font-medium"
+          <Link
+            href={`/product/${product.slug}`}
+            className="group-hover:text-primary line-clamp-1 text-lg leading-tight font-medium"
             title={product.title}
           >
             {product.title}
-          </h3>
+          </Link>
         </div>
 
         <div className="mt-4 flex items-end justify-between gap-3">
           {discount ? (
             <div className="flex flex-col">
-              <del className="flex items-baseline gap-1 font-semibold opacity-50">
-                <span className="text-xs">€</span>
+              <del
+                className={cn(
+                  "flex items-baseline gap-1 font-semibold opacity-50",
+                  isArabic
+                    ? "flex-row-reverse justify-end"
+                    : "flex-row justify-start",
+                )}
+              >
+                <span className="text-xs">{isArabic ? "ج.م" : "$"}</span>
                 <span className="text-base">{formattedPrice}</span>
               </del>
-              <div className="flex items-baseline gap-1 font-semibold">
-                <span className="text-base">€</span>
+              <div
+                className={cn(
+                  "flex items-baseline gap-1 font-semibold",
+                  isArabic
+                    ? "flex-row-reverse justify-end"
+                    : "flex-row justify-start",
+                )}
+              >
+                <span className="text-base">{isArabic ? "ج.م" : "$"}</span>
                 <span className="text-xl">{formattedDiscountPrice}</span>
               </div>
             </div>
           ) : (
-            <div className="flex items-baseline gap-1 font-semibold">
-              <span className="text-base">€</span>
+            <div
+              className={cn(
+                "flex items-baseline gap-1 font-semibold",
+                isArabic
+                  ? "flex-row-reverse justify-end"
+                  : "flex-row justify-start",
+              )}
+            >
+              <span className="text-base">{isArabic ? "ج.م" : "$"}</span>
               <span className="text-xl">{formattedPrice}</span>
             </div>
           )}
@@ -87,7 +108,7 @@ const ProductCard = ({ product, locale }: ProductCardProps) => {
           </Button>
         </div>
       </div>
-    </Link>
+    </div>
   );
 };
 

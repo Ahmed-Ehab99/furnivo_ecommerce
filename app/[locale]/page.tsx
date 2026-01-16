@@ -19,17 +19,17 @@ const HomePage = async ({ params }: { params: HomeParams }) => {
       <Image
         src={HomeLeft1}
         alt="Shape"
-        className="absolute top-2/5 left-0 -z-50 hidden max-w-52 md:block lg:top-1/2"
-      />
-      <Image
-        src={HomeLeft2}
-        alt="Shape"
-        className="absolute -bottom-10 left-0 hidden max-w-52 md:block lg:-bottom-40"
+        className="absolute top-1/6 left-0 -z-50 hidden max-w-40 md:block lg:top-1/4 lg:max-w-52"
       />
       <Image
         src={HomeRight}
         alt="Shape"
-        className="absolute right-0 hidden max-w-52 md:bottom-1/3 md:block lg:bottom-120"
+        className="absolute right-0 bottom-2/5 hidden max-w-40 md:block lg:bottom-5/12 lg:max-w-52"
+      />
+      <Image
+        src={HomeLeft2}
+        alt="Shape"
+        className="absolute bottom-2/5 left-0 hidden max-w-40 md:block lg:bottom-1/5 lg:max-w-52"
       />
     </div>
   );

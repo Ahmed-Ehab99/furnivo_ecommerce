@@ -1,14 +1,8 @@
+import { LOCALES } from "@/i18n/routing";
 import { prisma } from "@/lib/db";
+import { GetProductsParams, GetProductsResult } from "@/lib/types";
 import { Prisma } from "@/prisma/generated/prisma/client";
 import "server-only";
-
-type GetProductsParams = {
-  locale?: string;
-  searchQuery?: string;
-  categoryId?: string;
-  priceSort?: "asc" | "desc";
-  onlyDiscounted?: boolean;
-};
 
 export const getProducts = async ({
   locale = "en",
@@ -16,7 +10,9 @@ export const getProducts = async ({
   categoryId,
   priceSort,
   onlyDiscounted = false,
-}: GetProductsParams = {}) => {
+  page = 1,
+  limit = 12,
+}: GetProductsParams = {}): Promise<GetProductsResult> => {
   const where: Prisma.ProductWhereInput = {};
 
   // Filter by category if provided
@@ -28,21 +24,16 @@ export const getProducts = async ({
   if (searchQuery) {
     where.translations = {
       some: {
-        locale,
-        OR: [
+        OR: LOCALES.flatMap((l) => [
           {
-            title: {
-              contains: searchQuery,
-              mode: "insensitive",
-            },
+            locale: l,
+            title: { contains: searchQuery, mode: "insensitive" },
           },
           {
-            description: {
-              contains: searchQuery,
-              mode: "insensitive",
-            },
+            locale: l,
+            description: { contains: searchQuery, mode: "insensitive" },
           },
-        ],
+        ]),
       },
     };
   }
@@ -66,9 +57,18 @@ export const getProducts = async ({
     orderBy.push({ createdAt: "desc" });
   }
 
+  // Calculate pagination
+  const skip = (page - 1) * limit;
+
+  // Get total count for pagination
+  const total = await prisma.product.count({ where });
+
+  // Fetch products with pagination
   const products = await prisma.product.findMany({
     where,
     orderBy,
+    skip,
+    take: limit,
     include: {
       translations: {
         where: { locale },
@@ -89,11 +89,11 @@ export const getProducts = async ({
     },
   });
 
-  return products.map((product) => ({
+  const formattedProducts = products.map((product) => ({
     id: product.id,
     slug: product.slug,
-    price: product.price,
-    discount: product.discount,
+    price: Number(product.price),
+    discount: product.discount ? Number(product.discount) : null,
     quantity: product.quantity,
     image: product.images[0]?.url,
     imageAlt: product.images[0]?.alt,
@@ -106,6 +106,18 @@ export const getProducts = async ({
       title: product.category.translations[0]?.title,
     },
   }));
+
+  const totalPages = Math.ceil(total / limit);
+
+  return {
+    products: formattedProducts,
+    total,
+    page,
+    limit,
+    totalPages,
+  };
 };
 
-export type GetProductsType = Awaited<ReturnType<typeof getProducts>>[0];
+export type GetProductsType = Awaited<
+  ReturnType<typeof getProducts>
+>["products"][0];

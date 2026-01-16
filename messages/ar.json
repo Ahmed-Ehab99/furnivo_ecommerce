@@ -83,6 +83,11 @@
     "search": "إعاده البحث",
     "onlyDiscounted": "تخفيضات"
   },
+  "pagination": {
+    "previous": "السابق",
+    "next": "التالي",
+    "page": "الصفحة {page}"
+  },
   "stepper": {
     "data": "البيانات",
     "payment": "الدفع",

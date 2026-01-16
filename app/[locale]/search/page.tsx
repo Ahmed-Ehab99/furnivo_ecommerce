@@ -1,9 +1,10 @@
+import SearchInput from "@/components/global/SearchInput";
 import BedRoomImg from "@/public/categories/bed-room/bed-room.webp";
 import LivingRoomImg from "@/public/categories/living-room/living-room.webp";
+import SearchShape from "@/public/shapes/searchShape.svg";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { use } from "react";
-import SearchInput from "../../../components/global/SearchInput";
 
 export default function SearchPage({
   params,
@@ -57,6 +58,12 @@ export default function SearchPage({
             />
           </div>
         </div>
+
+        <Image
+          src={SearchShape}
+          alt="Shape"
+          className="absolute top-5/12 left-0 -z-50 hidden max-w-80 -translate-y-1/2 md:block lg:left-1/2 lg:max-w-96 lg:-translate-x-1/2"
+        />
       </div>
 
       <SearchInput

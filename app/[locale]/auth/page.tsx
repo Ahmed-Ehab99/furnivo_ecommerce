@@ -10,13 +10,16 @@ const AuthPage = () => {
   return (
     <section className="container mx-auto px-4 pt-32 pb-32">
       <Heading title="title" description="desc" place="auth" />
+
       <div className="mx-auto mt-20 block lg:hidden">
         <AuthTabs />
       </div>
+
       <div className="mx-auto mt-20 hidden max-w-5xl grid-cols-2 gap-2 lg:grid">
         <SigninCard />
         <SignupCard />
       </div>
+      
       <Image
         src={AuthRight}
         alt="Shape"

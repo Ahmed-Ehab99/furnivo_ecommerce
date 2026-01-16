@@ -1,5 +1,6 @@
 import { getCategories } from "@/app/data/get-categories";
 import { getProducts } from "@/app/data/get-products";
+import { ServerPagination } from "@/components/global/ServerPagination";
 import { Button } from "@/components/ui/button";
 import {
   Empty,
@@ -12,8 +13,8 @@ import {
 import { Search } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import Link from "next/link";
-import { ShopFilters } from "./_components/ShopFilters";
 import ProductCard from "./_components/ProductCard";
+import { ShopFilters } from "./_components/ShopFilters";
 
 type Params = Promise<{ locale: string }>;
 type SearchParams = Promise<{
@@ -21,6 +22,7 @@ type SearchParams = Promise<{
   category?: string;
   sort?: string;
   discount?: string;
+  page?: string;
 }>;
 
 const ShopPage = async ({
@@ -36,13 +38,19 @@ const ShopPage = async ({
     category,
     sort,
     discount,
+    page: pageParam,
   } = await searchParams;
   const t = await getTranslations("shop");
   const onlyDiscounted =
     typeof discount === "string" ? discount === "true" : false;
 
+  // Parse page number (default to 1)
+  const currentPage = pageParam ? parseInt(pageParam, 10) : 1;
+  const page = isNaN(currentPage) || currentPage < 1 ? 1 : currentPage;
+  const limit = 8; // Items per page
+
   // Fetch categories and products in parallel
-  const [categories, products] = await Promise.all([
+  const [categories, productsData] = await Promise.all([
     getCategories(locale),
     getProducts({
       locale,
@@ -50,8 +58,12 @@ const ShopPage = async ({
       categoryId: category,
       priceSort: sort === "asc" || sort === "desc" ? sort : undefined,
       onlyDiscounted,
+      page,
+      limit,
     }),
   ]);
+
+  const { products, totalPages } = productsData;
 
   return (
     <div className="container mx-auto px-4">
@@ -59,7 +71,6 @@ const ShopPage = async ({
         <div className="flex h-screen items-center justify-center">
           <Empty className="max-w-xl">
             <EmptyHeader className="flex flex-col items-center gap-4">
-              {/* Icon */}
               <EmptyMedia
                 variant="icon"
                 className="bg-secondary/60 flex size-20 items-center justify-center rounded-full"
@@ -67,12 +78,10 @@ const ShopPage = async ({
                 <Search className="text-muted-foreground size-10" />
               </EmptyMedia>
 
-              {/* Title */}
               <EmptyTitle className="text-center text-2xl font-bold">
                 {t("noProducts")}
               </EmptyTitle>
 
-              {/* Description */}
               <EmptyDescription className="max-w-sm text-center">
                 {t("noProductsDesc")}
               </EmptyDescription>
@@ -102,6 +111,20 @@ const ShopPage = async ({
             {products.map((product) => (
               <ProductCard key={product.id} product={product} locale={locale} />
             ))}
+          </div>
+          <div className="mt-8">
+            <ServerPagination
+              currentPage={page}
+              totalPages={totalPages}
+              baseUrl="/shop"
+              locale={locale}
+              searchParams={{
+                search: searchQuery || undefined,
+                category: category || undefined,
+                sort: sort || undefined,
+                discount: discount || undefined,
+              }}
+            />
           </div>
         </div>
       )}
