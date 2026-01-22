@@ -47,8 +47,8 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-secondary pt-20 pb-10">
-      <div className="container mx-auto px-4">
+    <footer className="bg-secondary">
+      <div className="container mx-auto px-4 pt-30 pb-14">
         <div className="grid grid-cols-1 gap-16 md:grid-cols-2 lg:grid-cols-5">
           <div className="lg:col-span-2 lg:mb-0">
             <FooterLogo />

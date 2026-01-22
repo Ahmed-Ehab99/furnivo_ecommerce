@@ -20,7 +20,17 @@
   "cart": {
     "desc": "Review Your Items",
     "placeOrder": "Place order",
-    "shoppingCart": "Your Cart"
+    "shoppingCart": "Your Cart",
+    "clearCart": "clear cart",
+    "aboutItem": "About Item",
+    "removeItem": "remove item",
+    "total": "total",
+    "items": "Items",
+    "empty": {
+      "title": "Your cart is empty",
+      "description": "Looks like you haven't added anything yet. Start shopping and fill your cart with your favorites!",
+      "startShopping": "Start Shopping"
+    }
   },
   "home": {
     "title": "Make your interior more minimalistic & modern",
@@ -79,6 +89,7 @@
     "highToLow": "High to Low",
     "noProducts": "No products found",
     "noProductsDesc": "We couldn't find any furniture matching your search.",
+    "toHome": "Go To Home",
     "browseAll": "Browse all products",
     "search": "Re-search",
     "onlyDiscounted": "Discounts"
@@ -101,14 +112,13 @@
   },
   "general": {
     "all": "All",
+    "categories": "Categories",
     "dear": "Dear",
     "edit": "Edit",
     "next": "Next",
     "buyNow": "Buy Now",
     "search": "Search",
-    "addToCart": "Add to Cart",
-    "total": "total",
-    "items": "Items"
+    "addToCart": "Add to Cart"
   },
   "navbar": {
     "home": "Home",
@@ -142,14 +152,37 @@
     "success": {
       "signin": "Signing in successfully",
       "signup": "Signin up successfully",
-      "signout": "Signed Out successfully"
+      "signout": "Signed Out successfully",
+      "addToCart": "Added to cart",
+      "quantityUpdate": "Quantity updated",
+      "removeItem": "Removed from cart",
+      "clearCart": "Cart cleared",
+      "general": "The operation was successful"
     },
     "error": {
       "signin": "Failed to signing in",
       "unauthorized": "This email doesn't exist. Please signup first",
       "unexpected": "An unexpected error occurred. Please try again.",
       "signup": "Failed to signing up",
-      "signout": "Failed to signing out"
+      "signout": "Failed to signing out",
+      "addToCart": "Failed to add to cart. Please try again.",
+      "quantityUpdate": "Failed to update quantity",
+      "removeItem": "Failed to remove from cart",
+      "clearCart": "Failed to clear cart",
+      "getCart": "Failed to get cart",
+      "productNotFound": "Product not found",
+      "productOutOfStock": "Product out of stock",
+      "exceedAvailableStock": "Cannot exceed available stock",
+      "itemNotFound": "Cart item not found",
+      "limitQuantity": "Quantity must be at least 1",
+      "requiredAuth": "Please login to add items to cart"
     }
+  },
+  "detailes": {
+    "available": "available",
+    "inCart": "already in cart",
+    "outOfStock": "Out of stock",
+    "allInCart": "All items are in your cart",
+    "addToCart": "Add to cart"
   }
 }

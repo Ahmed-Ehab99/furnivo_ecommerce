@@ -1,10 +1,10 @@
 import SearchInput from "@/components/global/SearchInput";
-import { HomeParams } from "@/lib/types";
+import { MainRoutesParams } from "@/lib/types";
 import HeroImg from "@/public/hero.png";
 import { getTranslations } from "next-intl/server";
 import Image from "next/image";
 
-const HeroSec = async ({ params }: { params: HomeParams }) => {
+const HeroSec = async ({ params }: { params: MainRoutesParams }) => {
   const { locale } = await params;
   const t = await getTranslations("home");
 

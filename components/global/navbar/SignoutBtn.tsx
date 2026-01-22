@@ -1,5 +1,6 @@
 "use client";
 
+import { useCart } from "@/app/[locale]/cart/hooks/useCart";
 import { Button } from "@/components/ui/button";
 import { authClient } from "@/lib/auth-client";
 import { cn } from "@/lib/utils";
@@ -12,7 +13,9 @@ const SignoutBtn = ({ open }: { open?: boolean }) => {
   const router = useRouter();
   const t = useTranslations("toastes");
   const pathname = usePathname();
-  const { locale } = useParams();
+  const params = useParams();
+  const locale = params.locale as string;
+  const { refreshCart } = useCart(locale);
   const isHome = pathname === `/${locale}`;
 
   const handleSignout = async () => {
@@ -23,6 +26,7 @@ const SignoutBtn = ({ open }: { open?: boolean }) => {
             toast.success(`${t("success.signout")}`);
             router.replace("/");
             router.refresh();
+            refreshCart();
           },
         },
       });
@@ -39,12 +43,7 @@ const SignoutBtn = ({ open }: { open?: boolean }) => {
       onClick={handleSignout}
       className={cn(isHome && "hover:bg-secondary/20")}
     >
-      <LogOut
-        className={cn(
-          isHome && !open ? "text-white" : "text-secondary-foreground",
-          "size-5",
-        )}
-      />
+      <LogOut className={cn(isHome && !open && "text-white", "size-5")} />
     </Button>
   );
 };

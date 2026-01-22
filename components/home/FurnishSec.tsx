@@ -1,16 +1,16 @@
-import { HomeParams } from "@/lib/types";
+import { MainRoutesParams } from "@/lib/types";
 import FurnishImg from "@/public/furnish.jpg";
 import { MoveLeft, MoveRight } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import Image from "next/image";
 import Link from "next/link";
 
-const FurnishSec = async ({ params }: { params: HomeParams }) => {
+const FurnishSec = async ({ params }: { params: MainRoutesParams }) => {
   const { locale } = await params;
   const t = await getTranslations("home");
 
   return (
-    <section className="container mx-auto mt-40 mb-30 grid grid-cols-1 gap-10 md:gap-20 lg:gap-32 px-4 md:grid-cols-2 md:justify-between lg:mb-40">
+    <section className="layout-spacing grid grid-cols-1 gap-10 md:grid-cols-2 md:justify-between md:gap-20 lg:gap-32">
       <div className="relative flex w-full items-center justify-center p-5 lg:p-10">
         <div className="bg-secondary absolute top-0 left-0 size-[80%] rounded-4xl" />
         <div className="bg-secondary absolute top-1/2 right-0 h-3/5 w-1/2 -translate-y-1/2 rounded-4xl" />

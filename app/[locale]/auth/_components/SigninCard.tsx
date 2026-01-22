@@ -31,6 +31,7 @@ const SigninCard = () => {
     },
   });
   const t = useTranslations("auth");
+  const toastesT = useTranslations("toastes");
   const { isDirty } = form.formState;
 
   const onSubmit = (values: SigninFormData) => {
@@ -43,21 +44,21 @@ const SigninCard = () => {
 
       if (error) {
         if (error.status === 401 || error.statusText === "UNAUTHORIZED") {
-          toast.error(`${t("error.unauthorized")}`);
+          toast.error(`${toastesT("error.unauthorized")}`);
           return;
         }
         console.error(error);
-        toast.error(`${t("error.unexpected")}`);
+        toast.error(`${toastesT("error.unexpected")}`);
         return;
       }
 
       if (result) {
-        toast.success(`${t("success.signin")}`);
+        toast.success(`${toastesT("success.signin")}`);
         form.reset();
         router.push("/");
         router.refresh();
       } else {
-        toast.error(`${t("error.signin")}`);
+        toast.error(`${toastesT("error.signin")}`);
       }
     });
   };
@@ -119,7 +120,7 @@ const SigninCard = () => {
           <Button
             type="submit"
             disabled={isPending || !isDirty}
-            className="font-montserrat mt-auto w-full rounded-xl"
+            className="mt-auto w-full rounded-xl"
           >
             {isPending ? <Spinner /> : t("signinBtn")}
           </Button>

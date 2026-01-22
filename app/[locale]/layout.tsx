@@ -1,14 +1,20 @@
 import Footer from "@/components/global/footer/Footer";
 import Navbar from "@/components/global/navbar/Navbar";
 import BackToTop from "@/components/ui/back-to-top";
+import { AuthProvider } from "@/contexts/AuthContext";
 import { routing } from "@/i18n/routing";
+import { auth } from "@/lib/auth";
 import { ThemeProvider } from "@/providers/theme-provider";
 import { gilroy } from "@/public/fonts";
+import CartInitializer from "@/redux/CartInitializer";
 import type { Metadata } from "next";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
+import { headers } from "next/headers";
 import { notFound } from "next/navigation";
 import { Toaster } from "sonner";
+import StoreProvider from "../../redux/StoreProvider";
 import "../globals.css";
+import { getCart } from "./cart/actions";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -31,6 +37,21 @@ export default async function RootLayout({
     notFound();
   }
 
+  // Check if user is authenticated
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
+
+  const isAuthenticated = !!session?.user;
+  const user = session?.user ?? null;
+
+  // Only fetch cart if user is logged in
+  let initialCart = null;
+  if (session?.user) {
+    const cartResult = await getCart(locale);
+    initialCart = cartResult.success ? cartResult.cart : null;
+  }
+
   return (
     <html
       lang={locale}
@@ -38,19 +59,24 @@ export default async function RootLayout({
       suppressHydrationWarning
     >
       <body className={`${gilroy.variable} antialiased`}>
-        <ThemeProvider attribute="class">
-          <NextIntlClientProvider>
-            <div className="absolute top-0 right-0 left-0 z-50 bg-transparent">
-              <Navbar />
-            </div>
-            <main className="selection:bg-primary min-h-screen">
-              {children}
-            </main>
-            <Footer />
-            <BackToTop />
-            <Toaster closeButton richColors position="bottom-center" />
-          </NextIntlClientProvider>
-        </ThemeProvider>
+        <AuthProvider isAuthenticated={isAuthenticated} user={user}>
+        <StoreProvider>
+          <ThemeProvider attribute="class">
+            <NextIntlClientProvider>
+              <div className="absolute top-0 right-0 left-0 z-50 bg-transparent">
+                <Navbar />
+              </div>
+              <main className="selection:bg-primary min-h-screen">
+                {children}
+              </main>
+              <Footer />
+              {session?.user && <CartInitializer cartData={initialCart} />}
+              <BackToTop />
+              <Toaster closeButton richColors position="bottom-center" />
+            </NextIntlClientProvider>
+          </ThemeProvider>
+          </StoreProvider>
+          </AuthProvider>
       </body>
     </html>
   );

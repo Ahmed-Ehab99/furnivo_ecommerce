@@ -1,39 +1,31 @@
-import { getProducts } from "@/app/data/get-products";
-import { ServerPagination } from "@/components/global/ServerPagination";
-import {
-  Empty,
-  EmptyDescription,
-  EmptyHeader,
-  EmptyMedia,
-  EmptyTitle,
-} from "@/components/ui/empty";
-import { Search } from "lucide-react";
-import { getTranslations } from "next-intl/server";
-import { notFound } from "next/navigation";
-import ProductCard from "../../shop/_components/ProductCard";
 import { getCategoryBySlug } from "@/app/data/get-category-by-slug";
-
-type Params = Promise<{ locale: string; slug: string }>;
-type SearchParams = Promise<{
-  page?: string;
-  sort?: string;
-}>;
+import { getProducts } from "@/app/data/get-products";
+import EmptyState from "@/components/global/EmptyState";
+import ProductCard from "@/components/global/ProductCard";
+import { ServerPagination } from "@/components/global/ServerPagination";
+import { DynamicRoutesParams, SearchParams } from "@/lib/types";
+import CategoryLeft1 from "@/public/shapes/categoryLeft1.svg";
+import CategoryLeft2 from "@/public/shapes/categoryLeft2.svg";
+import CategoryRight from "@/public/shapes/categoryRight.svg";
+import { Search } from "lucide-react";
+import Image from "next/image";
+import { notFound } from "next/navigation";
+import CategoryHero from "./_components/CategoryHero";
 
 const CategoryPage = async ({
   params,
   searchParams,
 }: {
-  params: Params;
+  params: DynamicRoutesParams;
   searchParams: SearchParams;
 }) => {
   const { locale, slug } = await params;
   const { page: pageParam, sort } = await searchParams;
-  const t = await getTranslations("shop");
 
   // Parse page number (default to 1)
   const currentPage = pageParam ? parseInt(pageParam, 10) : 1;
   const page = isNaN(currentPage) || currentPage < 1 ? 1 : currentPage;
-  const limit = 12; // Items per page
+  const limit = 8; // Items per page
 
   // Fetch category first to get its ID
   const category = await getCategoryBySlug(slug, locale);
@@ -54,30 +46,31 @@ const CategoryPage = async ({
 
   const { products, totalPages } = productsData;
 
+  if (products.length === 0) {
+    return (
+      <EmptyState
+        namespace="shop"
+        icon={Search}
+        titleKey="noProducts"
+        descriptionKey="noProductsDesc"
+        primaryAction={{
+          labelKey: "toHome",
+          href: "/",
+        }}
+        secondaryAction={{
+          labelKey: "browseAll",
+          href: "/shop",
+        }}
+      />
+    );
+  }
+
   return (
-    <div className="container mx-auto px-4">
-      {products.length === 0 ? (
-        <div className="flex h-screen items-center justify-center">
-          <Empty className="max-w-xl">
-            <EmptyHeader className="flex flex-col items-center gap-4">
-              <EmptyMedia
-                variant="icon"
-                className="bg-secondary/60 flex size-20 items-center justify-center rounded-full"
-              >
-                <Search className="text-muted-foreground size-10" />
-              </EmptyMedia>
-              <EmptyTitle className="text-center text-2xl font-bold">
-                {t("noProducts")}
-              </EmptyTitle>
-              <EmptyDescription className="max-w-sm text-center">
-                {t("noProductsDesc")}
-              </EmptyDescription>
-            </EmptyHeader>
-          </Empty>
-        </div>
-      ) : (
-        <div className="py-30">
-          <div className="grid grid-cols-1 items-center gap-10 px-4 py-8 md:grid-cols-3 md:gap-16 lg:grid-cols-4 lg:gap-20">
+    <div className="relative">
+      <div className="layout-spacing space-y-20">
+        <CategoryHero locale={locale} category={category} />
+        <div>
+          <div className="grid grid-cols-2 items-center gap-10 px-4 py-8 md:grid-cols-3 md:gap-16 lg:grid-cols-4 lg:gap-20">
             {products.map((product) => (
               <ProductCard key={product.id} product={product} locale={locale} />
             ))}
@@ -94,7 +87,23 @@ const CategoryPage = async ({
             />
           </div>
         </div>
-      )}
+      </div>
+
+      <Image
+        src={CategoryLeft1}
+        alt="Shape"
+        className="absolute top-1/3 left-0 -z-50 max-w-40 md:top-1/6 lg:max-w-52"
+      />
+      <Image
+        src={CategoryRight}
+        alt="Shape"
+        className="absolute right-0 bottom-1/4 -z-50 max-w-40 lg:max-w-52"
+      />
+      <Image
+        src={CategoryLeft2}
+        alt="Shape"
+        className="absolute bottom-0 left-0 -z-50 max-w-40 lg:max-w-52"
+      />
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import { prisma } from "@/lib/db";
 import { CategoryResult } from "@/lib/types";
+import { notFound } from "next/navigation";
 import "server-only";
 
 export const getCategoryBySlug = async (
@@ -16,7 +17,7 @@ export const getCategoryBySlug = async (
   });
 
   if (!category) {
-    return null;
+    return notFound();
   }
 
   return {

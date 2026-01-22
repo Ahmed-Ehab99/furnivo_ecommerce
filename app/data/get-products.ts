@@ -1,8 +1,14 @@
 import { LOCALES } from "@/i18n/routing";
 import { prisma } from "@/lib/db";
-import { GetProductsParams, GetProductsResult } from "@/lib/types";
+import {
+  GetProductsParams,
+  GetProductsResult,
+  ProductWithCategoryT,
+} from "@/lib/types";
 import { Prisma } from "@/prisma/generated/prisma/client";
 import "server-only";
+
+const limit = 8;
 
 export const getProducts = async ({
   locale = "en",
@@ -11,7 +17,6 @@ export const getProducts = async ({
   priceSort,
   onlyDiscounted = false,
   page = 1,
-  limit = 12,
 }: GetProductsParams = {}): Promise<GetProductsResult> => {
   const where: Prisma.ProductWhereInput = {};
 
@@ -89,7 +94,7 @@ export const getProducts = async ({
     },
   });
 
-  const formattedProducts = products.map((product) => ({
+  const formattedProducts: ProductWithCategoryT[] = products.map((product) => ({
     id: product.id,
     slug: product.slug,
     price: Number(product.price),

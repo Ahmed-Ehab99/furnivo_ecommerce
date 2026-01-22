@@ -1,6 +1,7 @@
 "use client";
 
 import { GetCategoriesType } from "@/app/data/get-categories";
+import { Label } from "@/components/ui/label";
 import {
   Select,
   SelectContent,
@@ -8,10 +9,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Skeleton } from "@/components/ui/skeleton";
+import { Switch } from "@/components/ui/switch";
 import { useTranslations } from "next-intl";
 import { useShopFilters } from "../hooks/use-shop-filters";
-import { Label } from "@/components/ui/label";
-import { Switch } from "@/components/ui/switch";
 
 interface ShopFiltersProps {
   locale: string;
@@ -35,7 +36,7 @@ export const ShopFilters = ({
   const t = useTranslations("shop");
 
   return (
-    <div className="flex flex-col items-start justify-center gap-4 pb-12 md:flex-row md:items-center md:justify-start">
+    <div className="mb-8 flex flex-wrap items-start justify-start gap-4 md:mb-12 md:items-center">
       <Select
         value={currentCategory || undefined}
         onValueChange={onCategoryChange}
@@ -82,6 +83,16 @@ export const ShopFilters = ({
           {t("onlyDiscounted")}
         </Label>
       </div>
+    </div>
+  );
+};
+
+export const ShopFiltersSkeleton = () => {
+  return (
+    <div className="mb-8 flex flex-wrap items-start justify-start gap-4 md:mb-12 md:items-center">
+      <Skeleton className="h-9 w-44" />
+      <Skeleton className="h-9 w-44" />
+      <Skeleton className="h-6 w-28" />
     </div>
   );
 };

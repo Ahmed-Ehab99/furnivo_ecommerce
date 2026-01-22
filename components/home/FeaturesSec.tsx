@@ -21,7 +21,7 @@ const FeaturesSec = () => {
 
   return (
     <section className="dark:bg-secondary bg-[#FFF9F1]">
-      <div className="container mx-auto mb-30 flex flex-col gap-10 px-4 py-26 lg:mb-40">
+      <div className="layout-spacing flex flex-col gap-10">
         <div className="mx-auto flex flex-col items-center gap-2 px-4 text-center md:px-0">
           <span className="text-primary text-lg font-normal tracking-widest uppercase">
             {t("subTitle")}

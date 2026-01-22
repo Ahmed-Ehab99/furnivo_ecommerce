@@ -48,9 +48,9 @@ export default function FeaturesMobileSec({ features }: FeaturesMobileProps) {
         ]}
         className="w-full"
       >
-        <CarouselContent className="-ml-2">
+        <CarouselContent>
           {features.map((item) => (
-            <CarouselItem key={item.id} className="basis-full pl-2 md:pl-4">
+            <CarouselItem key={item.id}>
               <FeatureCard item={item} />
             </CarouselItem>
           ))}

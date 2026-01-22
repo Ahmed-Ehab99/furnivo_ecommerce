@@ -42,6 +42,7 @@ const SignupCard = () => {
     name: "password",
   });
   const t = useTranslations("auth");
+  const toastesT = useTranslations("toastes");
   const { isDirty } = form.formState;
 
   const onSubmit = (values: SignupFormData) => {
@@ -54,17 +55,17 @@ const SignupCard = () => {
 
       if (error) {
         console.error(error);
-        toast.error(`${t("error.unexpected")}`);
+        toast.error(`${toastesT("error.unexpected")}`);
         return;
       }
 
       if (result) {
-        toast.success(`${t("success.signup")}`);
+        toast.success(`${toastesT("success.signup")}`);
         form.reset();
         router.push("/");
         router.refresh();
       } else {
-        toast.error(`${t("error.signup")}`);
+        toast.error(`${toastesT("error.signup")}`);
       }
     });
   };
@@ -73,9 +74,7 @@ const SignupCard = () => {
     <div className="bg-secondary rounded-2xl p-6">
       <div className="mx-auto mb-5 flex flex-col items-center gap-1 text-center">
         <h2 className="text-2xl font-bold uppercase">{t("signupTitle")}</h2>
-        <p className="font-montserrat text-base font-normal">
-          {t("signupDesc")}
-        </p>
+        <p className="text-base font-normal">{t("signupDesc")}</p>
       </div>
 
       <Form {...form}>
@@ -217,7 +216,7 @@ const SignupCard = () => {
           <Button
             type="submit"
             disabled={isPending || !isDirty}
-            className="font-montserrat w-full rounded-xl"
+            className="w-full rounded-xl"
           >
             {isPending ? <Spinner /> : t("signupBtn")}
           </Button>
@@ -226,12 +225,12 @@ const SignupCard = () => {
 
       <div className="fle flex-col space-y-3">
         <div className="relative mt-2 text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t-2 after:opacity-30">
-          <span className="bg-secondary font-montserrat relative z-10 px-16 font-semibold">
+          <span className="bg-secondary relative z-10 px-16 font-semibold">
             {t("or")}
           </span>
         </div>
 
-        <p className="font-montserrat mx-auto text-center text-sm opacity-60">
+        <p className="mx-auto text-center text-sm opacity-60">
           {t("signupGoogle")}
         </p>
 

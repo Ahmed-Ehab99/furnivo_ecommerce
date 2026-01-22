@@ -8,13 +8,13 @@ import { Dispatch, SetStateAction } from "react";
 const LoginBtn = ({
   setOpen,
 }: {
-  setOpen: Dispatch<SetStateAction<boolean>>;
+  setOpen?: Dispatch<SetStateAction<boolean>>;
 }) => {
   const t = useTranslations("auth");
 
   return (
     <Button asChild>
-      <Link href="/auth" onClick={() => setOpen(false)}>
+      <Link href="/auth" onClick={() => setOpen?.(false)}>
         {t("signinBtn")}
       </Link>
     </Button>

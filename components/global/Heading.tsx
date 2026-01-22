@@ -1,22 +1,22 @@
-import { useTranslations } from "next-intl";
+import { cn } from "@/lib/utils";
 
 const Heading = ({
   title,
   description,
-  place,
+  className,
 }: {
   title: string;
   description: string;
-  place: string;
+  className?: string;
 }) => {
-  const t = useTranslations(place);
-
   return (
-    <div className="mx-auto flex flex-col gap-4 text-center">
-      <h1 className="font-gilroy text-6xl font-extrabold tracking-tight">
-        {t(`${title}`)}
+    <div className={cn("flex flex-col gap-4", className)}>
+      <h1 className="font-gilroy text-5xl font-extrabold tracking-tight lg:text-6xl">
+        {title}
       </h1>
-      <p className="text-xl font-normal opacity-80">{t(`${description}`)}</p>
+      <p className="text-lg font-normal opacity-80 lg:text-xl">
+        {description}
+      </p>
     </div>
   );
 };

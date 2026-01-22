@@ -157,6 +157,12 @@
   }
 }
 
+@layer components {
+  .layout-spacing{
+    @apply container mx-auto px-4 py-32
+  }
+}
+
 ::view-transition-old(root),
 ::view-transition-new(root) {
   animation: none;

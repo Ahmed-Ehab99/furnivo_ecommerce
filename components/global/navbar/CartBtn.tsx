@@ -1,14 +1,17 @@
 "use client";
 
+import { useCart } from "@/app/[locale]/cart/hooks/useCart";
 import { cn } from "@/lib/utils";
-import { ShoppingBagIcon } from "lucide-react";
+import { ShoppingBag } from "lucide-react";
 import Link from "next/link";
 import { useParams, usePathname } from "next/navigation";
 import { Button } from "../../ui/button";
 
 const CartBtn = ({ open }: { open?: boolean }) => {
   const pathname = usePathname();
-  const { locale } = useParams();
+  const params = useParams();
+  const locale = params.locale as string;
+  const { itemCount } = useCart(locale);
   const isHome = pathname === `/${locale}`;
 
   return (
@@ -18,11 +21,8 @@ const CartBtn = ({ open }: { open?: boolean }) => {
       className={cn(isHome && "hover:bg-secondary/20", "relative")}
     >
       <Link href="/cart">
-        <ShoppingBagIcon
-          className={cn(
-            isHome && !open && "text-white",
-            "size-5",
-          )}
+        <ShoppingBag
+          className={cn(isHome && !open && "text-white", "size-5")}
         />
         <span
           className={cn(
@@ -30,7 +30,7 @@ const CartBtn = ({ open }: { open?: boolean }) => {
             "bg-primary absolute -top-1 -right-1 flex items-center justify-center rounded-full px-1.5 py-1 text-xs",
           )}
         >
-          0
+          {itemCount > 9 ? "9+" : itemCount}
         </span>
       </Link>
     </Button>

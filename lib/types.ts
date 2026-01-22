@@ -7,7 +7,15 @@ export type ApiResponse = {
 };
 
 export type Session = typeof authClient.$Infer.Session;
-export type HomeParams = Promise<{ locale: string }>;
+export type MainRoutesParams = Promise<{ locale: string }>;
+export type DynamicRoutesParams = Promise<{ locale: string; slug: string }>;
+export type SearchParams = Promise<{
+  search?: string;
+  category?: string;
+  sort?: string;
+  discount?: string;
+  page?: string;
+}>;
 
 export type GetProductsParams = {
   locale?: string;
@@ -19,24 +27,29 @@ export type GetProductsParams = {
   limit?: number;
 };
 
-export type GetProductsResult = {
-  products: Array<{
+export type ProductT = {
+  id: string;
+  slug: string;
+  title: string;
+  description: string;
+  price: number;
+  discount: number | null;
+  quantity: number;
+  image: string;
+  imageAlt: string;
+};
+
+export type ProductWithCategoryT = ProductT & {
+  type: string;
+  category: {
     id: string;
     slug: string;
-    price: number;
-    discount: number | null;
-    quantity: number;
-    image: string;
-    imageAlt: string;
-    type: string;
     title: string;
-    description: string;
-    category: {
-      id: string;
-      slug: string;
-      title: string;
-    };
-  }>;
+  };
+};
+
+export type GetProductsResult = {
+  products: ProductWithCategoryT[];
   total: number;
   page: number;
   limit: number;
@@ -58,3 +71,57 @@ export type FeatureItem = {
   title: string;
   desc: string;
 };
+
+type ImagesT = {
+  id: string;
+  order: number;
+  url: string;
+  alt: string;
+};
+
+export type ProductResult = {
+  id: string;
+  category: string;
+  slug: string;
+  images: ImagesT[];
+  title: string;
+  description: string;
+  price: number;
+  discount: number | null;
+  quantity: number;
+  categorySlug: string;
+};
+
+export type CartItem = ProductT & {
+  productId: string;
+  maxQuantity: number;
+};
+
+export type CartState = {
+  items: CartItem[];
+  total: number;
+  totalItems: number;
+  loading: boolean;
+};
+
+export type Cart =
+  | {
+      id: string;
+      items: {
+        id: string;
+        productId: string;
+        slug: string;
+        title: string;
+        description: string;
+        type: string;
+        price: number;
+        discount: number | null;
+        quantity: number;
+        maxQuantity: number;
+        image: string;
+        imageAlt: string;
+      }[];
+      total: number;
+    }
+  | null
+  | undefined;

@@ -48,7 +48,7 @@ const SearchInput = ({
         onChange={(e) => setSearchQuery(e.target.value)}
         placeholder={`${t("input")}`}
         className={cn(
-          "font-montserrat h-fit rounded-full py-2.5 text-sm placeholder:font-light",
+          "h-fit rounded-full py-2.5 text-sm placeholder:font-light",
           isArabic ? "pl-10" : "pr-10",
           inputClassName,
         )}
