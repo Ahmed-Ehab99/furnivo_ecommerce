@@ -1,21 +1,21 @@
 import { Skeleton } from "@/components/ui/skeleton";
 import { MainRoutesParams, SearchParams } from "@/lib/types";
 import { cn } from "@/lib/utils";
-import Shape1 from "@/public/shapes/searchLeft.svg";
-import Shape2 from "@/public/shapes/searchRight.svg";
+import ShapeLeft from "@/public/shapes/searchLeft.svg";
+import ShapeRight from "@/public/shapes/shapeRight.svg";
 import Image from "next/image";
-import { Suspense } from "react";
+import { Suspense, use } from "react";
 import ShopContent from "./_components/ShopContent";
 import { ShopFiltersSkeleton } from "./_components/ShopFilters";
 
-const ShopPage = async ({
+const ShopPage = ({
   params,
   searchParams,
 }: {
   params: MainRoutesParams;
   searchParams: SearchParams;
 }) => {
-  const { locale } = await params;
+  const { locale } = use(params);
   const isArabic = locale === "ar";
 
   return (
@@ -28,20 +28,20 @@ const ShopPage = async ({
 
       <Image
         loading="eager"
-        src={Shape2}
+        src={ShapeRight}
         alt="Shape"
         className={cn(
-          "absolute top-0 -z-50 max-w-40 lg:max-w-52",
-          isArabic ? "left-0 rotate-y-180" : "right-0",
+          "absolute end-0 top-0 -z-50 max-w-40 lg:max-w-52",
+          isArabic && "rotate-y-180",
         )}
       />
       <Image
         loading="eager"
-        src={Shape1}
+        src={ShapeLeft}
         alt="Shape"
         className={cn(
-          "absolute bottom-0 -z-50 max-w-40 lg:max-w-52",
-          isArabic ? "right-0 rotate-y-180" : "left-0",
+          "absolute start-0 bottom-0 -z-50 max-w-40 lg:max-w-52",
+          isArabic && "rotate-y-180",
         )}
       />
     </div>

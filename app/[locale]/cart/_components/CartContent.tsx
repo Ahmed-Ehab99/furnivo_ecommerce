@@ -3,7 +3,7 @@
 import AnimatedList from "@/components/AnimatedList";
 import EmptyState from "@/components/global/EmptyState";
 import { Button } from "@/components/ui/button";
-import { Spinner } from "@/components/ui/spinner";
+import { Skeleton } from "@/components/ui/skeleton";
 import { calculateItemTotal, formatNumber } from "@/lib/utils";
 import { Minus, Plus, ShoppingBag, Trash2 } from "lucide-react";
 import { useTranslations } from "next-intl";
@@ -31,8 +31,11 @@ const CartContent = () => {
 
   if (loading) {
     return (
-      <div className="container mx-auto flex min-h-screen items-center justify-center px-4 py-20">
-        <Spinner className="size-30" />
+      <div className="mx-auto flex max-w-5xl flex-col items-center justify-center space-y-10">
+        <Skeleton className="h-10 w-36" />
+        <Skeleton className="h-112 w-full border-y" />
+        <Skeleton className="h-7 w-full" />
+        <Skeleton className="h-9 w-full" />
       </div>
     );
   }

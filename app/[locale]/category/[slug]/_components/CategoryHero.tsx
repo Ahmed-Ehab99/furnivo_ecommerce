@@ -1,3 +1,4 @@
+import BackBtn from "@/components/global/BackBtn";
 import Heading from "@/components/global/Heading";
 import {
   Breadcrumb,
@@ -7,12 +8,10 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import { Button } from "@/components/ui/button";
 import { CategoryResult } from "@/lib/types";
-import { ChevronLeft, ChevronRight, MoveLeft, MoveRight } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
-import Link from "next/link";
 
 interface CategoryHeroProps {
   category: CategoryResult;
@@ -27,9 +26,8 @@ const CategoryHero = ({ locale, category }: CategoryHeroProps) => {
     <section className="grid grid-cols-1 items-center md:grid-cols-2 md:gap-10 lg:gap-20">
       <div className="order-last flex h-full flex-col md:order-first">
         <div className="text-primary flex flex-col gap-2">
-          <Button variant="ghost" size="icon" className="hover:text-primary">
-            <Link href="/">{isArabic ? <MoveRight /> : <MoveLeft />}</Link>
-          </Button>
+          <BackBtn isArabic={isArabic} />
+
           <Breadcrumb>
             <BreadcrumbList>
               <BreadcrumbItem>
@@ -48,6 +46,7 @@ const CategoryHero = ({ locale, category }: CategoryHeroProps) => {
             </BreadcrumbList>
           </Breadcrumb>
         </div>
+
         <Heading
           title={`${t("all")} ${category.title}`}
           description={category.description}

@@ -2,19 +2,13 @@
 
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormMessage,
-} from "@/components/ui/form";
+import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Spinner } from "@/components/ui/spinner";
 import { authClient } from "@/lib/auth-client";
 import { cn } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { AtSign, LockKeyholeIcon, User2 } from "lucide-react";
+import { AtSign, LockKeyholeIcon, TriangleAlert, User2 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -22,20 +16,22 @@ import { useTransition } from "react";
 import { useForm, useWatch } from "react-hook-form";
 import { toast } from "sonner";
 import { SignupFormData, signupSchema } from "../schema/authSchema";
-import SignupGoogleBtn from "./SignupGoogleBtn";
+import SigninGoogleBtn from "./SigninGoogleBtn";
+
+const defaultValues = {
+  firstName: "",
+  lastName: "",
+  email: "",
+  password: "",
+  marketingConsent: false,
+};
 
 const SignupCard = () => {
   const [isPending, startTransition] = useTransition();
   const router = useRouter();
   const form = useForm<SignupFormData>({
     resolver: zodResolver(signupSchema),
-    defaultValues: {
-      firstName: "",
-      lastName: "",
-      email: "",
-      password: "",
-      marketingConsent: false,
-    },
+    defaultValues,
   });
   const passwordValue = useWatch({
     control: form.control,
@@ -43,7 +39,7 @@ const SignupCard = () => {
   });
   const t = useTranslations("auth");
   const toastesT = useTranslations("toastes");
-  const { isDirty } = form.formState;
+  const { isDirty, errors } = form.formState;
 
   const onSubmit = (values: SignupFormData) => {
     startTransition(async () => {
@@ -54,7 +50,6 @@ const SignupCard = () => {
       });
 
       if (error) {
-        console.error(error);
         toast.error(`${toastesT("error.unexpected")}`);
         return;
       }
@@ -87,7 +82,7 @@ const SignupCard = () => {
               <FormItem>
                 <FormControl>
                   <div className="flex items-end gap-2">
-                    <User2 size={20} />
+                    <User2 className="size-5" />
                     <Input
                       placeholder={t("firstNameInput")}
                       className={cn(
@@ -98,7 +93,11 @@ const SignupCard = () => {
                     />
                   </div>
                 </FormControl>
-                <FormMessage />
+                {errors.firstName && (
+                  <p className="text-destructive ms-7 text-sm">
+                    {t(errors.firstName.message as string)}
+                  </p>
+                )}
               </FormItem>
             )}
           />
@@ -110,7 +109,7 @@ const SignupCard = () => {
               <FormItem>
                 <FormControl>
                   <div className="flex items-end gap-2">
-                    <User2 size={20} />
+                    <User2 className="size-5" />
                     <Input
                       placeholder={t("lastNameInput")}
                       className={cn(
@@ -121,7 +120,11 @@ const SignupCard = () => {
                     />
                   </div>
                 </FormControl>
-                <FormMessage />
+                {errors.lastName && (
+                  <p className="text-destructive ms-7 text-sm">
+                    {t(errors.lastName.message as string)}
+                  </p>
+                )}
               </FormItem>
             )}
           />
@@ -129,23 +132,33 @@ const SignupCard = () => {
           <FormField
             control={form.control}
             name="email"
-            render={({ field, fieldState }) => (
+            render={({ field }) => (
               <FormItem>
                 <FormControl>
-                  <div className="flex items-end gap-2">
-                    <AtSign size={20} />
+                  <div className="relative flex items-end gap-2">
+                    <AtSign className="size-5" />
                     <Input
                       type="email"
                       placeholder={t("emailInput")}
                       className={cn(
-                        fieldState.error && "border-destructive",
                         "w-full",
+                        errors.email && "border-b-destructive",
                       )}
                       {...field}
                     />
+                    <TriangleAlert
+                      className={cn(
+                        "absolute end-0 bottom-1.5 size-5",
+                        errors.email && "text-destructive",
+                      )}
+                    />
                   </div>
                 </FormControl>
-                <FormMessage />
+                {errors.email && (
+                  <p className="text-destructive ms-7 text-sm">
+                    {t(errors.email.message as string)}
+                  </p>
+                )}
               </FormItem>
             )}
           />
@@ -153,33 +166,44 @@ const SignupCard = () => {
           <FormField
             control={form.control}
             name="password"
-            render={({ field, fieldState }) => (
+            render={({ field }) => (
               <FormItem>
                 <FormControl>
                   <div className="flex flex-col gap-2">
                     <div className="flex items-end gap-2">
-                      <LockKeyholeIcon size={20} />
+                      <LockKeyholeIcon className="size-5" />
                       <Input
                         type="password"
                         placeholder={t("passwordInput")}
                         className={cn(
-                          fieldState.error && "border-destructive",
                           "w-full",
+                          errors.password && "border-b-destructive",
                         )}
                         {...field}
                       />
                     </div>
-                    <p
+                    <div
                       className={cn(
-                        passwordValue.length >= 6 && "text-green-500",
-                        "text-end text-sm font-normal",
+                        "flex items-center",
+                        errors.password ? "justify-between" : "justify-end",
                       )}
                     >
-                      {passwordValue.length}/6 {t("characters")}
-                    </p>
+                      {errors.password && (
+                        <p className="text-destructive ms-7 text-sm">
+                          {t(errors.password.message as string)}
+                        </p>
+                      )}
+                      <p
+                        className={cn(
+                          passwordValue.length >= 6 && "text-green-500",
+                          "text-end text-sm font-normal",
+                        )}
+                      >
+                        {passwordValue.length}/6 {t("characters")}
+                      </p>
+                    </div>
                   </div>
                 </FormControl>
-                <FormMessage />
               </FormItem>
             )}
           />
@@ -208,7 +232,6 @@ const SignupCard = () => {
                     </label>
                   </div>
                 </FormControl>
-                <FormMessage />
               </FormItem>
             )}
           />
@@ -231,10 +254,10 @@ const SignupCard = () => {
         </div>
 
         <p className="mx-auto text-center text-sm opacity-60">
-          {t("signupGoogle")}
+          {t("signinGoogle")}
         </p>
 
-        <SignupGoogleBtn />
+        <SigninGoogleBtn />
       </div>
     </div>
   );

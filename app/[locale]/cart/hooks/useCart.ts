@@ -14,11 +14,10 @@ import { toast } from "sonner";
 export function useCart(locale: string = "en") {
   const t = useTranslations("toastes");
 
-  // 1. Get Data (deduped automatically)
-  // 'refetch' allows us to manually sync with server if needed
+  // Get Data
   const { data, isLoading, refetch } = useGetCartQuery(locale);
 
-  // 2. Mutations
+  // Mutations
   const [addToCartMutation] = useAddToCartMutation();
   const [updateQtyMutation] = useUpdateQuantityMutation();
   const [removeItemMutation] = useRemoveItemMutation();
@@ -103,7 +102,6 @@ export function useCart(locale: string = "en") {
     items: cart.items,
     total: cart.total,
     loading: isLoading,
-    // Safely calculate item count even if items is undefined
     itemCount: cart.items?.reduce((sum, item) => sum + item.quantity, 0) || 0,
     addToCart,
     removeFromCart,
@@ -111,6 +109,6 @@ export function useCart(locale: string = "en") {
     incrementQuantity,
     decrementQuantity,
     clearCart,
-    refreshCart: refetch, // Map RTK Query's refetch to your existing API name
+    refreshCart: refetch,
   };
 }

@@ -1,19 +1,16 @@
 import SearchInput from "@/components/global/SearchInput";
+import { MainRoutesParams } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import BedRoomImg from "@/public/categories/bed-room/bed-room.webp";
 import LivingRoomImg from "@/public/categories/living-room/living-room.webp";
-import Shape1 from "@/public/shapes/searchLeft.svg";
-import Shape2 from "@/public/shapes/searchRight.svg";
-import SearchShape from "@/public/shapes/searchShape.svg";
+import CenterShape from "@/public/shapes/centerShape.svg";
+import SearchLeft from "@/public/shapes/searchLeft.svg";
+import ShapeRight from "@/public/shapes/shapeRight.svg";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { use } from "react";
 
-export default function SearchPage({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}) {
+export default function SearchPage({ params }: { params: MainRoutesParams }) {
   const { locale } = use(params);
   const t = useTranslations("search");
   const isArabic = locale === "ar";
@@ -65,7 +62,7 @@ export default function SearchPage({
           </div>
 
           <Image
-            src={SearchShape}
+            src={CenterShape}
             alt="Shape"
             loading="eager"
             className="absolute top-5/12 left-0 -z-50 hidden max-w-80 -translate-y-1/2 md:block lg:left-1/2 lg:max-w-96 lg:-translate-x-1/2"
@@ -75,24 +72,26 @@ export default function SearchPage({
         <SearchInput
           locale={locale}
           className="relative mx-auto flex w-full max-w-lg"
-          inputClassName="bg-[#FDFDFD] placeholder:opacity-70 dark:bg-[#292A2A] border border-primary"
+          inputClassName="bg-card placeholder:opacity-70 border border-primary"
         />
       </div>
 
       <Image
-        src={Shape1}
+        src={SearchLeft}
         alt="Shape"
+        loading="eager"
         className={cn(
-          "absolute bottom-0 -z-50 hidden max-w-40 lg:block lg:max-w-52",
-          isArabic ? "right-0 rotate-y-180" : "left-0",
+          "absolute start-0 top-0 -z-50 hidden max-w-40 lg:block lg:max-w-52",
+          isArabic && "rotate-y-180",
         )}
       />
       <Image
-        src={Shape2}
+        src={ShapeRight}
         alt="Shape"
+        loading="eager"
         className={cn(
-          "absolute top-0 -z-50 max-w-40 lg:max-w-52",
-          isArabic ? "left-0 rotate-y-180" : "right-0",
+          "absolute end-0 top-0 -z-50 max-w-40 lg:max-w-52",
+          isArabic && "rotate-y-180",
         )}
       />
     </section>

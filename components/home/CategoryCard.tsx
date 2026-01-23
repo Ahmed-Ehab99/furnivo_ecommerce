@@ -27,6 +27,7 @@ const CategoryCard = ({
       <Image
         src={imageSrc}
         alt={imageAlt}
+        loading="lazy"
         className="w-full rounded-xl"
         width={500}
         height={500}
@@ -37,7 +38,7 @@ const CategoryCard = ({
       </p>
       <Link
         href={`/category/${slug}`}
-        className="font-gilroy text-primary mt-auto flex items-center gap-3 text-md font-medium"
+        className="font-gilroy text-primary text-md mt-auto flex items-center gap-3 font-medium"
       >
         {t("moreInfo")} {locale === "ar" ? <MoveLeft /> : <MoveRight />}
       </Link>

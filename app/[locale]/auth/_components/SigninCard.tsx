@@ -1,18 +1,13 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormMessage,
-} from "@/components/ui/form";
+import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Spinner } from "@/components/ui/spinner";
 import { authClient } from "@/lib/auth-client";
+import { cn } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { AtSign, LockKeyholeIcon } from "lucide-react";
+import { AtSign, LockKeyholeIcon, TriangleAlert } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { useTransition } from "react";
@@ -20,19 +15,21 @@ import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { SigninFormData, signinSchema } from "../schema/authSchema";
 
+const defaultValues = {
+  email: "",
+  password: "",
+};
+
 const SigninCard = () => {
   const [isPending, startTransition] = useTransition();
   const router = useRouter();
   const form = useForm({
     resolver: zodResolver(signinSchema),
-    defaultValues: {
-      email: "",
-      password: "",
-    },
+    defaultValues,
   });
   const t = useTranslations("auth");
   const toastesT = useTranslations("toastes");
-  const { isDirty } = form.formState;
+  const { isDirty, errors } = form.formState;
 
   const onSubmit = (values: SigninFormData) => {
     startTransition(async () => {
@@ -47,7 +44,6 @@ const SigninCard = () => {
           toast.error(`${toastesT("error.unauthorized")}`);
           return;
         }
-        console.error(error);
         toast.error(`${toastesT("error.unexpected")}`);
         return;
       }
@@ -81,17 +77,30 @@ const SigninCard = () => {
             render={({ field }) => (
               <FormItem>
                 <FormControl>
-                  <div className="flex items-end gap-2">
-                    <AtSign size={20} />
+                  <div className="relative flex items-end gap-2">
+                    <AtSign className="size-5" />
                     <Input
                       type="email"
                       placeholder={t("emailInput")}
-                      className="w-full"
+                      className={cn(
+                        "w-full",
+                        errors.email && "border-b-destructive",
+                      )}
                       {...field}
+                    />
+                    <TriangleAlert
+                      className={cn(
+                        "absolute end-0 bottom-1.5 size-5",
+                        errors.email && "text-destructive",
+                      )}
                     />
                   </div>
                 </FormControl>
-                <FormMessage />
+                {errors.email && (
+                  <p className="text-destructive ms-7 text-sm">
+                    {t(errors.email.message as string)}
+                  </p>
+                )}
               </FormItem>
             )}
           />
@@ -103,16 +112,23 @@ const SigninCard = () => {
               <FormItem>
                 <FormControl>
                   <div className="flex items-end gap-2">
-                    <LockKeyholeIcon size={20} />
+                    <LockKeyholeIcon className="size-5" />
                     <Input
                       type="password"
                       placeholder={t("passwordInput")}
-                      className="w-full"
+                      className={cn(
+                        "w-full",
+                        errors.password && "border-b-destructive",
+                      )}
                       {...field}
                     />
                   </div>
                 </FormControl>
-                <FormMessage />
+                {errors.password && (
+                  <p className="text-destructive ms-7 text-sm">
+                    {t(errors.password.message as string)}
+                  </p>
+                )}
               </FormItem>
             )}
           />

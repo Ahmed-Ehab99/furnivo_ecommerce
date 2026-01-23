@@ -13,9 +13,16 @@
     "signupDesc": "Enjoy exclusive discounts & offers",
     "signupNotification": "Yes, I would like to receive personalized offers, tips and tricks, and other information from Store.",
     "signupTerms": "The terms and conditions for Furnivo Store apply. Here you can find our privacy information.",
-    "signupGoogle": "Sign up with google",
+    "signinGoogle": "Sign in with google",
     "signupBtn": "Sign Up",
-    "or": "Or"
+    "or": "Or",
+    "schemaError": {
+      "firstName": "First name is required",
+      "lastName": "Last name is required",
+      "email": "Invalid email address",
+      "signUpPassword": "Password must be at least 6 characters",
+      "signInPassword": "Password is required"
+    }
   },
   "cart": {
     "desc": "Review Your Items",
@@ -151,6 +158,7 @@
   "toastes": {
     "success": {
       "signin": "Signing in successfully",
+      "signinGoogle": "Signed in with Google, you will be redirected...",
       "signup": "Signin up successfully",
       "signout": "Signed Out successfully",
       "addToCart": "Added to cart",
@@ -161,6 +169,7 @@
     },
     "error": {
       "signin": "Failed to signing in",
+      "signinGoogle": "Internal server error",
       "unauthorized": "This email doesn't exist. Please signup first",
       "unexpected": "An unexpected error occurred. Please try again.",
       "signup": "Failed to signing up",

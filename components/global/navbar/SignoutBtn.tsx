@@ -30,8 +30,7 @@ const SignoutBtn = ({ open }: { open?: boolean }) => {
           },
         },
       });
-    } catch (error) {
-      console.error(error);
+    } catch {
       toast.error(`${t("error.signout")}`);
     }
   };

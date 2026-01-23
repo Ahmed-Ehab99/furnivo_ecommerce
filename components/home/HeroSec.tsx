@@ -1,12 +1,10 @@
 import SearchInput from "@/components/global/SearchInput";
-import { MainRoutesParams } from "@/lib/types";
 import HeroImg from "@/public/hero.png";
-import { getTranslations } from "next-intl/server";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 
-const HeroSec = async ({ params }: { params: MainRoutesParams }) => {
-  const { locale } = await params;
-  const t = await getTranslations("home");
+const HeroSec = ({ locale }: { locale: string }) => {
+  const t = useTranslations("home");
 
   return (
     <section className="relative h-dvh w-full">

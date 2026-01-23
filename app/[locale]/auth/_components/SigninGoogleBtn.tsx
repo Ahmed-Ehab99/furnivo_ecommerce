@@ -2,13 +2,16 @@
 
 import { Spinner } from "@/components/ui/spinner";
 import { authClient } from "@/lib/auth-client";
+import GoogleImg from "@/public/google.svg";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { useTransition } from "react";
 import { toast } from "sonner";
-import GoogleImg from "@/public/google.svg";
 
-const SignupGoogleBtn = () => {
+const SigninGoogleBtn = () => {
   const [googlePending, startGoogleTransition] = useTransition();
+  const t = useTranslations("toastes");
+  const authT = useTranslations("auth");
 
   const signInWithGoogle = () => {
     startGoogleTransition(async () => {
@@ -17,11 +20,10 @@ const SignupGoogleBtn = () => {
         callbackURL: "/",
         fetchOptions: {
           onSuccess: () => {
-            toast.success("Signed in with Google, you will be redirected...");
+            toast.success(t("success.signinGoogle"));
           },
-          onError: (error) => {
-            console.error(error);
-            toast.error(error.error.statusText || "Internal server error");
+          onError: () => {
+            toast.error(t("error.signinGoogle"));
           },
         },
       });
@@ -35,7 +37,8 @@ const SignupGoogleBtn = () => {
       ) : (
         <Image
           src={GoogleImg}
-          alt="Signup with google"
+          alt={authT("signinGoogle")}
+          title={authT("signinGoogle")}
           className="size-12 cursor-pointer"
           onClick={signInWithGoogle}
         />
@@ -44,4 +47,4 @@ const SignupGoogleBtn = () => {
   );
 };
 
-export default SignupGoogleBtn;
+export default SigninGoogleBtn;

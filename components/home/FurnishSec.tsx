@@ -1,13 +1,11 @@
-import { MainRoutesParams } from "@/lib/types";
 import FurnishImg from "@/public/furnish.jpg";
 import { MoveLeft, MoveRight } from "lucide-react";
-import { getTranslations } from "next-intl/server";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
 
-const FurnishSec = async ({ params }: { params: MainRoutesParams }) => {
-  const { locale } = await params;
-  const t = await getTranslations("home");
+const FurnishSec = ({ locale }: { locale: string }) => {
+  const t = useTranslations("home");
 
   return (
     <section className="layout-spacing grid grid-cols-1 gap-10 md:grid-cols-2 md:justify-between md:gap-20 lg:gap-32">

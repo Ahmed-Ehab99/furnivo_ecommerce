@@ -69,12 +69,14 @@ const CategoryPage = async ({
     <div className="relative">
       <div className="layout-spacing space-y-20">
         <CategoryHero locale={locale} category={category} />
+
         <div>
           <div className="grid grid-cols-2 items-center gap-10 px-4 py-8 md:grid-cols-3 md:gap-16 lg:grid-cols-4 lg:gap-20">
             {products.map((product) => (
               <ProductCard key={product.id} product={product} locale={locale} />
             ))}
           </div>
+
           <div className="mt-8">
             <ServerPagination
               currentPage={page}
@@ -92,16 +94,19 @@ const CategoryPage = async ({
       <Image
         src={CategoryLeft1}
         alt="Shape"
+        loading="eager"
         className="absolute top-1/3 left-0 -z-50 max-w-40 md:top-1/6 lg:max-w-52"
       />
       <Image
         src={CategoryRight}
         alt="Shape"
+        loading="eager"
         className="absolute right-0 bottom-1/4 -z-50 max-w-40 lg:max-w-52"
       />
       <Image
         src={CategoryLeft2}
         alt="Shape"
+        loading="eager"
         className="absolute bottom-0 left-0 -z-50 max-w-40 lg:max-w-52"
       />
     </div>

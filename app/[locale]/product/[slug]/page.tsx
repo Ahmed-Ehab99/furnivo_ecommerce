@@ -1,4 +1,5 @@
 import { getProductBySlug } from "@/app/data/get-product-by-slug";
+import BackBtn from "@/components/global/BackBtn";
 import { Badge } from "@/components/ui/badge";
 import {
   Breadcrumb,
@@ -8,17 +9,15 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import { Button } from "@/components/ui/button";
 import { Lens } from "@/components/ui/lens";
 import { Separator } from "@/components/ui/separator";
 import { DynamicRoutesParams } from "@/lib/types";
 import { cn, formatNumber } from "@/lib/utils";
-import DetailsLeft from "@/public/shapes/detailsLeft.svg";
-import DetailsRight from "@/public/shapes/detailsRight.svg";
-import { ChevronLeft, ChevronRight, MoveLeft, MoveRight } from "lucide-react";
+import ShapeLeft from "@/public/shapes/shapeLeft.svg";
+import ShapeRight from "@/public/shapes/shapeRight.svg";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import Image from "next/image";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import ProductActions from "./_components/ProductActions";
 
@@ -58,9 +57,8 @@ const ProductDetailsPage = async ({
     <section className="relative">
       <div className="layout-spacing space-y-10">
         <div className="text-primary flex flex-col gap-2">
-          <Button variant="ghost" size="icon" className="hover:text-primary">
-            <Link href="/">{isArabic ? <MoveRight /> : <MoveLeft />}</Link>
-          </Button>
+          <BackBtn isArabic={isArabic} />
+
           <Breadcrumb>
             <BreadcrumbList>
               <BreadcrumbItem>
@@ -90,6 +88,7 @@ const ProductDetailsPage = async ({
             </BreadcrumbList>
           </Breadcrumb>
         </div>
+
         <div className="flex flex-col justify-center gap-10 md:flex-row md:gap-20 lg:gap-30">
           <div className="grid h-fit w-full grid-cols-2 gap-1 md:sticky md:top-4 md:max-w-1/3">
             {images.map((image, i) => (
@@ -124,11 +123,13 @@ const ProductDetailsPage = async ({
                 <h1 className="text-3xl font-extrabold md:text-4xl lg:text-5xl">
                   {title}
                 </h1>
+
                 <div className="flex items-end gap-1.5">
                   <div className="flex flex-col items-center justify-center gap-0.5">
                     {discount && (
                       <Badge>- {formatNumber(locale, discount)}%</Badge>
                     )}
+                    
                     {discount && (
                       <del
                         className={cn(
@@ -145,6 +146,7 @@ const ProductDetailsPage = async ({
                       </del>
                     )}
                   </div>
+
                   <div
                     className={cn(
                       "flex items-baseline gap-0.5 font-semibold",
@@ -178,19 +180,21 @@ const ProductDetailsPage = async ({
       </div>
 
       <Image
-        src={DetailsRight}
+        src={ShapeRight}
         alt="Shape"
+        loading="eager"
         className={cn(
-          "absolute top-0 -z-50 max-w-40 lg:max-w-52",
-          isArabic ? "left-0 rotate-y-180" : "right-0",
+          "absolute end-0 top-0 -z-50 max-w-40 lg:max-w-52",
+          isArabic && "rotate-y-180",
         )}
       />
       <Image
-        src={DetailsLeft}
+        src={ShapeLeft}
         alt="Shape"
+        loading="eager"
         className={cn(
-          "absolute bottom-0 -z-50 max-w-40 lg:max-w-52",
-          isArabic ? "right-0 rotate-y-180" : "left-0",
+          "absolute start-0 bottom-0 -z-50 max-w-40 lg:max-w-52",
+          isArabic && "rotate-y-180",
         )}
       />
     </section>

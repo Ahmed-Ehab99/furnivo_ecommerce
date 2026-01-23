@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -158,8 +159,8 @@
 }
 
 @layer components {
-  .layout-spacing{
-    @apply container mx-auto px-4 py-32
+  .layout-spacing {
+    @apply container mx-auto px-4 py-32;
   }
 }
 
@@ -167,4 +168,15 @@
 ::view-transition-new(root) {
   animation: none;
   mix-blend-mode: normal;
+}
+
+/* Chrome / Edge */
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear {
+  display: none !important;
+}
+
+/* Safari */
+input[type="password"]::-webkit-textfield-decoration-container {
+  display: none !important;
 }
