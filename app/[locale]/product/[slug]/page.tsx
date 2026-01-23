@@ -47,7 +47,9 @@ const ProductDetailsPage = async ({
   } = productData;
 
   const finalPrice =
-    discount !== null ? Math.max(price * (1 - discount / 100), 0) : price;
+    discount !== null
+      ? Math.floor(price * (1 - discount / 100))
+      : Math.floor(price);
 
   const formattedPrice = formatNumber(locale, price);
   const formattedDiscountPrice = formatNumber(locale, finalPrice);

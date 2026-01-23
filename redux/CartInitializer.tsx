@@ -1,38 +1,42 @@
 "use client";
 
 import { GetCartType } from "@/app/[locale]/cart/actions";
-import { setCart } from "@/redux/cartSlice";
+import { CartItem } from "@/lib/types";
 import { useAppDispatch } from "@/redux/hooks";
 import { useEffect, useRef } from "react";
+import { cartApi } from "./cartApi";
 
-export default function CartInitializer({ cartData }: { cartData: GetCartType["cart"] | null }) {
+export default function CartInitializer({
+  cartData,
+  locale = "en",
+}: {
+  cartData: GetCartType["cart"] | null;
+  locale?: string;
+}) {
   const dispatch = useAppDispatch();
-  const hasInitialized = useRef(false);
+  const initialized = useRef(false);
 
   useEffect(() => {
-    // Only run once when component mounts
-    if (hasInitialized.current) return;
+    // Only run once and only if we have data from the server
+    if (!initialized.current && cartData) {
+      const totalItems = cartData.items.reduce(
+        (sum, item) => sum + item.quantity,
+        0,
+      );
 
-    // Initialize cart (even if empty)
-    if (cartData) {
-      dispatch(
-        setCart({
-          items: cartData.items || [],
-          total: cartData.total || 0,
-        })
-      );
-    } else {
-      // If no cart data, initialize empty cart
-      dispatch(
-        setCart({
-          items: [],
-          total: 0,
-        })
-      );
+      const initialData = {
+        ...cartData,
+        items: cartData.items as CartItem[],
+        totalItems,
+        loading: false,
+      };
+
+      // Seeding the cache
+      dispatch(cartApi.util.upsertQueryData("getCart", locale, initialData));
+
+      initialized.current = true;
     }
-
-    hasInitialized.current = true;
-  }, [cartData, dispatch]);
+  }, [cartData, dispatch, locale]);
 
   return null;
 }

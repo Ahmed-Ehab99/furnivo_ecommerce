@@ -1,109 +1,85 @@
 "use client";
 
-import {
-  addToCart as addToCartAction,
-  clearCart as clearCartServerAction,
-  getCart as getCartAction,
-  removeItemFromCart as removeItemFromCartAction,
-  updateCartItemQuantity as updateCartItemQuantityAction,
-} from "@/app/[locale]/cart/actions";
 import { CartItem } from "@/lib/types";
 import {
-  clearCart as clearCartAction,
-  optimisticAddItem,
-  optimisticRemoveItem,
-  optimisticUpdateQuantity,
-  setCart,
-  setLoading,
-} from "@/redux/cartSlice";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+  useAddToCartMutation,
+  useClearCartMutation,
+  useGetCartQuery,
+  useRemoveItemMutation,
+  useUpdateQuantityMutation,
+} from "@/redux/cartApi";
 import { useTranslations } from "next-intl";
-import { useCallback, useEffect } from "react";
 import { toast } from "sonner";
 
 export function useCart(locale: string = "en") {
-  const dispatch = useAppDispatch();
-  const cart = useAppSelector((state) => state.cart);
   const t = useTranslations("toastes");
 
-  const loadCart = useCallback(async () => {
-    try {
-      dispatch(setLoading(true));
-      const result = await getCartAction(locale);
+  // 1. Get Data (deduped automatically)
+  // 'refetch' allows us to manually sync with server if needed
+  const { data, isLoading, refetch } = useGetCartQuery(locale);
 
-      if (result.success && result.cart) {
-        dispatch(
-          setCart({ items: result.cart.items, total: result.cart.total }),
-        );
-      } else {
-        dispatch(setLoading(false));
-      }
-    } catch (error) {
-      console.error("Failed to load cart:", error);
-      dispatch(setLoading(false));
-    }
-  }, [dispatch, locale]);
+  // 2. Mutations
+  const [addToCartMutation] = useAddToCartMutation();
+  const [updateQtyMutation] = useUpdateQuantityMutation();
+  const [removeItemMutation] = useRemoveItemMutation();
+  const [clearCartMutation] = useClearCartMutation();
 
-  useEffect(() => {
-    loadCart();
-  }, [loadCart]);
+  // Fallback state while loading
+  const cart = data || { items: [], total: 0, totalItems: 0, loading: true };
 
   const addToCart = async (
     item: Omit<CartItem, "id" | "quantity">,
     quantity: number = 1,
-  ) => {
-    // Optimistic update
-    dispatch(optimisticAddItem({ ...item, quantity } as CartItem));
+    locale: string,
+  ): Promise<boolean> => {
+    try {
+      // Pass 'itemDetails' for the optimistic update
+      // We generate a temp ID because the real ID comes from DB,
+      // but for UI purposes, a temp ID is fine until next fetch.
+      await addToCartMutation({
+        productId: item.productId,
+        quantity,
+        itemDetails: {
+          ...item,
+          quantity,
+          id: `temp-${Date.now()}`,
+        } as CartItem,
+        locale,
+      }).unwrap();
 
-    // Server update
-    const result = await addToCartAction(item.productId, quantity);
-
-    if (result.success) {
-      toast.success(t(result.message || "success.general"));
-      // Reload cart to sync with server
-      await loadCart();
+      toast.success(t("success.addToCart"));
       return true;
-    } else {
-      toast.error(t(result.error || "error.unexpected"));
-      // Revert optimistic update
-      await loadCart();
+    } catch {
+      toast.error(t("error.addToCart"));
       return false;
     }
   };
 
   const removeFromCart = async (cartItemId: string) => {
-    // Optimistic update
-    dispatch(optimisticRemoveItem(cartItemId));
-
-    // Server update
-    const result = await removeItemFromCartAction(cartItemId);
-
-    if (result.success) {
-      toast.success(t(result.message || "success.general"));
-    } else {
-      toast.error(t(result.error || "error.unexpected"));
-      // Revert optimistic update
-      await loadCart();
+    try {
+      await removeItemMutation({ cartItemId, locale }).unwrap();
+      toast.success(t("success.removeItem"));
+    } catch {
+      toast.error(t("error.removeItem"));
     }
   };
 
   const updateQuantity = async (cartItemId: string, quantity: number) => {
-    // Optimistic update
-    dispatch(optimisticUpdateQuantity({ id: cartItemId, quantity }));
-
-    // Server update
-    const result = await updateCartItemQuantityAction(cartItemId, quantity);
-
-    if (!result.success) {
-      toast.error(t(result.error || "error.unexpected"));
-      await loadCart();
+    try {
+      await updateQtyMutation({ id: cartItemId, quantity, locale }).unwrap();
+      // No toast needed for qty update usually, keeps UI clean
+    } catch {
+      toast.error(t("error.quantityUpdate"));
     }
   };
 
   const incrementQuantity = async (cartItemId: string) => {
     const item = cart.items.find((i) => i.id === cartItemId);
+    // Check maxQuantity locally before firing mutation
     if (item && item.quantity < item.maxQuantity) {
       await updateQuantity(cartItemId, item.quantity + 1);
+    } else {
+      toast.error(t("error.exceedAvailableStock"));
     }
   };
 
@@ -115,32 +91,26 @@ export function useCart(locale: string = "en") {
   };
 
   const clearCart = async () => {
-    // Optimistic update
-    dispatch(clearCartAction());
-
-    // Server update
-    const result = await clearCartServerAction();
-
-    if (result.success) {
-      toast.success(t(result.message || "success.general"));
-    } else {
-      toast.error(t(result.error || "error.unexpected"));
-      // Revert optimistic update
-      await loadCart();
+    try {
+      await clearCartMutation({ locale }).unwrap();
+      toast.success(t("success.clearCart"));
+    } catch {
+      toast.error(t("error.clearCart"));
     }
   };
 
   return {
     items: cart.items,
     total: cart.total,
-    loading: cart.loading,
-    itemCount: cart.items.reduce((sum, item) => sum + item.quantity, 0),
+    loading: isLoading,
+    // Safely calculate item count even if items is undefined
+    itemCount: cart.items?.reduce((sum, item) => sum + item.quantity, 0) || 0,
     addToCart,
     removeFromCart,
     updateQuantity,
     incrementQuantity,
     decrementQuantity,
     clearCart,
-    refreshCart: loadCart,
+    refreshCart: refetch, // Map RTK Query's refetch to your existing API name
   };
 }

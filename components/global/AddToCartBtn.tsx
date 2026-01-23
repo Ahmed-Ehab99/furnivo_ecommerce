@@ -68,6 +68,7 @@ const AddToCartBtn = ({
         imageAlt: product.imageAlt,
       },
       quantityToAdd,
+      locale,
     );
 
     if (success && onSuccess) {

@@ -60,23 +60,25 @@ export default async function RootLayout({
     >
       <body className={`${gilroy.variable} antialiased`}>
         <AuthProvider isAuthenticated={isAuthenticated} user={user}>
-        <StoreProvider>
-          <ThemeProvider attribute="class">
-            <NextIntlClientProvider>
-              <div className="absolute top-0 right-0 left-0 z-50 bg-transparent">
-                <Navbar />
-              </div>
-              <main className="selection:bg-primary min-h-screen">
-                {children}
-              </main>
-              <Footer />
-              {session?.user && <CartInitializer cartData={initialCart} />}
-              <BackToTop />
-              <Toaster closeButton richColors position="bottom-center" />
-            </NextIntlClientProvider>
-          </ThemeProvider>
+          <StoreProvider>
+            <ThemeProvider attribute="class">
+              <NextIntlClientProvider>
+                <div className="absolute top-0 right-0 left-0 z-50 bg-transparent">
+                  <Navbar />
+                </div>
+                <main className="selection:bg-primary min-h-screen">
+                  {children}
+                </main>
+                <Footer />
+                {session?.user && (
+                  <CartInitializer cartData={initialCart} locale={locale} />
+                )}
+                <BackToTop />
+                <Toaster closeButton richColors position="bottom-center" />
+              </NextIntlClientProvider>
+            </ThemeProvider>
           </StoreProvider>
-          </AuthProvider>
+        </AuthProvider>
       </body>
     </html>
   );

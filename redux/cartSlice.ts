@@ -1,4 +1,5 @@
 import { CartItem, CartState } from "@/lib/types";
+import { calculateItemTotal } from "@/lib/utils";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 const initialState: CartState = {
@@ -6,16 +7,6 @@ const initialState: CartState = {
   total: 0,
   totalItems: 0,
   loading: true,
-};
-
-const getDiscountedUnitPrice = (item: CartItem): number => {
-  if (!item.discount || item.discount <= 0) return item.price;
-
-  return Math.max(item.price * (1 - item.discount / 100), 0);
-};
-
-const calculateItemTotal = (item: CartItem): number => {
-  return getDiscountedUnitPrice(item) * item.quantity;
 };
 
 const calculateCartTotal = (items: CartItem[]): number => {
@@ -114,4 +105,3 @@ export const {
 } = cartSlice.actions;
 
 export default cartSlice.reducer;
-export { calculateItemTotal };
