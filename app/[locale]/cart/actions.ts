@@ -1,17 +1,8 @@
 "use server";
 
-import { auth } from "@/lib/auth";
+import { getUser } from "@/app/data/get-user";
 import { prisma } from "@/lib/db";
 import { revalidatePath } from "next/cache";
-import { headers } from "next/headers";
-
-export const getUser = async () => {
-  const session = await auth.api.getSession({
-    headers: await headers(),
-  });
-
-  return session?.user || null;
-};
 
 export const getOrCreateCart = async (userId: string) => {
   let cart = await prisma.cart.findUnique({
@@ -59,9 +50,9 @@ export const getOrCreateCart = async (userId: string) => {
 
 export const getCart = async (locale: string = "en") => {
   try {
-      const user = await getUser();
-      
-      if (!user) {
+    const user = await getUser();
+
+    if (!user) {
       return {
         success: true,
         cart: {
@@ -70,8 +61,8 @@ export const getCart = async (locale: string = "en") => {
           total: 0,
         },
       };
-      }
-      
+    }
+
     const cart = await getOrCreateCart(user.id);
 
     // Format cart items with translated data
@@ -193,11 +184,11 @@ export const updateCartItemQuantity = async (
   quantity: number,
 ) => {
   try {
-      const user = await getUser();
-      
-      if (!user) {
+    const user = await getUser();
+
+    if (!user) {
       return { success: false, error: "error.requiredAuth" };
-      }
+    }
 
     // Verify cart item belongs to user
     const cartItem = await prisma.cartItem.findUnique({
@@ -235,11 +226,11 @@ export const updateCartItemQuantity = async (
 
 export const removeItemFromCart = async (cartItemId: string) => {
   try {
-      const user = await getUser();
-      
-      if (!user) {
+    const user = await getUser();
+
+    if (!user) {
       return { success: false, error: "error.requiredAuth" };
-      }
+    }
 
     // Verify cart item belongs to user
     const cartItem = await prisma.cartItem.findUnique({
@@ -264,12 +255,12 @@ export const removeItemFromCart = async (cartItemId: string) => {
 
 export const clearCart = async () => {
   try {
-      const user = await getUser();
-      
-      if (!user) {
+    const user = await getUser();
+
+    if (!user) {
       return { success: false, error: "error.requiredAuth" };
-      }
-      
+    }
+
     const cart = await prisma.cart.findUnique({
       where: { userId: user.id },
     });
@@ -290,6 +281,10 @@ export const clearCart = async () => {
 export type GetOrCreateCartType = Awaited<ReturnType<typeof getOrCreateCart>>;
 export type GetCartType = Awaited<ReturnType<typeof getCart>>;
 export type AddToCartType = Awaited<ReturnType<typeof addToCart>>;
-export type UpdateCartItemQuantityType = Awaited<ReturnType<typeof updateCartItemQuantity>>;
-export type RemoveItemFromCartType = Awaited<ReturnType<typeof removeItemFromCart>>;
+export type UpdateCartItemQuantityType = Awaited<
+  ReturnType<typeof updateCartItemQuantity>
+>;
+export type RemoveItemFromCartType = Awaited<
+  ReturnType<typeof removeItemFromCart>
+>;
 export type ClearCartType = Awaited<ReturnType<typeof clearCart>>;

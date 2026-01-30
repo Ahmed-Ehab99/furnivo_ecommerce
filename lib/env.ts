@@ -13,10 +13,12 @@ export const env = createEnv({
 
     I18NEXUS_API_KEY: z.string().min(1),
 
-    // ARCJET_KEY: z.string().min(1),
+    STRIPE_SECRETE_KEY: z.string().min(1),
+    STRIPE_WEBHOOK_SECRET: z.string().min(1),
 
-    // STRIPE_SECRETE_KEY: z.string().min(1),
-    // STRIPE_WEBHOOK_SECRET: z.string().min(1),
+    IMAGEKIT_PUBLIC_KEY: z.string().min(1),
+    IMAGEKIT_PRIVATE_KEY: z.string().min(1),
+    IMAGEKIT_URL_ENDPOINT: z.url(),
   },
   experimental__runtimeEnv: {},
 });

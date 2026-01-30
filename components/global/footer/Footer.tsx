@@ -42,8 +42,8 @@ const Footer = () => {
     },
   ];
   const bottomLinks = [
-    { title: t("termsConditions"), href: "/terms" },
-    { title: t("privacyPolicy"), href: "/privacy" },
+    { title: t("termsConditions"), href: "#" },
+    { title: t("privacyPolicy"), href: "#" },
   ];
 
   return (

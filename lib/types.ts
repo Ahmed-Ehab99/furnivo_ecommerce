@@ -1,3 +1,5 @@
+import { AbstractIntlMessages } from "next-intl";
+import { ThemeProvider as NextThemesProvider } from "next-themes";
 import { StaticImageData } from "next/image";
 import { authClient } from "./auth-client";
 
@@ -16,6 +18,19 @@ export type SearchParams = Promise<{
   discount?: string;
   page?: string;
 }>;
+
+export type AuthContextType = {
+  isAuthenticated: boolean;
+  user: Session["user"] | null;
+};
+
+export type ProvidersProps = React.ComponentProps<typeof NextThemesProvider> & {
+  children: React.ReactNode;
+  isAuthenticated: boolean;
+  user: AuthContextType["user"];
+  locale: string;
+  messages: AbstractIntlMessages;
+};
 
 export type GetProductsParams = {
   locale?: string;
@@ -125,3 +140,53 @@ export type Cart =
     }
   | null
   | undefined;
+
+export type DeliveryAddress = {
+  city: string;
+  streetName: string;
+  buildingName: string;
+};
+
+export type PaymentMethod = "CARD" | "AMAZON_PAY";
+
+export type CheckoutState = {
+  currentStep: number;
+  completedSteps: number[];
+  deliveryAddress: DeliveryAddress | null;
+  paymentMethod: PaymentMethod | null;
+};
+
+export type CheckoutItem = {
+  productId: string;
+  quantity: number;
+  price: number;
+  title: string;
+  description: string;
+  image: string;
+  slug: string;
+};
+
+export type CheckoutSessionInput = {
+  locale: string;
+  deliveryAddress: {
+    city: string;
+    streetName: string;
+    buildingName: string;
+  };
+  paymentMethod: "CARD" | "AMAZON_PAY";
+  items: CheckoutItem[];
+}
+
+export type CreateCheckoutInput = {
+  locale: string;
+  deliveryAddress: DeliveryAddress;
+  paymentMethod: PaymentMethod;
+  items: CheckoutItem[];
+};
+
+export type ServerActionError = {
+  success: false;
+  error: string;
+};
+
+export type ServerActionSuccess<T> = { success: true } & T;

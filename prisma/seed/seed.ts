@@ -1,6 +1,17 @@
 import { prisma } from "@/lib/db";
+import dotenv from "dotenv";
 import fs from "fs/promises";
 import path from "path";
+
+// Load environment variables from .env file
+dotenv.config();
+
+// Validate required environment variables
+if (!process.env.IMAGEKIT_URL_ENDPOINT) {
+  throw new Error(
+    "IMAGEKIT_URL_ENDPOINT is not defined in environment variables",
+  );
+}
 
 interface CategoryTranslation {
   locale: string;
@@ -31,14 +42,30 @@ interface ProductTranslation {
 interface ProductSeed {
   slug: string;
   price: string;
+  discount?: number;
   quantity: number;
   categorySlug: string;
   images: ProductImageSeed[];
   translations: ProductTranslation[];
 }
 
+/**
+ * Convert local path to ImageKit URL
+ * Removes leading slash and constructs ImageKit URL directly
+ */
+function localPathToImageKit(localPath: string): string {
+  // Remove leading slash if present
+  const cleanPath = localPath.startsWith("/") ? localPath.slice(1) : localPath;
+
+  // Construct ImageKit URL directly using process.env
+  const urlEndpoint = process.env.IMAGEKIT_URL_ENDPOINT!;
+
+  return `${urlEndpoint}/${cleanPath}`;
+}
+
 async function main() {
-  console.log("🌱 Starting seed...");
+  console.log("🌱 Starting seed with ImageKit URLs...");
+  console.log("📡 ImageKit Endpoint:", process.env.IMAGEKIT_URL_ENDPOINT);
 
   // Clear existing data (in correct order due to relations)
   await prisma.productTranslation.deleteMany();
@@ -73,10 +100,18 @@ async function main() {
   // Create categories with translations
   const categoryMap = new Map<string, string>();
   for (const cat of categoriesData) {
-    const { translations, ...categoryData } = cat;
+    const { translations, thumbnail, ...categoryData } = cat;
+
+    // Convert thumbnail to ImageKit URL
+    const imagekitThumbnail = localPathToImageKit(thumbnail);
+
+    console.log(`  Converting: ${thumbnail}`);
+    console.log(`  To: ${imagekitThumbnail}`);
+
     const created = await prisma.category.create({
       data: {
         ...categoryData,
+        thumbnail: imagekitThumbnail, // Use ImageKit URL
         translations: {
           create: translations,
         },
@@ -112,12 +147,18 @@ async function main() {
       ...productData
     } = prod;
 
+    // Convert image URLs to ImageKit URLs
+    const imagekitImages = images.map((img) => ({
+      ...img,
+      url: localPathToImageKit(img.url),
+    }));
+
     await prisma.product.create({
       data: {
         ...productData,
         categoryId,
         images: {
-          create: images,
+          create: imagekitImages, // Use ImageKit URLs
         },
         translations: {
           create: translations,
@@ -138,10 +179,14 @@ async function main() {
       • Living Room: ${livingRoomProducts.length}
       • Bed Room: ${bedRoomProducts.length}
       • Kitchen: ${kitchenProducts.length}
-    - Product Images: ${imageCount}
+    - Product Images: ${imageCount} (all using ImageKit URLs)
     - Languages: English (en) + Arabic (ar)
   `);
-  console.log("🎉 Seed completed successfully!");
+  console.log("\n📝 Example ImageKit URL:");
+  console.log(
+    `   ${localPathToImageKit("/categories/living-room/products/chair1.webp")}`,
+  );
+  console.log("\n🎉 Seed completed successfully!");
 }
 
 async function readJson<T>(filename: string): Promise<T> {
@@ -153,6 +198,10 @@ async function readJson<T>(filename: string): Promise<T> {
 main()
   .catch((e) => {
     console.error("❌ Seed failed:", e);
+    console.error("\nPlease check:");
+    console.error("  1. Your .env file exists");
+    console.error("  2. IMAGEKIT_URL_ENDPOINT is set correctly");
+    console.error("  3. Database connection is working");
     process.exit(1);
   })
   .finally(async () => {

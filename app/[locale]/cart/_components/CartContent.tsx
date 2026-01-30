@@ -169,7 +169,9 @@ const CartContent = () => {
           <span className="text-xl">{formatNumber(locale, total)}</span>
         </div>
       </div>
-      <Button className="w-full rounded-full">{t("placeOrder")}</Button>
+      <Button className="w-full rounded-full" asChild>
+        <Link href="/checkout">{t("placeOrder")}</Link>
+      </Button>
     </div>
   );
 };

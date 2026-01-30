@@ -96,18 +96,21 @@ const CategoryPage = async ({
         alt="Shape"
         loading="eager"
         className="absolute top-1/3 left-0 -z-50 max-w-40 md:top-1/6 lg:max-w-52"
+        priority
       />
       <Image
         src={CategoryRight}
         alt="Shape"
         loading="eager"
         className="absolute right-0 bottom-1/4 -z-50 max-w-40 lg:max-w-52"
+        priority
       />
       <Image
         src={CategoryLeft2}
         alt="Shape"
         loading="eager"
         className="absolute bottom-0 left-0 -z-50 max-w-40 lg:max-w-52"
+        priority
       />
     </div>
   );

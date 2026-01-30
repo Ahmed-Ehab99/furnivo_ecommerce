@@ -66,21 +66,68 @@
       }
     }
   },
-  "placeOrder": {
+  "checkout": {
+    "stepOneLabel": "data",
+    "stepTwoLabel": "payment",
+    "stepThreeLabel": "review",
+    "schemaError": {
+      "city": "City must be at least 1 characters",
+      "streetName": "Street name must be at least 1 characters",
+      "buildingName": "Building name must be at least 1 characters"
+    },
+    "stepOne": {
+      "title": "Delivery address",
+      "cityPlaceholder": "City",
+      "streetNamePlaceholder": "Street Name",
+      "buildingNamePlaceholder": "Building Name"
+    },
+    "stepTwo": {
+      "title": "Payment Method",
+      "cardPayment": "Card Payment",
+      "amazon_pay": "Amazon Pay"
+    },
+    "stepThree": {
+      "title": "Review order",
+      "subTitle": "Dear {customer}, please check your information for accuracy.",
+      "shoppingCartTitle": "Your shopping cart",
+      "aboutItem": "About Item",
+      "quantity": "Quantity",
+      "subtotal": "Subtotal",
+      "deliveryAddressTitle": "Delivery address",
+      "city": "City",
+      "street": "Street",
+      "building": "Building",
+      "edit": "Edit",
+      "payment": "Payment",
+      "total": "Total",
+      "processing": "Processing...",
+      "buyNow": "Buy Now"
+    },
+    "addressSaved": "Delivery address saved successfully",
+    "addressSaveFailed": "Failed to save delivery address. Please try again.",
+    "paymentMethodSaved": "Payment method saved",
+    "missingCheckoutInfo": "Please complete delivery and payment information",
+    "emptyCart": "Your cart is empty",
+    "checkoutFailed": "Checkout failed. Please try again.",
+    "checkoutError": "Something went wrong while placing your order",
+    "back": "Back",
+    "next": "Next",
+    "customer": "Customer",
     "title": "Your customer data for the order",
-    "deliveryAddress": "Delivery address",
-    "cityInput": "City",
-    "streetNameInput": "Street Name",
-    "buildingNumberInput": "Building Number"
+    "description": "Bringing Your Style Home"
   },
   "payment": {
-    "paymentMethod": "Payment method",
-    "methodOne": "Card Payment",
-    "methodTwo": "Paypal"
-  },
-  "report": {
-    "subTitle": "Review order",
-    "message": "please check your information for accuracy."
+    "success": {
+      "title": "Thank you for your purchase!",
+      "description": "We're doing a little happy dance over here.",
+      "btnText": "Go to home"
+    },
+    "cancel": {
+      "title": "Payment cancelled",
+      "description": "Your payment was cancelled. No charges were made to your account.",
+      "btn1Text": "Try again",
+      "btn2Text": "Go to home"
+    }
   },
   "search": {
     "desc": "Discover Elegant Comfort for Every Room",

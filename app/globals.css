@@ -1,6 +1,9 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @plugin "@tailwindcss/typography";
+@plugin "tailwind-scrollbar" {
+  nocompatible: true;
+}
 
 @custom-variant dark (&:is(.dark *));
 
@@ -151,7 +154,7 @@
 
 @layer base {
   * {
-    @apply border-primary outline-primary/50;
+    @apply border-primary outline-primary/50 scrollbar-thumb-primary scrollbar-w-1.5 scrollbar scroll-smooth;
   }
   body {
     @apply bg-background text-foreground font-gilroy;

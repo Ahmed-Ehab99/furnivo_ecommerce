@@ -11,10 +11,10 @@ const Heading = ({
 }) => {
   return (
     <div className={cn("flex flex-col gap-4", className)}>
-      <h1 className="font-gilroy text-5xl font-extrabold tracking-tight lg:text-6xl">
+      <h1 className="font-gilroy text-3xl font-extrabold tracking-tight md:text-4xl lg:text-5xl">
         {title}
       </h1>
-      <p className="text-lg font-normal opacity-80 lg:text-xl">
+      <p className="text-base font-normal opacity-80 md:text-lg lg:text-xl">
         {description}
       </p>
     </div>

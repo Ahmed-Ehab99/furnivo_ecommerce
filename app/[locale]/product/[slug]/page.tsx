@@ -129,7 +129,7 @@ const ProductDetailsPage = async ({
                     {discount && (
                       <Badge>- {formatNumber(locale, discount)}%</Badge>
                     )}
-                    
+
                     {discount && (
                       <del
                         className={cn(
@@ -187,6 +187,7 @@ const ProductDetailsPage = async ({
           "absolute end-0 top-0 -z-50 max-w-40 lg:max-w-52",
           isArabic && "rotate-y-180",
         )}
+        priority
       />
       <Image
         src={ShapeLeft}
@@ -196,6 +197,7 @@ const ProductDetailsPage = async ({
           "absolute start-0 bottom-0 -z-50 max-w-40 lg:max-w-52",
           isArabic && "rotate-y-180",
         )}
+        priority
       />
     </section>
   );

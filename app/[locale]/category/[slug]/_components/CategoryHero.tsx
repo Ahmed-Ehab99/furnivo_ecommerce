@@ -23,7 +23,7 @@ const CategoryHero = ({ locale, category }: CategoryHeroProps) => {
   const isArabic = locale === "ar";
 
   return (
-    <section className="grid grid-cols-1 items-center md:grid-cols-2 md:gap-10 lg:gap-20">
+    <section className="grid grid-cols-1 items-center md:grid-cols-2 md:gap-10 lg:gap-20 gap-5">
       <div className="order-last flex h-full flex-col md:order-first">
         <div className="text-primary flex flex-col gap-2">
           <BackBtn isArabic={isArabic} />

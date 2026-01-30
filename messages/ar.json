@@ -66,21 +66,68 @@
       }
     }
   },
-  "placeOrder": {
-    "title": "بيانات العميل لإتمام الطلب",
-    "deliveryAddress": "عنوان التوصيل",
-    "cityInput": "المدينة",
-    "streetNameInput": "اسم الشارع",
-    "buildingNumberInput": "رقم المبنى"
+  "checkout": {
+    "stepOneLabel": "البيانات",
+    "stepTwoLabel": "الدفع",
+    "stepThreeLabel": "المراجعة",
+    "schemaError": {
+      "city": "يجب إدخال اسم المدينة",
+      "streetName": "يجب إدخال اسم الشارع",
+      "buildingName": "يجب إدخال اسم المبنى"
+    },
+    "stepOne": {
+      "title": "عنوان التوصيل",
+      "cityPlaceholder": "المدينة",
+      "streetNamePlaceholder": "اسم الشارع",
+      "buildingNamePlaceholder": "اسم المبنى"
+    },
+    "stepTwo": {
+      "title": "طريقة الدفع",
+      "cardPayment": "الدفع بالبطاقة",
+      "amazon_pay": "الدفع عبر أمازون"
+    },
+    "stepThree": {
+      "title": "مراجعة الطلب",
+      "subTitle": "عزيزي {customer}، يرجى التأكد من صحة بياناتك قبل إتمام الطلب.",
+      "shoppingCartTitle": "سلة التسوق الخاصة بك",
+      "aboutItem": "تفاصيل المنتج",
+      "quantity": "الكمية",
+      "subtotal": "المجموع الفرعي",
+      "deliveryAddressTitle": "عنوان التوصيل",
+      "city": "المدينة",
+      "street": "الشارع",
+      "building": "المبنى",
+      "edit": "تعديل",
+      "payment": "الدفع",
+      "total": "الإجمالي",
+      "processing": "جارٍ معالجة طلبك...",
+      "buyNow": "إتمام الشراء"
+    },
+    "addressSaved": "تم حفظ عنوان التوصيل بنجاح",
+    "addressSaveFailed": "فشل حفظ عنوان التوصيل. يرجى المحاولة مرة أخرى.",
+    "paymentMethodSaved": "تم حفظ طريقة الدفع",
+    "missingCheckoutInfo": "يرجى استكمال بيانات التوصيل والدفع",
+    "emptyCart": "سلة التسوق فارغة",
+    "checkoutFailed": "فشلت عملية الدفع. يرجى المحاولة مرة أخرى.",
+    "checkoutError": "حدث خطأ أثناء إتمام الطلب",
+    "back": "رجوع",
+    "next": "التالي",
+    "customer": "العميل",
+    "title": "بيانات العميل الخاصة بالطلب",
+    "description": "نوصّل ذوقك إلى منزلك"
   },
   "payment": {
-    "paymentMethod": "طريقة الدفع",
-    "methodOne": "الدفع بالبطاقة",
-    "methodTwo": "الدفع باستخدام بايبال"
-  },
-  "report": {
-    "subTitle": "مراجعة الطلب",
-    "message": "يرجى التأكد من صحة معلوماتك."
+    "success": {
+      "title": "شكرًا لك على عملية الدفع!",
+      "description": "نحن نقوم بالرقصة الطفيفة قليلاً هنا.",
+      "btnText": "العودة إلى الصفحة الرئيسية"
+    },
+    "cancel": {
+      "title": "تم إلغاء الدفع",
+      "description": "لم يتم تحصيل أي رسوم على حسابك.",
+      "btn1Text": "إعادة المحاولة",
+      "btn2Text": "العودة إلى الصفحة الرئيسية"
+    }
   },
   "search": {
     "desc": "اكتشف الراحة والأناقة في كل غرفة",

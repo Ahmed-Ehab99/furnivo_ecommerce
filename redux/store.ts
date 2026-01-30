@@ -1,17 +1,19 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { cartApi } from "./cartApi";
+import { cartApi } from "./features/cart/cartApi";
+import { checkoutApi } from "./features/checkout/checkoutApi";
+import checkoutReducer from "./features/checkout/checkoutSlice";
 
 export const makeStore = () => {
   return configureStore({
     reducer: {
-      // 1. Add the API reducer
-      // The key [cartApi.reducerPath] is dynamic, ensuring no name clashes
       [cartApi.reducerPath]: cartApi.reducer,
+      [checkoutApi.reducerPath]: checkoutApi.reducer,
+      checkout: checkoutReducer,
     },
-    // 2. Add the API middleware
-    // This enables caching, invalidation, polling, and other features of RTK Query
     middleware: (getDefaultMiddleware) =>
-      getDefaultMiddleware().concat(cartApi.middleware),
+      getDefaultMiddleware()
+        .concat(cartApi.middleware)
+        .concat(checkoutApi.middleware),
   });
 };
 

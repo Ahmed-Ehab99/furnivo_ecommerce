@@ -7,7 +7,7 @@ import {
   useGetCartQuery,
   useRemoveItemMutation,
   useUpdateQuantityMutation,
-} from "@/redux/cartApi";
+} from "@/redux/features/cart/cartApi";
 import { useTranslations } from "next-intl";
 import { toast } from "sonner";
 
@@ -32,9 +32,6 @@ export function useCart(locale: string = "en") {
     locale: string,
   ): Promise<boolean> => {
     try {
-      // Pass 'itemDetails' for the optimistic update
-      // We generate a temp ID because the real ID comes from DB,
-      // but for UI purposes, a temp ID is fine until next fetch.
       await addToCartMutation({
         productId: item.productId,
         quantity,

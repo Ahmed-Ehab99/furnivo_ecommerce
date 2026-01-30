@@ -1,18 +1,18 @@
 import Footer from "@/components/global/footer/Footer";
 import Navbar from "@/components/global/navbar/Navbar";
 import BackToTop from "@/components/ui/back-to-top";
-import { AuthProvider } from "@/contexts/AuthContext";
 import { routing } from "@/i18n/routing";
 import { auth } from "@/lib/auth";
-import { ThemeProvider } from "@/providers/theme-provider";
+import { MainRoutesParams } from "@/lib/types";
+import Providers from "@/providers/Providers";
 import { gilroy } from "@/public/fonts";
-import CartInitializer from "@/redux/CartInitializer";
+import CartInitializer from "@/redux/features/cart/CartInitializer";
 import type { Metadata } from "next";
-import { hasLocale, NextIntlClientProvider } from "next-intl";
+import { hasLocale } from "next-intl";
+import { getMessages } from "next-intl/server";
 import { headers } from "next/headers";
 import { notFound } from "next/navigation";
 import { Toaster } from "sonner";
-import StoreProvider from "../../redux/StoreProvider";
 import "../globals.css";
 import { getCart } from "./cart/actions";
 
@@ -30,12 +30,13 @@ export default async function RootLayout({
   params,
 }: Readonly<{
   children: React.ReactNode;
-  params: Promise<{ locale: string }>;
+  params: MainRoutesParams;
 }>) {
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) {
     notFound();
   }
+  const messages = await getMessages();
 
   // Check if user is authenticated
   const session = await auth.api.getSession({
@@ -59,26 +60,25 @@ export default async function RootLayout({
       suppressHydrationWarning
     >
       <body className={`${gilroy.variable} antialiased`}>
-        <AuthProvider isAuthenticated={isAuthenticated} user={user}>
-          <StoreProvider>
-            <ThemeProvider attribute="class">
-              <NextIntlClientProvider>
-                <div className="absolute top-0 right-0 left-0 z-50 bg-transparent">
-                  <Navbar />
-                </div>
-                <main className="selection:bg-primary min-h-screen">
-                  {children}
-                </main>
-                <Footer />
-                {session?.user && (
-                  <CartInitializer cartData={initialCart} locale={locale} />
-                )}
-                <BackToTop />
-                <Toaster closeButton richColors position="bottom-center" />
-              </NextIntlClientProvider>
-            </ThemeProvider>
-          </StoreProvider>
-        </AuthProvider>
+        <Providers
+          isAuthenticated={isAuthenticated}
+          user={user}
+          locale={locale}
+          messages={messages}
+          attribute="class"
+          defaultTheme="light"
+        >
+          <div className="absolute top-0 right-0 left-0 z-50 bg-transparent">
+            <Navbar />
+          </div>
+          <main className="selection:bg-primary min-h-screen">{children}</main>
+          <Footer />
+          {session?.user && (
+            <CartInitializer cartData={initialCart} locale={locale} />
+          )}
+          <BackToTop />
+          <Toaster closeButton richColors position="bottom-center" />
+        </Providers>
       </body>
     </html>
   );

@@ -8,20 +8,23 @@ datasource db {
 }
 
 model User {
-  id            String  @id @default(uuid())
-  email         String  @unique
-  firstName     String?
-  lastName      String?
-  name          String?
-  emailVerified Boolean @default(false)
-  image         String?
+  id               String  @id @default(uuid())
+  email            String  @unique
+  firstName        String?
+  lastName         String?
+  name             String?
+  emailVerified    Boolean @default(false)
+  image            String?
+  stripeCustomerId String? @unique
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  sessions Session[]
-  accounts Account[]
-  cart     Cart?
+  sessions  Session[]
+  accounts  Account[]
+  cart      Cart?
+  addresses Address[]
+  orders    Order[]
 
   @@map("user")
 }
@@ -123,6 +126,7 @@ model Product {
   images       ProductImage[]
   translations ProductTranslation[]
   cartItems    CartItem[]
+  orderItems   OrderItem[]
 
   @@index([slug])
   @@index([categoryId])
@@ -191,4 +195,89 @@ model CartItem {
   @@index([cartId])
   @@index([productId])
   @@map("cart_items")
+}
+
+model Address {
+  id           String @id @default(uuid())
+  city         String
+  streetName   String
+  buildingName String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  userId String
+  user   User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  orders Order[]
+
+  @@index([userId])
+  @@map("addresses")
+}
+
+enum OrderStatus {
+  PENDING
+  PROCESSING
+  CANCELLED
+}
+
+enum PaymentMethod {
+  CARD
+  AMAZON_PAY
+}
+
+enum PaymentStatus {
+  PENDING
+  PAID
+  FAILED
+}
+
+model Order {
+  id              String        @id @default(uuid())
+  orderNumber     String        @unique
+  status          OrderStatus   @default(PENDING)
+  paymentMethod   PaymentMethod
+  paymentStatus   PaymentStatus @default(PENDING)
+  stripeSessionId String?
+  totalAmount     Decimal       @db.Decimal(10, 2)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  userId    String
+  user      User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  addressId String
+  address   Address     @relation(fields: [addressId], references: [id])
+  items     OrderItem[]
+
+  @@index([userId])
+  @@index([orderNumber])
+  @@index([status])
+  @@map("orders")
+}
+
+model OrderItem {
+  id       String   @id @default(uuid())
+  quantity Int
+  price    Decimal  @db.Decimal(10, 2)
+  discount Decimal? @db.Decimal(10, 2)
+
+  // Product info snapshot (in case product is deleted later)
+  productTitle       String
+  productDescription String  @db.Text
+  productPrice       Decimal @db.Decimal(10, 2)
+  productImage       String
+  productSlug        String
+
+  // Store the locale of the purchase for historical reference
+  orderLocale String @default("en")
+
+  orderId   String
+  order     Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  productId String?
+  product   Product? @relation(fields: [productId], references: [id], onDelete: SetNull)
+
+  createdAt DateTime @default(now())
+
+  @@index([orderId])
+  @@map("order_items")
 }

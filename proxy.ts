@@ -5,17 +5,34 @@ import { routing } from "./i18n/routing";
 
 const intlMiddleware = createMiddleware(routing);
 
+const protectedRoutes = ["/checkout", "/payment/success", "/payment/cancel"];
+
 export default function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
-  const sessionCookie = getSessionCookie(request);
-  const segments = pathname.split("/");
-  const locale = routing.locales.includes(segments[1]) ? segments[1] : null;
-  const isAuthPage = locale
-    ? pathname === `/${locale}/auth`
-    : pathname === "/auth";
+
+  if (pathname.startsWith("/api/webhook/stripe")) {
+    return NextResponse.next();
+  }
 
   if (pathname.startsWith("/api/auth/")) {
     return NextResponse.next();
+  }
+
+  const sessionCookie = getSessionCookie(request);
+  const segments = pathname.split("/");
+  const locale = routing.locales.includes(segments[1]) ? segments[1] : null;
+  const normalizedPath = locale ? `/${segments.slice(2).join("/")}` : pathname;
+  const isAuthPage = locale
+    ? pathname === `/${locale}/auth`
+    : pathname === "/auth";
+  const isProtectedRoute = protectedRoutes.some((route) =>
+    normalizedPath.startsWith(route),
+  );
+
+  if (isProtectedRoute && !sessionCookie) {
+    return NextResponse.redirect(
+      new URL(locale ? `/${locale}/auth` : "/auth", request.url),
+    );
   }
 
   if (isAuthPage && sessionCookie) {

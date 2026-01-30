@@ -1,12 +1,12 @@
 "use client";
 
+import { useAuth } from "@/app/[locale]/auth/hooks/useAuth";
 import { useCart } from "@/app/[locale]/cart/hooks/useCart";
-import { useAuth } from "@/contexts/AuthContext";
 import { ProductT } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { useTranslations } from "next-intl";
 import { useParams, useRouter } from "next/navigation";
-import React from "react";
+import React, { useEffect, useEffectEvent, useState } from "react";
 import { toast } from "sonner";
 import { Button } from "../ui/button";
 import { Spinner } from "../ui/spinner";
@@ -36,6 +36,15 @@ const AddToCartBtn = ({
   const t = useTranslations("toastes");
   const { addToCart, loading } = useCart(locale);
   const { isAuthenticated } = useAuth();
+  const [mounted, setMounted] = useState(false);
+
+  const mountingCheck = useEffectEvent(() => {
+    setMounted(true);
+  });
+
+  useEffect(() => {
+    mountingCheck();
+  }, []);
 
   const handleAddToCart = async () => {
     // Check if user is authenticated
@@ -75,6 +84,18 @@ const AddToCartBtn = ({
       onSuccess();
     }
   };
+
+  if (!mounted) {
+    return (
+      <Button
+        disabled
+        size={size || "default"}
+        className={cn("rounded-full opacity-50", className)}
+      >
+        {children}
+      </Button>
+    );
+  }
 
   return (
     <Button
