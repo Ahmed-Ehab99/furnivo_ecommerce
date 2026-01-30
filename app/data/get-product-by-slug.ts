@@ -1,11 +1,7 @@
 import { prisma } from "@/lib/db";
-import { ProductResult } from "@/lib/types";
 import { notFound } from "next/navigation";
 
-export async function getProductBySlug(
-  slug: string,
-  locale: string = "en",
-): Promise<ProductResult | null> {
+export async function getProductBySlug(slug: string, locale: string = "en") {
   const product = await prisma.product.findUnique({
     where: { slug },
     include: {
@@ -44,3 +40,13 @@ export async function getProductBySlug(
 }
 
 export type GetProductBySlugType = Awaited<ReturnType<typeof getProductBySlug>>;
+
+export async function getAllProductSlugs(): Promise<string[]> {
+  const products = await prisma.product.findMany({
+    select: {
+      slug: true,
+    },
+  });
+
+  return products.map((p) => p.slug);
+}

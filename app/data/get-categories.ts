@@ -1,10 +1,7 @@
 import { prisma } from "@/lib/db";
-import { CategoryResult } from "@/lib/types";
 import "server-only";
 
-export const getCategories = async (
-  locale: string = "en",
-): Promise<CategoryResult[]> => {
+export const getCategories = async (locale: string = "en") => {
   const categories = await prisma.category.findMany({
     orderBy: {
       createdAt: "asc",

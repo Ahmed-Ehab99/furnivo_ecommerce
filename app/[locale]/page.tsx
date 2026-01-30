@@ -7,11 +7,12 @@ import { cn } from "@/lib/utils";
 import HomeLeft1 from "@/public/shapes/homeLeft1.svg";
 import HomeLeft2 from "@/public/shapes/homeLeft2.svg";
 import HomeRight from "@/public/shapes/homeRight.svg";
+import { setRequestLocale } from "next-intl/server";
 import Image from "next/image";
-import { use } from "react";
 
-const HomePage = ({ params }: { params: MainRoutesParams }) => {
-  const { locale } = use(params);
+const HomePage = async ({ params }: { params: MainRoutesParams }) => {
+  const { locale } = await params;
+  setRequestLocale(locale);
   const isArabic = locale === "ar";
 
   return (

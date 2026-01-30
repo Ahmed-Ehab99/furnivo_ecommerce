@@ -1,4 +1,7 @@
-import { getProductBySlug } from "@/app/data/get-product-by-slug";
+import {
+  getAllProductSlugs,
+  getProductBySlug,
+} from "@/app/data/get-product-by-slug";
 import BackBtn from "@/components/global/BackBtn";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -20,6 +23,16 @@ import { getTranslations } from "next-intl/server";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import ProductActions from "./_components/ProductActions";
+
+export const revalidate = 3600;
+
+export async function generateStaticParams() {
+  const slugs = await getAllProductSlugs();
+
+  return slugs.map((slug) => ({
+    slug,
+  }));
+}
 
 const ProductDetailsPage = async ({
   params,

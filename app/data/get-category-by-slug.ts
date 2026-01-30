@@ -1,12 +1,11 @@
 import { prisma } from "@/lib/db";
-import { CategoryResult } from "@/lib/types";
 import { notFound } from "next/navigation";
 import "server-only";
 
 export const getCategoryBySlug = async (
   slug: string = "",
   locale: string = "en",
-): Promise<CategoryResult | null> => {
+) => {
   const category = await prisma.category.findUnique({
     where: { slug },
     include: {

@@ -1,42 +1,26 @@
 "use client";
 
-import { GetCartType } from "@/app/[locale]/cart/actions";
-import { CartItem } from "@/lib/types";
-import { useAppDispatch } from "@/redux/hooks";
-import { useEffect, useRef } from "react";
-import { cartApi } from "./cartApi";
+import { authClient } from "@/lib/auth-client";
+import { useEffect } from "react";
+import { useGetCartQuery } from "./cartApi";
 
 export default function CartInitializer({
-  cartData,
   locale = "en",
 }: {
-  cartData: GetCartType["cart"] | null;
   locale?: string;
 }) {
-  const dispatch = useAppDispatch();
-  const initialized = useRef(false);
+  const { data: session } = authClient.useSession();
+  const { data: cart } = useGetCartQuery(locale, {
+    skip: !session?.user, // Don't fetch if not authenticated
+  });
 
   useEffect(() => {
-    // Only run once and only if we have data from the server
-    if (!initialized.current && cartData) {
-      const totalItems = cartData.items.reduce(
-        (sum, item) => sum + item.quantity,
-        0,
-      );
-
-      const initialData = {
-        ...cartData,
-        items: cartData.items as CartItem[],
-        totalItems,
-        loading: false,
-      };
-
-      // Seeding the cache
-      dispatch(cartApi.util.upsertQueryData("getCart", locale, initialData));
-
-      initialized.current = true;
+    // Cart data is now in Redux store via RTK Query
+    // The hook automatically handles caching and updates
+    if (cart) {
+      console.log("Cart initialized:", cart);
     }
-  }, [cartData, dispatch, locale]);
+  }, [cart]);
 
   return null;
 }

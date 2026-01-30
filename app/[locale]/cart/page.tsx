@@ -2,14 +2,14 @@ import Heading from "@/components/global/Heading";
 import { MainRoutesParams } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import CenterShape from "@/public/shapes/centerShape.svg";
-import { useTranslations } from "next-intl";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import Image from "next/image";
-import { use } from "react";
 import CartContent from "./_components/CartContent";
 
-const CartPage = ({ params }: { params: MainRoutesParams }) => {
-  const t = useTranslations("cart");
-  const { locale } = use(params);
+const CartPage = async ({ params }: { params: MainRoutesParams }) => {
+  const { locale } = await params;
+  const t = await getTranslations("cart");
+  setRequestLocale(locale);
   const isArabic = locale === "ar";
 
   return (

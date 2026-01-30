@@ -1,7 +1,9 @@
 "use client";
 
-import { AuthContext } from "@/contexts/AuthContext";
+import { AuthProvider } from "@/contexts/AuthContext";
+import AuthInitializer from "@/contexts/AuthInitializer";
 import { ProvidersProps } from "@/lib/types";
+import CartInitializer from "@/redux/features/cart/CartInitializer";
 import { AppStore, makeStore } from "@/redux/store";
 import { NextIntlClientProvider } from "next-intl";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
@@ -10,8 +12,6 @@ import { Provider } from "react-redux";
 
 const Providers = ({
   children,
-  isAuthenticated,
-  user,
   locale,
   messages,
   ...props
@@ -19,18 +19,17 @@ const Providers = ({
   const [store] = useState<AppStore>(() => makeStore());
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, user }}>
+    <AuthProvider initialValue={{ isAuthenticated: false, user: null }}>
       <Provider store={store}>
         <NextThemesProvider {...props}>
-          <NextIntlClientProvider
-            locale={locale}
-            messages={messages}
-          >
+          <NextIntlClientProvider locale={locale} messages={messages}>
+            <AuthInitializer />
+            <CartInitializer locale={locale} />
             {children}
           </NextIntlClientProvider>
         </NextThemesProvider>
       </Provider>
-    </AuthContext.Provider>
+    </AuthProvider>
   );
 };
 

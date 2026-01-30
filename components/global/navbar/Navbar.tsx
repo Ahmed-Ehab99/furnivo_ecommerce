@@ -1,6 +1,8 @@
+"use client";
+
 import LocaleSwitcher from "@/components/ui/local-switcher";
-import { auth } from "@/lib/auth";
-import { headers } from "next/headers";
+import { Skeleton } from "@/components/ui/skeleton";
+import { authClient } from "@/lib/auth-client";
 import { AnimatedThemeToggler } from "../../ui/animated-theme-toggler";
 import CartBtn from "./CartBtn";
 import DesktopNav from "./DesktopNav";
@@ -10,10 +12,8 @@ import NavbarLogo from "./NavbarLogo";
 import SearchBtn from "./SearchBtn";
 import SignoutBtn from "./SignoutBtn";
 
-const Navbar = async () => {
-  const session = await auth.api.getSession({
-    headers: await headers(),
-  });
+const Navbar = () => {
+  const { data: session, isPending } = authClient.useSession();
 
   return (
     <header className="container mx-auto flex items-center justify-between px-4">
@@ -32,7 +32,13 @@ const Navbar = async () => {
         <CartBtn />
         <AnimatedThemeToggler />
         <LocaleSwitcher />
-        {session ? <SignoutBtn /> : <LoginBtn />}
+        {isPending ? (
+          <Skeleton className="h-9 w-18.5" />
+        ) : session ? (
+          <SignoutBtn />
+        ) : (
+          <LoginBtn />
+        )}
       </div>
     </header>
   );

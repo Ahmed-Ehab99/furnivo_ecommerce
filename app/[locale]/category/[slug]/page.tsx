@@ -20,31 +20,23 @@ const CategoryPage = async ({
   searchParams: SearchParams;
 }) => {
   const { locale, slug } = await params;
-  const { page: pageParam, sort } = await searchParams;
-
-  // Parse page number (default to 1)
-  const currentPage = pageParam ? parseInt(pageParam, 10) : 1;
-  const page = isNaN(currentPage) || currentPage < 1 ? 1 : currentPage;
-  const limit = 8; // Items per page
-
-  // Fetch category first to get its ID
+  const { page: pageParam } = await searchParams;
   const category = await getCategoryBySlug(slug, locale);
-
-  // If category doesn't exist, return 404
+  
   if (!category) {
     notFound();
   }
+  
+  const currentPage = pageParam ? parseInt(pageParam, 10) : 1;
+  const page = isNaN(currentPage) || currentPage < 1 ? 1 : currentPage;
+  const limit = 8;
 
-  // Fetch products for this category
-  const productsData = await getProducts({
+  const { products, totalPages } = await getProducts({
     locale,
     categoryId: category.id,
-    priceSort: sort === "asc" || sort === "desc" ? sort : undefined,
     page,
     limit,
   });
-
-  const { products, totalPages } = productsData;
 
   if (products.length === 0) {
     return (
@@ -83,9 +75,6 @@ const CategoryPage = async ({
               totalPages={totalPages}
               baseUrl={`/category/${slug}`}
               locale={locale}
-              searchParams={{
-                sort: sort || undefined,
-              }}
             />
           </div>
         </div>

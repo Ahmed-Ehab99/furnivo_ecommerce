@@ -1,10 +1,6 @@
 import { LOCALES } from "@/i18n/routing";
 import { prisma } from "@/lib/db";
-import {
-  GetProductsParams,
-  GetProductsResult,
-  ProductWithCategoryT,
-} from "@/lib/types";
+import { GetProductsParams, ProductWithCategoryT } from "@/lib/types";
 import { Prisma } from "@/prisma/generated/prisma/client";
 import "server-only";
 
@@ -17,7 +13,7 @@ export const getProducts = async ({
   priceSort,
   onlyDiscounted = false,
   page = 1,
-}: GetProductsParams = {}): Promise<GetProductsResult> => {
+}: GetProductsParams = {}) => {
   const where: Prisma.ProductWhereInput = {};
 
   // Filter by category if provided

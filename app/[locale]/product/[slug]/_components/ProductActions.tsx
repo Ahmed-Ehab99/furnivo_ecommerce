@@ -1,9 +1,10 @@
 "use client";
 
 import { useCart } from "@/app/[locale]/cart/hooks/useCart";
+import { GetProductBySlugType } from "@/app/data/get-product-by-slug";
 import AddToCartBtn from "@/components/global/AddToCartBtn";
 import { Button } from "@/components/ui/button";
-import { ProductResult, ProductT } from "@/lib/types";
+import { ProductT } from "@/lib/types";
 import { formatNumber } from "@/lib/utils";
 import { Minus, Plus } from "lucide-react";
 import { useTranslations } from "next-intl";
@@ -13,7 +14,7 @@ const ProductActions = ({
   product,
   locale,
 }: {
-  product: ProductResult;
+  product: GetProductBySlugType;
   locale: string;
 }) => {
   const [quantityToAdd, setQuantityToAdd] = useState(1);

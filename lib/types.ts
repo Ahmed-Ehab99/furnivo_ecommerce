@@ -3,11 +3,6 @@ import { ThemeProvider as NextThemesProvider } from "next-themes";
 import { StaticImageData } from "next/image";
 import { authClient } from "./auth-client";
 
-export type ApiResponse = {
-  status: "success" | "error";
-  message: string;
-};
-
 export type Session = typeof authClient.$Infer.Session;
 export type MainRoutesParams = Promise<{ locale: string }>;
 export type DynamicRoutesParams = Promise<{ locale: string; slug: string }>;
@@ -22,12 +17,14 @@ export type SearchParams = Promise<{
 export type AuthContextType = {
   isAuthenticated: boolean;
   user: Session["user"] | null;
+  setAuth: (auth: {
+    isAuthenticated: boolean;
+    user: Session["user"] | null;
+  }) => void;
 };
 
 export type ProvidersProps = React.ComponentProps<typeof NextThemesProvider> & {
   children: React.ReactNode;
-  isAuthenticated: boolean;
-  user: AuthContextType["user"];
   locale: string;
   messages: AbstractIntlMessages;
 };
@@ -63,21 +60,9 @@ export type ProductWithCategoryT = ProductT & {
   };
 };
 
-export type GetProductsResult = {
-  products: ProductWithCategoryT[];
-  total: number;
-  page: number;
-  limit: number;
-  totalPages: number;
-};
-
-export type CategoryResult = {
-  id: string;
-  slug: string;
-  thumbnail: string;
-  imageAlt: string;
-  title: string;
-  description: string;
+export type CartItem = ProductT & {
+  productId: string;
+  maxQuantity: number;
 };
 
 export type FeatureItem = {
@@ -85,31 +70,6 @@ export type FeatureItem = {
   image: StaticImageData;
   title: string;
   desc: string;
-};
-
-type ImagesT = {
-  id: string;
-  order: number;
-  url: string;
-  alt: string;
-};
-
-export type ProductResult = {
-  id: string;
-  category: string;
-  slug: string;
-  images: ImagesT[];
-  title: string;
-  description: string;
-  price: number;
-  discount: number | null;
-  quantity: number;
-  categorySlug: string;
-};
-
-export type CartItem = ProductT & {
-  productId: string;
-  maxQuantity: number;
 };
 
 export type CartState = {
@@ -175,7 +135,7 @@ export type CheckoutSessionInput = {
   };
   paymentMethod: "CARD" | "AMAZON_PAY";
   items: CheckoutItem[];
-}
+};
 
 export type CreateCheckoutInput = {
   locale: string;

@@ -1,3 +1,4 @@
+import { GetCategoryBySlugType } from "@/app/data/get-category-by-slug";
 import BackBtn from "@/components/global/BackBtn";
 import Heading from "@/components/global/Heading";
 import {
@@ -8,13 +9,12 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import { CategoryResult } from "@/lib/types";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 
 interface CategoryHeroProps {
-  category: CategoryResult;
+  category: GetCategoryBySlugType;
   locale: string;
 }
 
@@ -23,7 +23,7 @@ const CategoryHero = ({ locale, category }: CategoryHeroProps) => {
   const isArabic = locale === "ar";
 
   return (
-    <section className="grid grid-cols-1 items-center md:grid-cols-2 md:gap-10 lg:gap-20 gap-5">
+    <section className="grid grid-cols-1 items-center gap-5 md:grid-cols-2 md:gap-10 lg:gap-20">
       <div className="order-last flex h-full flex-col md:order-first">
         <div className="text-primary flex flex-col gap-2">
           <BackBtn isArabic={isArabic} />
