@@ -1,7 +1,7 @@
 "use client";
 
-import DarkLogo from "@/public/dark-logo.png";
-import LightLogo from "@/public/light-logo.png";
+import DarkLogo from "@/public/dark-logo.webp";
+import LightLogo from "@/public/light-logo.webp";
 import { useTheme } from "next-themes";
 import Image from "next/image";
 import Link from "next/link";

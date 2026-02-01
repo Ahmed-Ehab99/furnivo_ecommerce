@@ -9,7 +9,7 @@ const CategoriesSec = ({ locale }: { locale: string }) => {
 
   return (
     <section className="layout-spacing flex flex-col items-center gap-10 md:gap-20 lg:flex-row lg:items-end">
-      <h2 className="font-gilroy text-[2.5rem] font-extrabold">
+      <h2 className="w-min text-[2.5rem] font-extrabold">
         {t("categoriesTitle")}
       </h2>
 
@@ -48,7 +48,7 @@ const RenderCategoriesSkeleton = () => {
       {Array.from({ length: 3 }).map((_, i) => (
         <Skeleton
           key={i}
-          className="h-135.5 w-86 rounded-xl md:h-100 md:w-54.5 lg:h-123.5 lg:w-85.5"
+          className="h-135.5 w-86 rounded-xl md:h-100 md:w-54.5 lg:h-117.5 lg:w-73.5"
         />
       ))}
     </div>

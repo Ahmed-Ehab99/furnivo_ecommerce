@@ -15,6 +15,7 @@ import {
   DeliveryAddressFormData,
   deliveryAddressSchema,
 } from "../../schema/checkoutSchema";
+import { deliveryAddressDefaultValues } from "@/lib/constants";
 
 const DeliveryAddressStep = ({ locale }: { locale: string }) => {
   const router = useRouter();
@@ -26,11 +27,7 @@ const DeliveryAddressStep = ({ locale }: { locale: string }) => {
 
   const form = useForm<DeliveryAddressFormData>({
     resolver: zodResolver(deliveryAddressSchema),
-    defaultValues: deliveryAddress || {
-      city: "",
-      streetName: "",
-      buildingName: "",
-    },
+    defaultValues: deliveryAddress || deliveryAddressDefaultValues,
   });
 
   const { errors } = form.formState;
@@ -78,7 +75,6 @@ const DeliveryAddressStep = ({ locale }: { locale: string }) => {
               </FormItem>
             )}
           />
-
           {/* Street Name */}
           <FormField
             control={form.control}
@@ -104,7 +100,6 @@ const DeliveryAddressStep = ({ locale }: { locale: string }) => {
               </FormItem>
             )}
           />
-
           {/* Building Name */}
           <FormField
             control={form.control}
@@ -130,7 +125,6 @@ const DeliveryAddressStep = ({ locale }: { locale: string }) => {
               </FormItem>
             )}
           />
-
           {/* Buttons */}
           <div className="flex justify-between pt-4">
             <Button

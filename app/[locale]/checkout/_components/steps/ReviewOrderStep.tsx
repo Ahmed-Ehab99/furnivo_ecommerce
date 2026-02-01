@@ -124,7 +124,6 @@ const ReviewOrderStep = ({ locale }: { locale: string }) => {
             })}
           </div>
         </div>
-
         {/* Right Side */}
         <div className="space-y-10">
           <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
@@ -214,7 +213,6 @@ const ReviewOrderStep = ({ locale }: { locale: string }) => {
           </div>
         </div>
       </div>
-
       {/* Buttons */}
       <div className="flex justify-between pt-4">
         <Button

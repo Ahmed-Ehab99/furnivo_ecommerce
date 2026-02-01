@@ -73,7 +73,6 @@ const PaymentMethodStep = ({ locale }: { locale: string }) => {
             </div>
           </div>
         </button>
-
         {/* Amazon Pay Option */}
         <button
           onClick={() => setSelectedMethod("AMAZON_PAY")}
@@ -110,7 +109,6 @@ const PaymentMethodStep = ({ locale }: { locale: string }) => {
           </div>
         </button>
       </div>
-
       {/* Buttons */}
       <div className="flex justify-between pt-4">
         <Button

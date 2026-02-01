@@ -1,4 +1,5 @@
 import { prisma } from "@/lib/db";
+import { getImageKitUrl } from "@/lib/imagekit";
 import dotenv from "dotenv";
 import fs from "fs/promises";
 import path from "path";
@@ -53,14 +54,9 @@ interface ProductSeed {
  * Convert local path to ImageKit URL
  * Removes leading slash and constructs ImageKit URL directly
  */
-function localPathToImageKit(localPath: string): string {
+function normalizeImagePath(localPath: string): string {
   // Remove leading slash if present
-  const cleanPath = localPath.startsWith("/") ? localPath.slice(1) : localPath;
-
-  // Construct ImageKit URL directly using process.env
-  const urlEndpoint = process.env.IMAGEKIT_URL_ENDPOINT!;
-
-  return `${urlEndpoint}/${cleanPath}`;
+  return localPath.startsWith("/") ? localPath.slice(1) : localPath;
 }
 
 async function main() {
@@ -103,7 +99,11 @@ async function main() {
     const { translations, thumbnail, ...categoryData } = cat;
 
     // Convert thumbnail to ImageKit URL
-    const imagekitThumbnail = localPathToImageKit(thumbnail);
+    const imagekitThumbnail = getImageKitUrl(normalizeImagePath(thumbnail), {
+      width: 600,
+      quality: 80,
+      format: "webp",
+    });
 
     console.log(`  Converting: ${thumbnail}`);
     console.log(`  To: ${imagekitThumbnail}`);
@@ -150,7 +150,11 @@ async function main() {
     // Convert image URLs to ImageKit URLs
     const imagekitImages = images.map((img) => ({
       ...img,
-      url: localPathToImageKit(img.url),
+      url: getImageKitUrl(normalizeImagePath(img.url), {
+        width: 900,
+        quality: 80,
+        format: "webp",
+      }),
     }));
 
     await prisma.product.create({
@@ -184,7 +188,7 @@ async function main() {
   `);
   console.log("\n📝 Example ImageKit URL:");
   console.log(
-    `   ${localPathToImageKit("/categories/living-room/products/chair1.webp")}`,
+    `   ${normalizeImagePath("/categories/living-room/products/chair1.webp")}`,
   );
   console.log("\n🎉 Seed completed successfully!");
 }

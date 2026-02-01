@@ -63,7 +63,6 @@ export function useCart(locale: string = "en") {
   const updateQuantity = async (cartItemId: string, quantity: number) => {
     try {
       await updateQtyMutation({ id: cartItemId, quantity, locale }).unwrap();
-      // No toast needed for qty update usually, keeps UI clean
     } catch {
       toast.error(t("error.quantityUpdate"));
     }
@@ -71,7 +70,6 @@ export function useCart(locale: string = "en") {
 
   const incrementQuantity = async (cartItemId: string) => {
     const item = cart.items.find((i) => i.id === cartItemId);
-    // Check maxQuantity locally before firing mutation
     if (item && item.quantity < item.maxQuantity) {
       await updateQuantity(cartItemId, item.quantity + 1);
     } else {

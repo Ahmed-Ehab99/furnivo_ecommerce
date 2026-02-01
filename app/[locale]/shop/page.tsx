@@ -4,18 +4,18 @@ import { cn } from "@/lib/utils";
 import ShapeLeft from "@/public/shapes/searchLeft.svg";
 import ShapeRight from "@/public/shapes/shapeRight.svg";
 import Image from "next/image";
-import { Suspense, use } from "react";
+import { Suspense } from "react";
 import ShopContent from "./_components/ShopContent";
 import { ShopFiltersSkeleton } from "./_components/ShopFilters";
 
-const ShopPage = ({
+const ShopPage = async ({
   params,
   searchParams,
 }: {
   params: MainRoutesParams;
   searchParams: SearchParams;
 }) => {
-  const { locale } = use(params);
+  const { locale } = await params;
   const isArabic = locale === "ar";
 
   return (

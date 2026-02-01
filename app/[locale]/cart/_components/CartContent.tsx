@@ -9,15 +9,10 @@ import { Minus, Plus, ShoppingBag, Trash2 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
-import { useParams } from "next/navigation";
 import { useCart } from "../hooks/useCart";
 
-const CartContent = () => {
+const CartContent = ({ locale }: { locale: string }) => {
   const t = useTranslations("cart");
-  const params = useParams();
-  const locale = params.locale as string;
-  const isArabic = locale === "ar";
-
   const {
     items,
     total,
@@ -28,6 +23,7 @@ const CartContent = () => {
     decrementQuantity,
     clearCart,
   } = useCart(locale);
+  const isArabic = locale === "ar";
 
   if (loading) {
     return (
@@ -62,6 +58,7 @@ const CartContent = () => {
         <h2 className="text-xl font-bold">
           {t("items")} ({formatNumber(locale, itemCount)})
         </h2>
+
         <Button
           size="icon-lg"
           title={t("clearCart")}
@@ -71,6 +68,7 @@ const CartContent = () => {
           <Trash2 className="size-3 md:size-5" />
         </Button>
       </div>
+
       <AnimatedList
         items={items}
         showGradients={false}
@@ -162,13 +160,16 @@ const CartContent = () => {
           );
         }}
       />
+
       <div className="flex items-center justify-between">
         <span className="font-bold capitalize">{t("total")}</span>
+
         <div className="flex items-end gap-1 font-semibold">
           <span className="text-base">{isArabic ? "ج.م" : "$"}</span>
           <span className="text-xl">{formatNumber(locale, total)}</span>
         </div>
       </div>
+
       <Button className="w-full rounded-full" asChild>
         <Link href="/checkout">{t("placeOrder")}</Link>
       </Button>

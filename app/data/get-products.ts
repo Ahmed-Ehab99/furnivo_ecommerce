@@ -1,10 +1,8 @@
-import { LOCALES } from "@/i18n/routing";
+import { itemsPerPage, locales } from "@/lib/constants";
 import { prisma } from "@/lib/db";
 import { GetProductsParams, ProductWithCategoryT } from "@/lib/types";
 import { Prisma } from "@/prisma/generated/prisma/client";
 import "server-only";
-
-const limit = 8;
 
 export const getProducts = async ({
   locale = "en",
@@ -25,7 +23,7 @@ export const getProducts = async ({
   if (searchQuery) {
     where.translations = {
       some: {
-        OR: LOCALES.flatMap((l) => [
+        OR: locales.flatMap((l) => [
           {
             locale: l,
             title: { contains: searchQuery, mode: "insensitive" },
@@ -59,7 +57,7 @@ export const getProducts = async ({
   }
 
   // Calculate pagination
-  const skip = (page - 1) * limit;
+  const skip = (page - 1) * itemsPerPage;
 
   // Get total count for pagination
   const total = await prisma.product.count({ where });
@@ -69,7 +67,7 @@ export const getProducts = async ({
     where,
     orderBy,
     skip,
-    take: limit,
+    take: itemsPerPage,
     include: {
       translations: {
         where: { locale },
@@ -108,13 +106,13 @@ export const getProducts = async ({
     },
   }));
 
-  const totalPages = Math.ceil(total / limit);
+  const totalPages = Math.ceil(total / itemsPerPage);
 
   return {
     products: formattedProducts,
     total,
     page,
-    limit,
+    itemsPerPage,
     totalPages,
   };
 };

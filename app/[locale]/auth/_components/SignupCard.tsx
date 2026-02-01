@@ -17,21 +17,14 @@ import { useForm, useWatch } from "react-hook-form";
 import { toast } from "sonner";
 import { SignupFormData, signupSchema } from "../schema/authSchema";
 import SigninGoogleBtn from "./SigninGoogleBtn";
-
-const defaultValues = {
-  firstName: "",
-  lastName: "",
-  email: "",
-  password: "",
-  marketingConsent: false,
-};
+import { signupDefaultValues } from "@/lib/constants";
 
 const SignupCard = () => {
   const [isPending, startTransition] = useTransition();
   const router = useRouter();
   const form = useForm<SignupFormData>({
     resolver: zodResolver(signupSchema),
-    defaultValues,
+    defaultValues: signupDefaultValues,
   });
   const passwordValue = useWatch({
     control: form.control,

@@ -5,6 +5,7 @@ import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Spinner } from "@/components/ui/spinner";
 import { authClient } from "@/lib/auth-client";
+import { signinDefaultValues } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { AtSign, LockKeyholeIcon, TriangleAlert } from "lucide-react";
@@ -15,17 +16,12 @@ import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { SigninFormData, signinSchema } from "../schema/authSchema";
 
-const defaultValues = {
-  email: "",
-  password: "",
-};
-
 const SigninCard = () => {
   const [isPending, startTransition] = useTransition();
   const router = useRouter();
   const form = useForm({
     resolver: zodResolver(signinSchema),
-    defaultValues,
+    defaultValues: signinDefaultValues,
   });
   const t = useTranslations("auth");
   const toastesT = useTranslations("toastes");

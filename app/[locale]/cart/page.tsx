@@ -27,7 +27,7 @@ const CartPage = async ({ params }: { params: MainRoutesParams }) => {
         />
       </div>
 
-      <CartContent />
+      <CartContent locale={locale} />
     </section>
   );
 };

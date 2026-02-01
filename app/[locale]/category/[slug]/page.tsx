@@ -3,6 +3,7 @@ import { getProducts } from "@/app/data/get-products";
 import EmptyState from "@/components/global/EmptyState";
 import ProductCard from "@/components/global/ProductCard";
 import { ServerPagination } from "@/components/global/ServerPagination";
+import { itemsPerPage } from "@/lib/constants";
 import { DynamicRoutesParams, SearchParams } from "@/lib/types";
 import CategoryLeft1 from "@/public/shapes/categoryLeft1.svg";
 import CategoryLeft2 from "@/public/shapes/categoryLeft2.svg";
@@ -22,20 +23,19 @@ const CategoryPage = async ({
   const { locale, slug } = await params;
   const { page: pageParam } = await searchParams;
   const category = await getCategoryBySlug(slug, locale);
-  
+
   if (!category) {
     notFound();
   }
-  
+
   const currentPage = pageParam ? parseInt(pageParam, 10) : 1;
   const page = isNaN(currentPage) || currentPage < 1 ? 1 : currentPage;
-  const limit = 8;
 
   const { products, totalPages } = await getProducts({
     locale,
     categoryId: category.id,
     page,
-    limit,
+    limit: itemsPerPage,
   });
 
   if (products.length === 0) {

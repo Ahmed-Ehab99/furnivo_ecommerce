@@ -5,27 +5,13 @@ import { prisma } from "@/lib/db";
 import { env } from "@/lib/env";
 import { stripe } from "@/lib/stripe";
 import { CheckoutSessionInput } from "@/lib/types";
+import { calculateFinalPrice } from "@/lib/utils";
 import Stripe from "stripe";
 
-function calculateFinalPrice(price: number, discount: number | null): number {
-  if (!discount || discount <= 0) {
-    return price;
-  }
-
-  const discountAmount = (price * discount) / 100;
-  const finalPrice = price - discountAmount;
-
-  return Math.round(finalPrice * 100) / 100;
-}
-
 export async function createCheckoutSession(input: CheckoutSessionInput) {
+  const user = await getUser();
+
   try {
-    const user = await getUser();
-
-    if (!user) {
-      return { success: false, error: "Unauthorized" };
-    }
-
     // Check if user already a customer in stripe
     let stripeCustomerId: string;
     const userWithStripeCustomerId = await prisma.user.findUnique({
@@ -173,10 +159,6 @@ export async function createCheckoutSession(input: CheckoutSessionInput) {
           const imageUrl = item.image.startsWith("http")
             ? item.image
             : undefined;
-
-          console.log(`Product: ${item.title}`);
-          console.log(`  Image URL: ${imageUrl}`);
-          console.log(`  Final price: ${item.finalPrice}`);
 
           return {
             price_data: {

@@ -3,16 +3,15 @@ import { MainRoutesParams } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import ShapeLeft from "@/public/shapes/shapeLeft.svg";
 import ShapeRight from "@/public/shapes/shapeRight.svg";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import Image from "next/image";
-import { use } from "react";
 import AuthTabs from "./_components/AuthTabs";
 import SigninCard from "./_components/SigninCard";
 import SignupCard from "./_components/SignupCard";
 
-const AuthPage = ({ params }: { params: MainRoutesParams }) => {
-  const { locale } = use(params);
-  const t = useTranslations("auth");
+const AuthPage = async ({ params }: { params: MainRoutesParams }) => {
+  const { locale } = await params;
+  const t = await getTranslations("auth");
   const isArabic = locale === "ar";
 
   return (

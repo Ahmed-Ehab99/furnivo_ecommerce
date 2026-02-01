@@ -1,7 +1,7 @@
 import { FeatureItem } from "@/lib/types";
-import FeatureOneImg from "@/public/feature1.jpg";
-import FeatureTwoImg from "@/public/feature2.jpg";
-import FeatureThreeImg from "@/public/feature3.jpg";
+import FeatureOneImg from "@/public/feature1.webp";
+import FeatureTwoImg from "@/public/feature2.webp";
+import FeatureThreeImg from "@/public/feature3.webp";
 import { useTranslations } from "next-intl";
 import FeatureCard from "./FeatureCard";
 import FeaturesMobileSec from "./FeaturesMobileSec";

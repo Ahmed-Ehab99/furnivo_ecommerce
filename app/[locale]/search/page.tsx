@@ -6,19 +6,23 @@ import LivingRoomImg from "@/public/categories/living-room/living-room.webp";
 import CenterShape from "@/public/shapes/centerShape.svg";
 import SearchLeft from "@/public/shapes/searchLeft.svg";
 import ShapeRight from "@/public/shapes/shapeRight.svg";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import Image from "next/image";
-import { use } from "react";
 
-export default function SearchPage({ params }: { params: MainRoutesParams }) {
-  const { locale } = use(params);
-  const t = useTranslations("search");
+export default async function SearchPage({
+  params,
+}: {
+  params: MainRoutesParams;
+}) {
+  const { locale } = await params;
+  const t = await getTranslations("search");
   const isArabic = locale === "ar";
 
   return (
     <section className="relative">
       <div className="layout-spacing flex min-h-dvh flex-col justify-center gap-10 lg:py-0">
         <div className="grid grid-cols-1 items-center gap-5 md:grid-cols-2 lg:grid-cols-4">
+          {/* Left Image */}
           <div className="relative hidden w-full items-center justify-center p-4.5 lg:flex">
             <div className="bg-secondary absolute top-0 left-0 size-[80%] rounded-4xl" />
 
@@ -35,7 +39,7 @@ export default function SearchPage({ params }: { params: MainRoutesParams }) {
               />
             </div>
           </div>
-
+          {/* Center Content */}
           <div className="flex flex-col gap-3 lg:col-span-2 lg:items-center lg:justify-center lg:text-center">
             <h1 className="max-w-xl text-3xl leading-tight font-extrabold md:text-5xl lg:leading-16">
               {t("title")}
@@ -43,7 +47,7 @@ export default function SearchPage({ params }: { params: MainRoutesParams }) {
 
             <p className="text-base font-normal opacity-80">{t("desc")}</p>
           </div>
-
+          {/* Right Image */}
           <div className="relative mx-auto flex w-full max-w-xs items-center justify-center p-4.5">
             <div className="bg-secondary absolute top-0 left-0 size-[80%] rounded-4xl" />
 

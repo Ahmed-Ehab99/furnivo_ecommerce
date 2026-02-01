@@ -58,6 +58,7 @@ const ProductActions = ({
     <div className="flex flex-col gap-2 space-y-3">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4">
+          {/* Decrement Button */}
           <Button
             size="icon"
             className="text-background rounded-full"
@@ -66,11 +67,11 @@ const ProductActions = ({
           >
             <Minus className="size-5" />
           </Button>
-
+          {/* Item Quantity */}
           <span className="text-lg font-extrabold">
             {formatNumber(locale, quantityToAdd)}
           </span>
-
+          {/* Increament Button */}
           <Button
             size="icon"
             className="text-background rounded-full"

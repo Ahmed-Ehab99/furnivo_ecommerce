@@ -12,7 +12,7 @@ import {
 import { Skeleton } from "@/components/ui/skeleton";
 import { Switch } from "@/components/ui/switch";
 import { useTranslations } from "next-intl";
-import { useShopFilters } from "../hooks/use-shop-filters";
+import { useShopFilters } from "../hooks/useShopFilters";
 
 interface ShopFiltersProps {
   locale: string;

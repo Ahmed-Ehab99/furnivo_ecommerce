@@ -1,5 +1,5 @@
 import SearchInput from "@/components/global/SearchInput";
-import HeroImg from "@/public/hero.png";
+import HeroImg from "@/public/hero.webp";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 

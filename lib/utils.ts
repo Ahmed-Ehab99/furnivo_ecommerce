@@ -26,3 +26,17 @@ export const getDiscountedUnitPrice = (item: CartItem): number => {
 export const calculateItemTotal = (item: CartItem): number => {
   return getDiscountedUnitPrice(item) * item.quantity;
 };
+
+export function calculateFinalPrice(
+  price: number,
+  discount: number | null,
+): number {
+  if (!discount || discount <= 0) {
+    return price;
+  }
+
+  const discountAmount = (price * discount) / 100;
+  const finalPrice = price - discountAmount;
+
+  return Math.round(finalPrice * 100) / 100;
+}

@@ -1,4 +1,4 @@
-import FurnishImg from "@/public/furnish.jpg";
+import FurnishImg from "@/public/furnish.webp";
 import { MoveLeft, MoveRight } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Image from "next/image";

@@ -1,5 +1,6 @@
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
+import { redirect } from "next/navigation";
 import { cache } from "react";
 import "server-only";
 
@@ -8,5 +9,9 @@ export const getUser = cache(async () => {
     headers: await headers(),
   });
 
-  return session?.user || null;
+  if (!session) {
+    return redirect("/auth");
+  }
+
+  return session.user;
 });
