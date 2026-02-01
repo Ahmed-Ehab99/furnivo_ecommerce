@@ -64,7 +64,7 @@ const checkoutSlice = createSlice({
       // Ensure step is at least 1
       return {
         ...loaded,
-        currentStep: Math.max(1, loaded.currentStep),
+        currentStep: Math.min(3, Math.max(1, loaded.currentStep)),
       };
     },
   },

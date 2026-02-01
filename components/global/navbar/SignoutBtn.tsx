@@ -15,7 +15,7 @@ const SignoutBtn = ({ open }: { open?: boolean }) => {
   const pathname = usePathname();
   const params = useParams();
   const locale = params.locale as string;
-  const { refreshCart } = useCart(locale);
+  const { resetCartCache } = useCart(locale);
   const isHome = pathname === `/${locale}`;
 
   const handleSignout = async () => {
@@ -23,10 +23,10 @@ const SignoutBtn = ({ open }: { open?: boolean }) => {
       await authClient.signOut({
         fetchOptions: {
           onSuccess: () => {
+            resetCartCache();
             toast.success(`${t("success.signout")}`);
             router.replace("/");
             router.refresh();
-            refreshCart();
           },
         },
       });

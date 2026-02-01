@@ -1,9 +1,7 @@
 "use client";
 
 import { DeliveryAddress, PaymentMethod } from "@/lib/types";
-import {
-  useCreateCheckoutSessionMutation,
-} from "@/redux/features/checkout/checkoutApi";
+import { useCreateCheckoutSessionMutation } from "@/redux/features/checkout/checkoutApi";
 import {
   resetCheckout,
   setCurrentStep,
@@ -12,7 +10,6 @@ import {
 } from "@/redux/features/checkout/checkoutSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { useTranslations } from "next-intl";
-import { useEffect } from "react";
 import { toast } from "sonner";
 import { useCart } from "../../cart/hooks/useCart";
 
@@ -25,24 +22,6 @@ export function useCheckout(locale: string = "en") {
   // Mutations
   const [createSessionMutation, { isLoading: isCreatingSession }] =
     useCreateCheckoutSessionMutation();
-
-  // Load checkout from sessionStorage on mount
-  useEffect(() => {
-    const saved = sessionStorage.getItem("checkout");
-    if (saved) {
-      try {
-        const parsed = JSON.parse(saved);
-        dispatch({ type: "checkout/loadCheckout", payload: parsed });
-      } catch (error) {
-        console.error("Failed to load checkout:", error);
-      }
-    }
-  }, [dispatch]);
-
-  // Save to sessionStorage whenever state changes
-  useEffect(() => {
-    sessionStorage.setItem("checkout", JSON.stringify(checkoutState));
-  }, [checkoutState]);
 
   // Navigation
   const goToStep = (step: number) => {
@@ -60,12 +39,7 @@ export function useCheckout(locale: string = "en") {
   // Save delivery address
   const saveDeliveryAddress = async (address: DeliveryAddress) => {
     try {
-      // Save to Redux (client state)
       dispatch(setDeliveryAddress(address));
-
-      // Save to sessionStorage
-      sessionStorage.setItem("checkout-address", JSON.stringify(address));
-
       toast.success(t("addressSaved"));
       goToNextStep();
       return true;
@@ -78,7 +52,6 @@ export function useCheckout(locale: string = "en") {
   // Save payment method
   const savePaymentMethod = (method: PaymentMethod) => {
     dispatch(setPaymentMethod(method));
-    sessionStorage.setItem("checkout-payment", method);
     toast.success(t("paymentMethodSaved"));
     goToNextStep();
   };
@@ -121,8 +94,6 @@ export function useCheckout(locale: string = "en") {
         // Clear checkout state
         dispatch(resetCheckout());
         sessionStorage.removeItem("checkout");
-        sessionStorage.removeItem("checkout-address");
-        sessionStorage.removeItem("checkout-payment");
 
         return result;
       }
@@ -145,8 +116,6 @@ export function useCheckout(locale: string = "en") {
   const reset = () => {
     dispatch(resetCheckout());
     sessionStorage.removeItem("checkout");
-    sessionStorage.removeItem("checkout-address");
-    sessionStorage.removeItem("checkout-payment");
   };
 
   return {

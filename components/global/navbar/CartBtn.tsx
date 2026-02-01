@@ -19,6 +19,7 @@ const CartBtn = ({ open }: { open?: boolean }) => {
       size="icon"
       variant="ghost"
       className={cn(isHome && "hover:bg-secondary/20", "relative")}
+      asChild
     >
       <Link href="/cart">
         <ShoppingBag

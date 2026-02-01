@@ -2,6 +2,7 @@
 
 import { CartItem } from "@/lib/types";
 import {
+  cartApi,
   useAddToCartMutation,
   useClearCartMutation,
   useGetCartQuery,
@@ -9,10 +10,12 @@ import {
   useUpdateQuantityMutation,
 } from "@/redux/features/cart/cartApi";
 import { useTranslations } from "next-intl";
+import { useDispatch } from "react-redux";
 import { toast } from "sonner";
 
 export function useCart(locale: string = "en") {
   const t = useTranslations("toastes");
+  const dispatch = useDispatch();
 
   // Get Data
   const { data, isLoading, refetch } = useGetCartQuery(locale);
@@ -93,6 +96,10 @@ export function useCart(locale: string = "en") {
     }
   };
 
+  const resetCartCache = () => {
+    dispatch(cartApi.util.resetApiState());
+  };
+
   return {
     items: cart.items,
     total: cart.total,
@@ -105,5 +112,6 @@ export function useCart(locale: string = "en") {
     decrementQuantity,
     clearCart,
     refreshCart: refetch,
+    resetCartCache,
   };
 }
