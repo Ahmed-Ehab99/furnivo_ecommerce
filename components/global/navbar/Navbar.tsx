@@ -33,7 +33,7 @@ const Navbar = () => {
         <AnimatedThemeToggler />
         <LocaleSwitcher />
         {isPending ? (
-          <Skeleton className="h-9 w-18.5" />
+          <Skeleton className="size-9" />
         ) : session ? (
           <SignoutBtn />
         ) : (

@@ -3,6 +3,9 @@ import createNextIntlPlugin from "next-intl/plugin";
 
 const nextConfig: NextConfig = {
   reactCompiler: true,
+  experimental: {
+    globalNotFound: true,
+  },
   images: {
     remotePatterns: [
       {

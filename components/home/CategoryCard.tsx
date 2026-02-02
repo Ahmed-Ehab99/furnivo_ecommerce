@@ -38,7 +38,7 @@ const CategoryCard = ({
       </p>
       <Link
         href={`/category/${slug}`}
-        className="font-gilroy text-primary text-md mt-auto flex items-center gap-3 font-medium"
+        className="font-gilroy text-primary text-md mt-auto flex w-fit items-center gap-3 font-medium"
       >
         {t("moreInfo")} {locale === "ar" ? <MoveLeft /> : <MoveRight />}
       </Link>

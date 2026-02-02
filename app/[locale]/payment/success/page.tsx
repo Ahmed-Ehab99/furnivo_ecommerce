@@ -5,9 +5,17 @@ import { cn } from "@/lib/utils";
 import ShapeLeft from "@/public/shapes/shapeLeft.svg";
 import ShapeRight from "@/public/shapes/shapeRight.svg";
 import SuccessImg from "@/public/success.svg";
+import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import Image from "next/image";
 import Link from "next/link";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("metadata.payment");
+  return {
+    title: t("successTitle"),
+  };
+}
 
 const CheckoutSuccessPage = async ({
   params,

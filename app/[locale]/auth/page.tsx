@@ -3,11 +3,20 @@ import { MainRoutesParams } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import ShapeLeft from "@/public/shapes/shapeLeft.svg";
 import ShapeRight from "@/public/shapes/shapeRight.svg";
+import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import Image from "next/image";
 import AuthTabs from "./_components/AuthTabs";
 import SigninCard from "./_components/SigninCard";
 import SignupCard from "./_components/SignupCard";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("metadata.auth");
+  return {
+    title: t("title"),
+    description: t("description"),
+  };
+}
 
 const AuthPage = async ({ params }: { params: MainRoutesParams }) => {
   const { locale } = await params;

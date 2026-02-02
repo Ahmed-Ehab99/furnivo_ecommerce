@@ -1,5 +1,6 @@
 "use client";
 
+import { Skeleton } from "@/components/ui/skeleton";
 import { cn } from "@/lib/utils";
 import DarkSearch from "@/public/dark-search.svg";
 import LightSearch from "@/public/light-search.svg";
@@ -50,7 +51,7 @@ const SearchBtn = ({ open }: { open?: boolean }) => {
             className="size-5"
           />
         ) : (
-          <span className="size-5" />
+          <Skeleton className="size-9" />
         )}
       </Link>
     </Button>

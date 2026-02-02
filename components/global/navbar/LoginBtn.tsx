@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { LogIn } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { Dispatch, SetStateAction } from "react";
@@ -13,9 +14,14 @@ const LoginBtn = ({
   const t = useTranslations("auth");
 
   return (
-    <Button asChild>
-      <Link href="/auth" onClick={() => setOpen?.(false)}>
-        {t("signinBtn")}
+    <Button
+      title={t("signinBtn")}
+      asChild
+      size="icon"
+      onClick={() => setOpen?.(false)}
+    >
+      <Link href="/auth">
+        <LogIn />
       </Link>
     </Button>
   );

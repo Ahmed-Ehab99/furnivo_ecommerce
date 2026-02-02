@@ -1,7 +1,8 @@
 import { prisma } from "@/lib/db";
+import { cache } from "react";
 import "server-only";
 
-export const getCategories = async (locale: string = "en") => {
+export const getCategories = cache(async (locale: string = "en") => {
   const categories = await prisma.category.findMany({
     orderBy: {
       createdAt: "asc",
@@ -21,6 +22,6 @@ export const getCategories = async (locale: string = "en") => {
     title: category.translations[0]?.title,
     description: category.translations[0]?.description,
   }));
-};
+});
 
 export type GetCategoriesType = Awaited<ReturnType<typeof getCategories>>;

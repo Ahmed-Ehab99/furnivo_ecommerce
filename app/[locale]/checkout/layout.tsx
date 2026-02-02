@@ -5,6 +5,15 @@ import ShapeLeft from "@/public/shapes/shapeLeft.svg";
 import ShapeRight from "@/public/shapes/shapeRight.svg";
 import Image from "next/image";
 import CheckoutStepper from "./_components/CheckoutStepper";
+import { getTranslations } from "next-intl/server";
+import { Metadata } from "next";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("metadata.checkout");
+  return {
+    title: t("title"),
+  };
+}
 
 export default async function CheckoutLayout({
   children,

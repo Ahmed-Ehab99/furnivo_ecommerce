@@ -2,9 +2,17 @@ import Heading from "@/components/global/Heading";
 import { MainRoutesParams } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import CenterShape from "@/public/shapes/centerShape.svg";
+import { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import Image from "next/image";
 import CartContent from "./_components/CartContent";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("metadata.cart");
+  return {
+    title: t("title"),
+  };
+}
 
 const CartPage = async ({ params }: { params: MainRoutesParams }) => {
   const { locale } = await params;

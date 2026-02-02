@@ -9,9 +9,25 @@ import CategoryLeft1 from "@/public/shapes/categoryLeft1.svg";
 import CategoryLeft2 from "@/public/shapes/categoryLeft2.svg";
 import CategoryRight from "@/public/shapes/categoryRight.svg";
 import { Search } from "lucide-react";
+import { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import CategoryHero from "./_components/CategoryHero";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: DynamicRoutesParams;
+}): Promise<Metadata> {
+  const { locale, slug } = await params;
+  const category = await getCategoryBySlug(slug, locale);
+
+  return {
+    title: category.title,
+    description: category.description,
+    openGraph: {images: [category.thumbnail]}
+  };
+}
 
 const CategoryPage = async ({
   params,

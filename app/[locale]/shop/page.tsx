@@ -3,10 +3,20 @@ import { MainRoutesParams, SearchParams } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import ShapeLeft from "@/public/shapes/searchLeft.svg";
 import ShapeRight from "@/public/shapes/shapeRight.svg";
+import { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 import Image from "next/image";
 import { Suspense } from "react";
 import ShopContent from "./_components/ShopContent";
 import { ShopFiltersSkeleton } from "./_components/ShopFilters";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("metadata.shop");
+  return {
+    title: t("title"),
+    description: t("description"),
+  };
+}
 
 const ShopPage = async ({
   params,

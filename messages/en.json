@@ -1,4 +1,26 @@
 {
+  "metadata": {
+    "title": "Furnivo - Modern Furniture Store",
+    "description": "Furnivo is your destination for modern furniture. Buy premium chairs, elegant beds, and smart kitchen tools crafted for stylish, everyday living.",
+    "auth": {
+      "title": "Sign In or Create an Account",
+      "description": "Sign in to your Furnivo account or create a new one to shop modern furniture, and enjoy a faster checkout experience."
+    },
+    "cart": {
+      "title": "Your Cart"
+    },
+    "checkout": {
+      "title": "Checkout"
+    },
+    "payment": {
+      "successTitle": "Thank you for your purchase!",
+      "cancelTitle": "Payment cancelled"
+    },
+    "shop": {
+      "title": "Shop",
+      "description": "Browse Furnivo's modern furniture collection. Filter by category, discover discounted items, and sort by price to find the perfect chairs, beds, and kitchen essentials for your home."
+    }
+  },
   "auth": {
     "title": "Welcome to Our store",
     "desc": "Bringing Your Style Home",
@@ -240,5 +262,25 @@
     "outOfStock": "Out of stock",
     "allInCart": "All items are in your cart",
     "addToCart": "Add to cart"
+  },
+  "notFound": {
+    "product": {
+      "title": "Product Not Found",
+      "description": "The product you're looking for doesn't exist or may have been removed.",
+      "backToHome": "Back to Home",
+      "browseShop": "Browse All Products"
+    },
+    "category": {
+      "title": "Category Not Found",
+      "description": "The category you're looking for doesn't exist or may have been removed.",
+      "backToHome": "Back to Home",
+      "browseShop": "Browse All Products"
+    },
+    "global": {
+      "title": "Page Not Found",
+      "description": "Oops! The page you're looking for doesn't exist or has been moved.",
+      "backToHome": "Return to Homepage",
+      "browseShop": "Go to Shop"
+    }
   }
 }

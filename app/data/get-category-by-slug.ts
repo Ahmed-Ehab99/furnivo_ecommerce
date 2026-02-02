@@ -1,34 +1,44 @@
 import { prisma } from "@/lib/db";
 import { notFound } from "next/navigation";
+import { cache } from "react";
 import "server-only";
 
-export const getCategoryBySlug = async (
-  slug: string = "",
-  locale: string = "en",
-) => {
-  const category = await prisma.category.findUnique({
-    where: { slug },
-    include: {
-      translations: {
-        where: { locale },
+export const getCategoryBySlug = cache(
+  async (slug: string = "", locale: string = "en") => {
+    const category = await prisma.category.findUnique({
+      where: { slug },
+      include: {
+        translations: {
+          where: { locale },
+        },
       },
-    },
-  });
+    });
 
-  if (!category) {
-    return notFound();
-  }
+    if (!category) {
+      return notFound();
+    }
 
-  return {
-    id: category.id,
-    slug: category.slug,
-    thumbnail: category.thumbnail,
-    imageAlt: category.imageAlt,
-    title: category.translations[0]?.title,
-    description: category.translations[0]?.description,
-  };
-};
+    return {
+      id: category.id,
+      slug: category.slug,
+      thumbnail: category.thumbnail,
+      imageAlt: category.imageAlt,
+      title: category.translations[0]?.title,
+      description: category.translations[0]?.description,
+    };
+  },
+);
 
 export type GetCategoryBySlugType = Awaited<
   ReturnType<typeof getCategoryBySlug>
 >;
+
+export async function getAllCategorySlugs(): Promise<string[]> {
+  const category = await prisma.category.findMany({
+    select: {
+      slug: true,
+    },
+  });
+
+  return category.map((c) => c.slug);
+}

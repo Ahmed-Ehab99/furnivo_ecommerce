@@ -17,6 +17,7 @@ import { cn } from "@/lib/utils";
 import ShapeLeft from "@/public/shapes/shapeLeft.svg";
 import ShapeRight from "@/public/shapes/shapeRight.svg";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -24,12 +25,29 @@ import ProductContent from "./_components/ProductContent";
 
 export const revalidate = 3600;
 
+export async function generateMetadata({
+  params,
+}: {
+  params: DynamicRoutesParams;
+}): Promise<Metadata> {
+  const { locale, slug } = await params;
+  const productData = await getProductBySlug(slug, locale);
+
+  return {
+    title: productData.title,
+    description: productData.description,
+    openGraph: { images: [productData.images[0].url] },
+  };
+}
+
 export async function generateStaticParams() {
   const slugs = await getAllProductSlugs();
 
-  return slugs.map((slug) => ({
-    slug,
-  }));
+  return slugs
+    .map((slug) => ({
+      slug,
+    }))
+    .slice(0, 8);
 }
 
 const ProductDetailsPage = async ({
@@ -126,7 +144,7 @@ const ProductDetailsPage = async ({
         loading="eager"
         className={cn(
           "absolute end-0 top-0 -z-50 max-w-40 lg:max-w-52",
-          isArabic && "rotate-y-180",
+          "rtl:rotate-y-180",
         )}
         priority
       />
@@ -136,7 +154,7 @@ const ProductDetailsPage = async ({
         loading="eager"
         className={cn(
           "absolute start-0 bottom-0 -z-50 max-w-40 lg:max-w-52",
-          isArabic && "rotate-y-180",
+          "rtl:rotate-y-180",
         )}
         priority
       />
