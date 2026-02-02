@@ -1,5 +1,6 @@
 "use client";
 
+import { Skeleton } from "@/components/ui/skeleton";
 import DarkLogo from "@/public/dark-logo.webp";
 import LightLogo from "@/public/light-logo.webp";
 import { useTheme } from "next-themes";
@@ -35,13 +36,7 @@ const NavbarLogo = () => {
           priority
         />
       ) : (
-        <Image
-          src={DarkLogo}
-          alt="Furnivo Logo"
-          className="max-w-20"
-          loading="eager"
-          priority
-        />
+        <Skeleton className="size-20" />
       )}
     </Link>
   );

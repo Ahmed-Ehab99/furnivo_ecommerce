@@ -27,7 +27,7 @@ const CartPage = async ({ params }: { params: MainRoutesParams }) => {
         <Image
           src={CenterShape}
           alt="Shape"
-          loading="eager"
+          loading="lazy"
           className={cn(
             "absolute top-1/2 left-1/2 -z-50 max-w-80 -translate-x-1/2 -translate-y-1/2",
             isArabic && "rotate-y-180",

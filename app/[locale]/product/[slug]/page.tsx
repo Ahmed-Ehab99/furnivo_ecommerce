@@ -124,7 +124,7 @@ const ProductDetailsPage = async ({
                   fill
                   className="object-contain"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  priority={i === 0}
+                  priority
                 />
               </Lens>
             ))}
@@ -141,22 +141,20 @@ const ProductDetailsPage = async ({
       <Image
         src={ShapeRight}
         alt="Shape"
-        loading="eager"
+        loading="lazy"
         className={cn(
           "absolute end-0 top-0 -z-50 max-w-40 lg:max-w-52",
           "rtl:rotate-y-180",
         )}
-        priority
       />
       <Image
         src={ShapeLeft}
         alt="Shape"
-        loading="eager"
+        loading="lazy"
         className={cn(
           "absolute start-0 bottom-0 -z-50 max-w-40 lg:max-w-52",
           "rtl:rotate-y-180",
         )}
-        priority
       />
     </section>
   );

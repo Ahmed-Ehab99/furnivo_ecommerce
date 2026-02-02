@@ -37,6 +37,7 @@ const CategoryCard = ({
         {desc}
       </p>
       <Link
+        title={title}
         href={`/category/${slug}`}
         className="font-gilroy text-primary text-md mt-auto flex w-fit items-center gap-3 font-medium"
       >

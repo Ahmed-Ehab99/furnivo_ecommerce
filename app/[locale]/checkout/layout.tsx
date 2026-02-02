@@ -3,10 +3,10 @@ import { cn } from "@/lib/utils";
 import CheckoutProvider from "@/providers/CheckoutProvider";
 import ShapeLeft from "@/public/shapes/shapeLeft.svg";
 import ShapeRight from "@/public/shapes/shapeRight.svg";
+import { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 import Image from "next/image";
 import CheckoutStepper from "./_components/CheckoutStepper";
-import { getTranslations } from "next-intl/server";
-import { Metadata } from "next";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("metadata.checkout");
@@ -43,7 +43,7 @@ export default async function CheckoutLayout({
         <Image
           src={ShapeRight}
           alt="Shape"
-          loading="eager"
+          loading="lazy"
           className={cn(
             "absolute end-0 top-0 -z-50 hidden max-w-40 lg:block lg:max-w-52",
             isArabic && "rotate-y-180",

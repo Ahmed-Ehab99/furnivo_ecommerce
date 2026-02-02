@@ -56,7 +56,7 @@ const Footer = () => {
           </div>
 
           <div className="flex flex-col gap-4">
-            <h3 className="font-bold">{t("serviceLinks.title")}</h3>
+            <span className="font-bold">{t("serviceLinks.title")}</span>
             <ul className="space-y-3 text-[#1E1E1E]/80 dark:text-[#FFFFFF]/80">
               {serviceLinks.map((service) => (
                 <li
@@ -70,7 +70,7 @@ const Footer = () => {
           </div>
 
           <div className="flex flex-col gap-4">
-            <h3 className="font-bold">{t("categoryLinks.title")}</h3>
+            <span className="font-bold">{t("categoryLinks.title")}</span>
             <ul className="space-y-3 text-[#1E1E1E]/80 dark:text-[#FFFFFF]/80">
               {categoryLinks.map((category) => (
                 <li
@@ -86,7 +86,7 @@ const Footer = () => {
           </div>
 
           <div className="flex flex-col gap-4">
-            <h3 className="font-bold">{t("socialLinks.title")}</h3>
+            <span className="font-bold">{t("socialLinks.title")}</span>
             <ul className="space-y-3 text-[#1E1E1E]/80 dark:text-[#FFFFFF]/80">
               {socialLinks.map(({ title, href, icon: Icon }) => (
                 <li

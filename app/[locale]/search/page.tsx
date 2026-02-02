@@ -68,7 +68,7 @@ export default async function SearchPage({
           <Image
             src={CenterShape}
             alt="Shape"
-            loading="eager"
+            loading="lazy"
             className="absolute top-5/12 left-0 -z-50 hidden max-w-80 -translate-y-1/2 md:block lg:left-1/2 lg:max-w-96 lg:-translate-x-1/2"
           />
         </div>
@@ -83,7 +83,7 @@ export default async function SearchPage({
       <Image
         src={SearchLeft}
         alt="Shape"
-        loading="eager"
+        loading="lazy"
         className={cn(
           "absolute start-0 top-0 -z-50 hidden max-w-40 lg:block lg:max-w-52",
           isArabic && "rotate-y-180",
@@ -92,7 +92,7 @@ export default async function SearchPage({
       <Image
         src={ShapeRight}
         alt="Shape"
-        loading="eager"
+        loading="lazy"
         className={cn(
           "absolute end-0 top-0 -z-50 max-w-40 lg:max-w-52",
           isArabic && "rotate-y-180",

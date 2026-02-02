@@ -37,7 +37,7 @@ const ShopPage = async ({
       </div>
 
       <Image
-        loading="eager"
+        loading="lazy"
         src={ShapeRight}
         alt="Shape"
         className={cn(
@@ -46,7 +46,7 @@ const ShopPage = async ({
         )}
       />
       <Image
-        loading="eager"
+        loading="lazy"
         src={ShapeLeft}
         alt="Shape"
         className={cn(

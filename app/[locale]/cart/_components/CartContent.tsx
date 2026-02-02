@@ -118,6 +118,7 @@ const CartContent = ({ locale }: { locale: string }) => {
 
                   <div className="flex items-center gap-2 lg:gap-3">
                     <Button
+                      title={t("decreaseQuantity")}
                       size="icon"
                       className="size-5 shrink-0 rounded-full md:size-9"
                       onClick={() => decrementQuantity(item.id)}
@@ -129,6 +130,7 @@ const CartContent = ({ locale }: { locale: string }) => {
                       {formatNumber(locale, item.quantity)}
                     </span>
                     <Button
+                      title={t("increaseQuantity")}
                       size="icon"
                       className="size-5 shrink-0 rounded-full md:size-9"
                       onClick={() => incrementQuantity(item.id)}
@@ -170,7 +172,7 @@ const CartContent = ({ locale }: { locale: string }) => {
         </div>
       </div>
 
-      <Button className="w-full rounded-full" asChild>
+      <Button className="w-full rounded-full" asChild title={t("placeOrder")}>
         <Link href="/checkout">{t("placeOrder")}</Link>
       </Button>
     </div>

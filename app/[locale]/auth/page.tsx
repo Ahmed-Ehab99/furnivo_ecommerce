@@ -45,7 +45,7 @@ const AuthPage = async ({ params }: { params: MainRoutesParams }) => {
       <Image
         src={ShapeRight}
         alt="Shape"
-        loading="eager"
+        loading="lazy"
         className={cn(
           "absolute end-0 top-1/5 -z-50 max-w-40 lg:max-w-52",
           isArabic && "rotate-y-180",
@@ -54,7 +54,7 @@ const AuthPage = async ({ params }: { params: MainRoutesParams }) => {
       <Image
         src={ShapeLeft}
         alt="Shape"
-        loading="eager"
+        loading="lazy"
         className={cn(
           "absolute start-0 bottom-0 -z-50 max-w-40 lg:max-w-52",
           isArabic && "rotate-y-180",

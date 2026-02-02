@@ -55,6 +55,8 @@
     "removeItem": "remove item",
     "total": "total",
     "items": "Items",
+    "increaseQuantity": "Increase quantity",
+    "decreaseQuantity": "Decrease quantity",
     "empty": {
       "title": "Your cart is empty",
       "description": "Looks like you haven't added anything yet. Start shopping and fill your cart with your favorites!",
@@ -69,7 +71,8 @@
     "moreInfo": "More Info",
     "discover": {
       "title": "Furnish Your Dreams, Choose Wisely",
-      "desc": "Discover quality furniture, curated styles, and exceptional service at Our Store. We make furnishing your home easy and enjoyable."
+      "desc": "Discover quality furniture, curated styles, and exceptional service at Our Store. We make furnishing your home easy and enjoyable.",
+      "link": "To Shop"
     },
     "features": {
       "title": "Features we offer to you",
@@ -261,7 +264,9 @@
     "inCart": "already in cart",
     "outOfStock": "Out of stock",
     "allInCart": "All items are in your cart",
-    "addToCart": "Add to cart"
+    "addToCart": "Add to cart",
+    "increaseQuantity": "Increase quantity",
+    "decreaseQuantity": "Decrease quantity"
   },
   "notFound": {
     "product": {

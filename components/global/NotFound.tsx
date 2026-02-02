@@ -53,22 +53,20 @@ const NotFound = ({ tKey }: { tKey: string }) => {
       <Image
         src={ShapeRight}
         alt="Shape"
-        loading="eager"
+        loading="lazy"
         className={cn(
           "absolute end-0 top-0 -z-50 max-w-28 md:max-w-40 lg:max-w-52",
           "rtl:rotate-y-180",
         )}
-        priority
       />
       <Image
         src={ShapeLeft}
         alt="Shape"
-        loading="eager"
+        loading="lazy"
         className={cn(
           "absolute start-0 bottom-0 -z-50 max-w-28 md:max-w-40 lg:max-w-52",
           "rtl:rotate-y-180",
         )}
-        priority
       />
     </section>
   );

@@ -25,7 +25,7 @@ const HomePage = async ({ params }: { params: MainRoutesParams }) => {
       <Image
         src={HomeLeft1}
         alt="Shape"
-        loading="eager"
+        loading="lazy"
         className={cn(
           "absolute start-0 top-1/6 -z-50 max-w-40 md:top-1/6 lg:top-1/4 lg:max-w-52",
           isArabic && "rotate-y-180",
@@ -34,7 +34,7 @@ const HomePage = async ({ params }: { params: MainRoutesParams }) => {
       <Image
         src={HomeRight}
         alt="Shape"
-        loading="eager"
+        loading="lazy"
         className={cn(
           "absolute end-0 top-[57%] -z-50 max-w-40 md:top-[38%] lg:top-5/12 lg:max-w-52",
           isArabic && "rotate-y-180",
@@ -43,7 +43,7 @@ const HomePage = async ({ params }: { params: MainRoutesParams }) => {
       <Image
         src={HomeLeft2}
         alt="Shape"
-        loading="eager"
+        loading="lazy"
         className={cn(
           "absolute start-0 bottom-[19%] max-w-40 md:bottom-[38%] lg:bottom-1/5 lg:max-w-52",
           isArabic && "rotate-y-180",

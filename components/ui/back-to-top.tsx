@@ -21,6 +21,7 @@ const BackToTop = () => {
 
   return (
     <Button
+      title="To Top"
       size="icon-lg"
       className={cn(
         "fixed right-2 bottom-2 flex rounded-full transition-all duration-500",

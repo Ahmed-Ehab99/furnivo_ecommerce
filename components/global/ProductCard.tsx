@@ -60,7 +60,7 @@ const ProductCard = ({ product, locale }: ProductCardProps) => {
           src={product.image}
           alt={product.imageAlt}
           fill
-          loading="eager"
+          loading="lazy"
           className="object-contain transition-transform duration-300 group-hover:scale-105"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />

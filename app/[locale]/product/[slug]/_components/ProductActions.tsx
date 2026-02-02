@@ -60,6 +60,7 @@ const ProductActions = ({
         <div className="flex items-center gap-4">
           {/* Decrement Button */}
           <Button
+            title={t("decreaseQuantity")}
             size="icon"
             className="text-background rounded-full"
             onClick={handleDecrement}
@@ -73,6 +74,7 @@ const ProductActions = ({
           </span>
           {/* Increament Button */}
           <Button
+            title={t("increaseQuantity")}
             size="icon"
             className="text-background rounded-full"
             onClick={handleIncrement}

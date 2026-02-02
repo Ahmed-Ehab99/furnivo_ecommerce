@@ -33,6 +33,7 @@ const FurnishSec = ({ locale }: { locale: string }) => {
         </p>
 
         <Link
+          title={`${t("discover.link")}`}
           href="/shop"
           className="text-primary lg:text-md flex items-center gap-3 text-sm font-medium"
         >

@@ -37,6 +37,7 @@ const SignoutBtn = ({ open }: { open?: boolean }) => {
 
   return (
     <Button
+      title="Sign out"
       size="icon"
       variant="ghost"
       onClick={handleSignout}
